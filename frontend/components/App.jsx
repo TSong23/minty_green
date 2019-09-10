@@ -8,8 +8,8 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
-    <header>
-      <h1>Minty Green</h1>
+    <header className="login-signup">
+      <h1 >Minty Green</h1>
       <GreetingContainer />
     
     </header>

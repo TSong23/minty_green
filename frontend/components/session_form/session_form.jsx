@@ -33,7 +33,13 @@ class SessionForm extends React.Component {
     }else {
       linkText = "Sign Up!";
     }
-
+    let errorsList = this.props.errors.map((err, idx) => {
+      return (
+        <h3 key={`error-${idx}`}>
+          {err}
+        </h3>
+      )
+    })
 
     return(
       <div>
@@ -54,6 +60,11 @@ class SessionForm extends React.Component {
         </div>
 
         {`To ${linkText}`}
+        {/* send up errors */}
+        <br/>
+        <div>
+            {errorsList}
+        </div>
       </div>
     )
   }

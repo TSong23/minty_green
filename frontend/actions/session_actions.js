@@ -19,10 +19,11 @@ export const receiveErrors = (errors) => ({
 })
 
 export const login = (user) => dispatch => {
+  //debugger
   return(
     SessionAPIUtil.login(user)
-      .then(user => dispatch(receiveCurrentUser(user))),
-      err => (dispatch(receiveErrors(err.responseJSON)))
+      .then(user => dispatch(receiveCurrentUser(user)),
+      err => (dispatch(receiveErrors(err.responseJSON))))
   )
 }
 

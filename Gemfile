@@ -43,6 +43,9 @@ group :development, :test do
   gem 'annotate'
   gem 'bcrypt'
   gem 'jquery-rails'
+  # gem 'guard', require: false
+  # gem 'guard-livereload', require: false
+  # gem 'rb-fsevent', require: false
 end
 
 group :development do
