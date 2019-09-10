@@ -29,7 +29,7 @@ class SessionForm extends React.Component {
     let buttonText = this.props.formType;
     let linkText = '';
     if (buttonText === "Sign Up"){
-      linkText = "To Login";
+      linkText = "Login";
     }else {
       linkText = "Sign Up!";
     }
