@@ -1,6 +1,5 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom';
-import { link } from 'fs';
+
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -30,32 +29,35 @@ class SessionForm extends React.Component {
     let buttonText = this.props.formType;
     let linkText = '';
     if (buttonText === "Sign Up"){
-      linkText === "To Login";
+      linkText = "To Login";
     }else {
-      linkText === "Sign Up!";
+      linkText = "Sign Up!";
     }
 
 
     return(
       <div>
+        <div>
+          <form>
+            <label>
+              username:
+              <input type="text" onChange={this.update("username")}/>
+            </label>
+            <br/>
+            <label>
+              password:
+              <input type="text" onChange={this.update("password")} />
+            </label>
+            <br/>
+            <button type="submit">{`${buttonText}`}</button>
+          </form>
+        </div>
 
-        <form>
-
-          <label>
-            username:
-            <input type="text" onChange={this.update("username")}/>
-          </label>
-
-          <label>
-            password:
-            <input type="text" onChange={this.update("password")} />
-          </label>
-
-          <button type="submit">{`${buttonText}`}</button>
-          <Link to="sign in or login. complete logic">{linkText}</Link>
-        </form>
+        {`To ${linkText}`}
       </div>
     )
   }
   
 }
+
+export default SessionForm;
