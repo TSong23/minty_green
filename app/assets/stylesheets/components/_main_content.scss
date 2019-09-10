@@ -1,0 +1,34 @@
+
+
+.session_form_body{
+  display: flex;
+  flex-direction: row;
+  width: 96vw;
+  height: 60vh;
+  padding: 0vh 2vw;
+  align-content: center;
+
+}
+
+.session_form_body_img{
+  width: 45vw;
+}
+
+.session_form_body_form{
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  width: 51vw;
+  padding: 2vw 2vh;
+
+  
+}
+
+.splash_form{
+  display: flex;
+  flex-flow: column;
+}
+
+.splash_form_input{
+  display: flex;
+}

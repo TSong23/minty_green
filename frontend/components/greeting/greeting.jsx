@@ -14,7 +14,7 @@ const Greeting = ({ currentUser, logout }) => {
     <nav>
       <Link to="/login" className="splash_top_nav__button">Log In</Link>
    
-      <Link to="/signup" className="splash_top_nav__button">Sign Up!</Link>
+      <Link to="/signup" className="splash_top_nav__button">Sign Up</Link>
     </nav>
   );
   const personalGreeting = () => (

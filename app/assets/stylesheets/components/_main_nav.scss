@@ -1,10 +1,12 @@
 .splash_top_nav{
   display: flex;
   justify-content: space-between;
-	padding: 15px 30px;
-  background: $lightest-gray;   
+  align-items: center;
+	padding: 2vh 5vw;   
   color: #21CE99;
   font-size: medium;
+  height: 6vh;
+
 
 } 
 
@@ -14,12 +16,11 @@
 }
 
 .splash_top_nav__button{
+  color: black;
   padding: 1em 1.5em;
-  border-radius: 3px;
 }
 
 .splash_top_nav__button:hover{
- background-color: #E6F9F3; 
- border-radius: 3px;
+  color: #21CE99;  
 }
 

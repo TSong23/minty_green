@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
     if (buttonText === "Sign Up"){
       linkText = "Login";
     }else {
-      linkText = "Sign Up!";
+      linkText = "Sign Up";
     }
     let errorsList = this.props.errors.map((err, idx) => {
       return (
@@ -42,27 +42,34 @@ class SessionForm extends React.Component {
     })
 
     return(
-      <div>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              username:
-              <input type="text" onChange={this.update("username")}/>
-            </label>
-            <br/>
-            <label>
-              password:
-              <input type="password" onChange={this.update("password")} />
-            </label>
-            <br/>
-            <button type="submit">{`${buttonText}`}</button>
-          </form>
-        </div>
+      <div className="session_form_body_form">
+      
+        <form onSubmit={this.handleSubmit} className="splash_form">
+          
+          <label className="splash_form_input">
+            username:
+            <input type="text" onChange={this.update("username")} 
+                    />
+          </label>
+          
+          <br/>
+          <label className="splash_form_input">
+            password:
+            <input type="password" onChange={this.update("password")}
+                  />
+          </label>
+          
+          <br/>
+          <button type="submit" className="splash_form_button">{`${buttonText}`}</button>
+        
+        </form>
+
+        <br/>
 
         {`To ${linkText}`}
         {/* send up errors */}
         <br/>
-        <div>
+        <div className="splash_form_errors">
             {errorsList}
         </div>
       </div>
