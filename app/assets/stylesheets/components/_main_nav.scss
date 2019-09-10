@@ -1,6 +1,25 @@
-.login-signup {
-	display:flex;
-	justify-content: space-between;
-	padding: 10px 0;
-	border-bottom: 1px solid $light-gray;
+.splash_top_nav{
+  display: flex;
+  justify-content: space-between;
+	padding: 15px 30px;
+  background: $lightest-gray;   
+  color: #21CE99;
+  font-size: medium;
+
+} 
+
+.nav{
+  display: flex;
+  justify-content: space-around;
 }
+
+.splash_top_nav__button{
+  padding: 1em 1.5em;
+  border-radius: 3px;
+}
+
+.splash_top_nav__button:hover{
+ background-color: #E6F9F3; 
+ border-radius: 3px;
+}
+
