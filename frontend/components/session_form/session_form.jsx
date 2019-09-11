@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Link} from 'react-router-dom'; 
 
 
 class SessionForm extends React.Component {
@@ -8,13 +9,18 @@ class SessionForm extends React.Component {
       username: "",
       password: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);    
+    // debugger
+    this.handleSubmit = this.handleSubmit.bind(this);  
   }
   
   handleSubmit(e){
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.action(user);
+  }
+
+  componentWillUnmount(){
+    this.props.clearErrors();
   }
 
   update(field){
@@ -27,12 +33,16 @@ class SessionForm extends React.Component {
 
   render(){
     let buttonText = this.props.formType;
-    let linkText = '';
+    let linkText, linkurl = '';
     if (buttonText === "Sign Up"){
-      linkText = "Log In";
+      linkText = "To Log In";
+      linkurl = "login";
     }else {
-      linkText = "Sign Up";
+      linkText = "To Sign Up";
+      linkurl = "signup"
     }
+
+    // let {errSlice} = this.props;
     let errorsList = this.props.errors.map((err, idx) => {
       return (
         <h3 key={`error-${idx}`}>
@@ -49,7 +59,8 @@ class SessionForm extends React.Component {
             <h3>Welcome to Ronil's hood</h3>
             <label className="session_form_input">
               <div className="session_form_input_text">username:</div>           
-              <input className="session_form_input_box" type="text" onChange={this.update("username")}/>
+              <input className="session_form_input_box" type="text" 
+              onChange={this.update("username")}/>
             </label>
             <label className="session_form_input">
               <div className="session_form_input_text">password:</div>
@@ -58,7 +69,8 @@ class SessionForm extends React.Component {
             
             <br/>
             <button type="submit" className="session_form_button">{`${buttonText}`}</button>
-          
+            <br/>
+            <Link to={`/${linkurl}`} className="session_form_link" >{linkText}</Link>
           </form>
 
           {/* send up errors */}
