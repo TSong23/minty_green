@@ -3,44 +3,42 @@
 .session_form_body{
   display: flex;
   flex-direction: row;
-  width: 96vw;
+  justify-content: flex-end;
+  width: 100vw;
   height: 100vh;
-  padding: 0vh 2vw;
-  align-content: center;
-
-}
-
-.session_form_body_img{
-  width: 45vw;
-  height: 100vh;
+  padding: 0vh 0vw;
+  background: image-url('green_blobs.png');
 }
 
 .session_form_body_form{
   display: flex;
   flex-flow: column;
   justify-content: center;
-  width: 51vw;
-  padding: 2vw 2vh;  
+  background: transparent;
+  width: 40vw;
+  height: 100vh; 
+  padding: 0px 0px 0px 30px;
+  background-color: white;
 }
 
-.splash_form{
+.session_form{
   display: flex;
   flex-flow: column;
   font-size: 20px;
 }
 
 
-.splash_form_input{
+.session_form_input{
   display: flex;
   flex-flow: column;
   padding: 1vh 1vw;  
 }
 
-.splash_form_input_text{
+.session_form_input_text{
   padding: 0vh 0vw
 }
 
-.splash_form_input_box{
+.session_form_input_box{
   background-color: $lightest-gray;
   border-radius: 10px;
   height: 5vh;
@@ -48,7 +46,7 @@
   padding: 0vh 3vw;
 }
 
-.splash_form_button {
+.session_form_button {
   border: 1px $lightest-gray solid;
   border-radius: 10px;
   background-color: #21CE99;
@@ -59,7 +57,7 @@
   padding: 0vh 7vw 0vh 7vw;
 }
 
-.splash_form_button:hover {
+.session_form_button:hover {
   border: 1px $lightest-gray solid;
   border-radius: 10px;
   background-color:  rgb(76, 224, 180);

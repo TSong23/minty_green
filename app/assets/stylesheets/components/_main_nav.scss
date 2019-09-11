@@ -5,17 +5,13 @@
   align-items: center;
 	padding: 2vh 5vw;   
   color: #21CE99;
-  font-size: medium;
+  font-size: 24px;
   height: 6vh;
 } 
 
-.splash_top_nav_bar{
-  display: flex;
-  flex-flow: row;  
-  justify-content: center;
-  align-items: center;
-  width: 16vw;
-  height: 8vh;
+.splash_top_nav_msg{
+  color: black;
+  font-size: 18px;
 }
 
 .splash_top_nav__button{
@@ -34,9 +30,7 @@
 }
 
 
-.splash_top_nav_msg{
-  color: black;
-}
+
 
 
 

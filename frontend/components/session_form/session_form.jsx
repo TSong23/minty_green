@@ -41,41 +41,32 @@ class SessionForm extends React.Component {
       )
     })
 
-    return(
+    return(      
       <div className="session_form_body">
-
-        <div className="session_form_body_img">
-          <img src={window.images.session_background}/>
-        </div>
-
-        <div className="session_form_body_form">       
-          <h3>Welcome to Ronil's hood</h3>
-
-          <form onSubmit={this.handleSubmit} className="splash_form">
-            
-            <label className="splash_form_input">
-              <div className="splash_form_input_text">username:</div>           
-              <input className="splash_form_input_box" type="text" onChange={this.update("username")}/>
+      
+        <div className="session_form_body_form">   
+          <form onSubmit={this.handleSubmit} className="session_form">
+            <h3>Welcome to Ronil's hood</h3>
+            <label className="session_form_input">
+              <div className="session_form_input_text">username:</div>           
+              <input className="session_form_input_box" type="text" onChange={this.update("username")}/>
             </label>
-            <label className="splash_form_input">
-              <div className="splash_form_input_text">password:</div>
-              <input className="splash_form_input_box" type="password" onChange={this.update("password")} />
+            <label className="session_form_input">
+              <div className="session_form_input_text">password:</div>
+              <input className="session_form_input_box" type="password" onChange={this.update("password")} />
             </label>
             
             <br/>
-            <button type="submit" className="splash_form_button">{`${buttonText}`}</button>
+            <button type="submit" className="session_form_button">{`${buttonText}`}</button>
           
           </form>
 
           {/* send up errors */}
           <br/>
-          <div className="splash_form_errors">
+          <div className="session_form_errors">
               {errorsList}
-          </div>        
-        
+          </div>         
         </div>
-        
-    
         
       </div>
     )
