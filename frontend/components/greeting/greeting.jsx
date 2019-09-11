@@ -11,17 +11,17 @@ import {Link} from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <nav>
+    <div className="splah_top_nav_bar">
       <Link to="/login" className="splash_top_nav__button">Log In</Link>
    
       <Link to="/signup" className="splash_top_nav__button">Sign Up</Link>
-    </nav>
+    </div>
   );
   const personalGreeting = () => (
-    <hgroup>
-      <h2 className="top_nav__text">Hi, {currentUser.username}!</h2>
-      <button className="top_nav__button" onClick={logout}>Log Out</button>
-    </hgroup>
+    <div className="splah_top_nav_bar">
+      <h2 className="splash_top_nav_msg">Hi, {currentUser.username}!</h2>
+      <button className="splash_top_nav__button" onClick={logout}>Log Out</button>
+    </div>
   );
 
   return currentUser ? personalGreeting() : sessionLinks();
