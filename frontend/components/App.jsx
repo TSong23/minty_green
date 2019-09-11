@@ -18,12 +18,11 @@ const App = () => (
     
     </header>
     <br/>
+  
+    <Route exact path="/" component={SplashImage}/>
+    <AuthRoute exact path="/login" component={LoginFormContainer} />
+    <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
-    <Switch>
-      {/* <Route exact path="/login" component={SplashImage}/> */}
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-    </Switch>  
 
     <footer>
       <h3>
@@ -34,6 +33,7 @@ const App = () => (
         </ul>
       </h3>
     </footer>
+
   </div>  
 );
 
