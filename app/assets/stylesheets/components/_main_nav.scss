@@ -7,11 +7,9 @@
   color: #21CE99;
   font-size: medium;
   height: 6vh;
-
-
 } 
 
-.splah_top_nav_bar{
+.splash_top_nav_bar{
   display: flex;
   flex-flow: row;  
   justify-content: center;
@@ -21,15 +19,20 @@
 }
 
 .splash_top_nav__button{
-  color: white;
+  color: black;
   font-size: 20px;
   width: 76px;
   height: 28px;
   text-align: center;
   border-radius: 3px;
-  background-color: #c0f8e7;
   margin: 3px;
 }
+
+.splash_top_nav__button:hover{
+  color: #21CE99;
+  text-decoration: underline;
+}
+
 
 .splash_top_nav_msg{
   color: black;
