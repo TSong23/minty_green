@@ -9,6 +9,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
       <Component {...props} />
     ) : (
         <Redirect to="/" />
+        // redirect to dashboard
       )
   )} />
 );
