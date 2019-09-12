@@ -1,3 +1,3 @@
 json.stock do
-  json.partial!  '/api/stocks/stock', bench: @bench 
+  json.partial!  '/api/stocks/stock', stock: @stock
 end
