@@ -20,12 +20,20 @@ class HomeMain extends React.Component {
 
         <br />
 
-        <div className="splash_page_body">
-          <div className="splash_page_body_text">
-            <h3>Invest Commission-Free</h3>
-            <h4>Random Text</h4>
+        <div className="home_page_main_container">
+          <div className="home_page_row_container">
+            <div className="home_page_left_main_col">
+              <img src={window.images.logged_in_background} className="home_page_main_img" />
+            </div>
+            <div className="home_page_right_main_col">
+              <h3>Invest Commission-Free</h3>
+              <h4>Random Text</h4>
+            </div>
+
+
+
+            
           </div>
-          <img src={window.images.logged_in_background} className="home_page_main_img" />
         </div>
 
         <footer>

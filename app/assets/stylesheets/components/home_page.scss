@@ -1,0 +1,51 @@
+.home_page_main_container{
+  width: 1024px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.25px;
+  line-height: 19px;
+  padding-left: 6px;
+  padding-right: 6px;
+
+  .home_page_app_container{
+  display: flex;
+  justify-content: space-between;
+  margin: 0px -6px 0px -6px;
+
+    .home_page_left_main_col{
+      position: relative;
+      flex: 0 0 66.67%;
+      -webkit-box-flex: 0;
+
+      .home_page_main_img{
+        width: 676px;
+        height: 349px;
+        margin-bottom: 44px;
+        box-sizing: inherit;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.25px;
+        line-height: 19px;
+        margin: 0;
+      }
+    }
+
+    .home_page_right_main_col{
+      position: relative;
+      flex: 0 0 27.78%;
+      box-sizing: inherit;
+
+      
+
+    }
+
+
+  }
+}
+
+
+
+
+
+
+
