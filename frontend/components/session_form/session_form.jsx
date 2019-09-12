@@ -8,9 +8,9 @@ class SessionForm extends React.Component {
     this.state = {
       username: "",
       password: ""
-    };
-    // debugger
+    }
     this.handleSubmit = this.handleSubmit.bind(this);  
+    this.demoUser = this.demoUser.bind(this);
   }
   
   handleSubmit(e){
@@ -31,16 +31,41 @@ class SessionForm extends React.Component {
     }
   }
 
+  demoUser(){
+    this.setState({username: "demo", password: '123456'});
+    const user = Object.assign({}, this.state);
+    this.props.action(user);
+  }
+
+
+  sessionFormButton(buttonText){
+    if (buttonText === 'Sign Up'){
+      return(
+        <button type="submit" className="session_form_button">{`${buttonText}`}</button>            
+      )
+    } else {
+      return (
+        <div>
+          <button type="submit" className="session_form_button">{`Log In`}</button>
+          <button onClick={this.demoUser} className="session_form_button">{`Demo`}</button>
+        </div>
+      )            
+    }
+  }
+
   render(){
-    let buttonText = this.props.formType;
+  
     let linkText, linkurl = '';
-    if (buttonText === "Sign Up"){
+
+    if (this.props.formType === "Sign Up"){
       linkText = "To Log In";
       linkurl = "login";
     }else {
       linkText = "To Sign Up";
-      linkurl = "signup"
+      linkurl = "signup";
     }
+
+    const button = this.sessionFormButton(this.props.formType);
 
     // let {errSlice} = this.props;
     let errorsList = this.props.errors.map((err, idx) => {
@@ -68,9 +93,12 @@ class SessionForm extends React.Component {
             </label>
             
             <br/>
-            <button type="submit" className="session_form_button">{`${buttonText}`}</button>
+
+            {button}
+
             <br/>
             <Link to={`/${linkurl}`} className="session_form_link" >{linkText}</Link>
+            
           </form>
 
           {/* send up errors */}

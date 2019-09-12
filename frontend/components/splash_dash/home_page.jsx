@@ -18,22 +18,18 @@ class HomeMain extends React.Component {
           <GreetingContainer />
         </header>
 
-        <br />
-
         <div className="home_page_main_container">
-          <div className="home_page_row_container">
+          
             <div className="home_page_left_main_col">
-              <img src={window.images.logged_in_background} className="home_page_main_img" />
+              <div className="home_page_main_chart">Portfolio Chart</div>
+              <div className="home_page_second_chart">Collections</div>
             </div>
+
             <div className="home_page_right_main_col">
-              <h3>Invest Commission-Free</h3>
-              <h4>Random Text</h4>
-            </div>
-
-
-
-            
-          </div>
+              <h3>Watchlist</h3>
+              
+            </div>           
+          
         </div>
 
         <footer>
