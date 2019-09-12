@@ -8,7 +8,7 @@
 	padding: 0vh 8vw;   
   color: #21CE99;
   font-size: 24px;
-  height: 10vh;
+  height: 15vh;
 } 
 
 .splash_top_nav_bar{
@@ -47,28 +47,50 @@
 
 .splash_page_body {
   display: flex;
-  flex-direction: row;  
+  align-content: baseline;
+  flex-flow: row;
+
   padding: 2vh 8vw;
-  flex-wrap: unset;
-  height: 65vh;
+  height: 70vh;
 }
 
 .splash_page_body_text{
+  
   display: flex;
-  flex-direction: column;  
-  align-content: center;
+  flex-flow: column;
+  justify-content: center;
+  font-family: Helvetica, sans-serif;
+ 
     h3{
-    justify-self: center;
-    font-size: 50px;
-    font-weight: 999;
-    font-family: Arial, sans-serif;
-    text-shadow: $light-gray 10px;
+    font-size: 45px;
+    font-weight: 999;    
+    text-shadow: -3px 3px 0px $light-gray;
     }
     h4{
-      font-size: 20px;
+      font-size: 16px;
       font-weight: bold;
     }
 }
+.splash_page_image{
+  max-width: 900px;
+  min-width: 800px;
+}
+
+.footer{
+  height: 15vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  h3{
+  font-size: 14px;
+  font-weight: bold;
+  color: $gray;
+  }
+}
+
+
 
 
 
