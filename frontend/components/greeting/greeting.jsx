@@ -11,16 +11,16 @@ import {Link} from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <div className="splah_top_nav_bar">
+    <div className="splash_top_nav_bar">
       <Link to="/login" className="splash_top_nav__button">Log In</Link>
    
       <Link to="/signup" className="splash_top_nav__button">Sign Up</Link>
     </div>
   );
   const personalGreeting = () => (
-    <div className="splah_top_nav_bar">
+    <div className="splash_top_nav_bar">
       <h2 className="splash_top_nav_msg">Hi, {currentUser.username}!</h2>
-      <button className="splash_top_nav__button" onClick={logout}>Log Out</button>
+      <button className="splash_top_nav_logout" onClick={logout}>Log Out</button>
     </div>
   );
 

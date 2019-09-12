@@ -3,27 +3,16 @@ import { Link } from 'react-router-dom';
 import GreetingContainer from "../greeting/greeting_container";
 
 
-
-class SplashPage extends React.Component{
-  constructor(props){
+class HomeMain extends React.Component {
+  constructor(props) {
     super(props);
   }
 
-  render(){
-    
-  //   const {session} = this.props;
-  //   debugger
-  //   if (session){
-  //     let img_title = "elon_tweet1";
-  //     debugger
-  //   } else {
-  //     let img_title = "splash_background";
-  //     debugger
-  //   }
+  render() {
 
     return (
-      <div className="splashPage">        
-  
+      <div className="home_page">
+
         <header className="splash_top_nav">
           <Link to='/'>mintgreen</Link>
           <GreetingContainer />
@@ -31,11 +20,12 @@ class SplashPage extends React.Component{
 
         <br />
 
-        <div>
-          <div>
-            Invest Commission-Free
+        <div className="splash_page_body">
+          <div className="splash_page_body_text">
+            <h3>Invest Commission-Free</h3>
+            <h4>Random Text</h4>
           </div>
-          <img src={window.images.splash_background} className="robin_phones_img" />
+          <img src={window.images.logged_in_background} className="home_page_main_img" />
         </div>
 
         <footer>
@@ -53,4 +43,4 @@ class SplashPage extends React.Component{
   }
 }
 
-export default SplashPage;
+export default HomeMain;

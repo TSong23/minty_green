@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter} from 'react-router-dom';
+import SplashPage from '../components/splash_dash/splash_page';
+import HomeMain from '../components/splash_dash/home_page';
 
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
@@ -15,12 +17,12 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
 );
 
 
-const Protected = ({ component: Component, path, loggedIn, exact }) => (
+const Protected = ({ path, loggedIn, exact }) => (
   <Route path={path} exact={exact} render={(props) => (
     loggedIn ? (
-      <Component {...props} />
+      <HomeMain {...props} />
     ) : (
-        <Redirect to="/login" />
+        <SplashPage/>
       )
   )} />
 );

@@ -1,0 +1,80 @@
+
+
+.splash_top_nav{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+	padding: 0vh 8vw;   
+  color: #21CE99;
+  font-size: 24px;
+  height: 10vh;
+} 
+
+.splash_top_nav_bar{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+}
+
+.splash_top_nav_msg{
+  color: black;
+  font-size: 18px;
+  
+}
+
+.splash_top_nav__button{
+  color: black;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  width: 76px;
+  height: 28px;
+  text-align: center;
+  border-radius: 3px;
+  margin: 3px;
+}
+
+.splash_top_nav__button:hover{
+  color: #21CE99;
+  text-decoration: underline;
+}
+
+.splash_page_body {
+  display: flex;
+  flex-direction: row;  
+  padding: 2vh 8vw;
+  flex-wrap: unset;
+  height: 65vh;
+}
+
+.splash_page_body_text{
+  display: flex;
+  flex-direction: column;  
+  align-content: center;
+    h3{
+    justify-self: center;
+    font-size: 50px;
+    font-weight: 999;
+    font-family: Arial, sans-serif;
+    text-shadow: $light-gray 10px;
+    }
+    h4{
+      font-size: 20px;
+      font-weight: bold;
+    }
+}
+
+
+
+
+
+
+
+
+
