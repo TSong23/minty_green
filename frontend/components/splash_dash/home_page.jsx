@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GreetingContainer from "../greeting/greeting_container";
+import StockContainer from '../stock/stock_container';
 
 
 class HomeMain extends React.Component {
@@ -21,7 +22,9 @@ class HomeMain extends React.Component {
         <div className="home_page_main_container">
           
             <div className="home_page_left_main_col">
-              <div className="home_page_main_chart">Portfolio Chart</div>
+              <div className="home_page_main_chart">
+                <StockContainer />
+              </div>
               <div className="home_page_second_chart">Collections</div>
             </div>
 
