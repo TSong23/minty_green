@@ -5,7 +5,7 @@ import SignupFormContainer from "./session_form/signup_form_container";
 import {Route, Switch, Redirect} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
-
+//this is the react-vis branch
 const App = () => (
   
   <div>
