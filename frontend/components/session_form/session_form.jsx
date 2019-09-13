@@ -32,9 +32,12 @@ class SessionForm extends React.Component {
   }
 
   demoUser(){
-    this.setState({username: "demo", password: '123456'});
-    const user = Object.assign({}, this.state);
-    this.props.action(user);
+    this.setState({username: "demo", password: '123456'},
+    () => {
+      const user = Object.assign({}, this.state);
+      this.props.action(user);
+      }
+    );
   }
 
 
