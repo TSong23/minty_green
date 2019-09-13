@@ -2,14 +2,14 @@ import * as StockAPIUtil from "../util/stock_api_util";
 
 export const RECEIVE_STOCK_DATA = "RECEIVE_STOCK_DATA";
 
-export const receiveStockData = ({stock}) => ({
+export const receiveStockData = (payload) => ({
   type: RECEIVE_STOCK_DATA,
-  stock
+  payload
   //stock maybe replaced with replaced with intraday
   // historical, ticker
 }) 
 
-export const fetchStock = id => dispatch => (
-  StockAPIUtil.fetchStock(id).then(
+export const fetchStock = ticker => dispatch => (
+  StockAPIUtil.fetchStock(ticker).then(
     payload => (dispatch(receiveStockData(payload))))
 )

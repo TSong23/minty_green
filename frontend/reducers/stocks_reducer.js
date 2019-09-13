@@ -5,8 +5,8 @@ const stocksReducer = (state={},action) => {
   switch(action.type){
     
     case RECEIVE_STOCK_DATA:
-      return Object.assign({},state,action.stock)
-      //action.stock maybe compromised with other keys
+      return Object.assign({},state,action.payload)
+      //action.stock maybe comprised with other keys
     default:
       return state
   }

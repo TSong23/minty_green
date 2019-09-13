@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Root from './components/root';
 import configureStore from "./store/store";
 import * as SessionActions from './actions/session_actions';
-
+import * as StockActions from './actions/stock_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -24,10 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
   //test begin
   window.signup = SessionActions.signup;
   window.login = SessionActions.login; 
-  window.logout  = SessionActions.logout
+  window.logout  = SessionActions.logout;
+  window.fetchStock = StockActions.fetchStock;
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+
   // test end  
 
 
