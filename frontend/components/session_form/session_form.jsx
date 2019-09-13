@@ -86,21 +86,21 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="session_form">
             <h3>Welcome to Ronil's hood</h3>
             <label className="session_form_input">
-              <div className="session_form_input_text">username:</div>           
+              <div className="session_form_input_text">Username</div>           
               <input className="session_form_input_box" type="text" 
               onChange={this.update("username")}/>
             </label>
             <label className="session_form_input">
-              <div className="session_form_input_text">password:</div>
+              <div className="session_form_input_text">Password</div>
               <input className="session_form_input_box" type="password" onChange={this.update("password")} />
             </label>
             
+            <Link to={`/${linkurl}`} className="session_form_link" >{linkText}</Link>
+
             <br/>
 
             {button}
 
-            <br/>
-            <Link to={`/${linkurl}`} className="session_form_link" >{linkText}</Link>
             
           </form>
 
