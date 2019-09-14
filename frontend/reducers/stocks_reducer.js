@@ -1,6 +1,7 @@
 import { 
   RECEIVE_STOCK_PAST_DATA,
-  RECEIVE_COMPANY_INFO } from '../actions/stock_actions';
+  RECEIVE_COMPANY_INFO,
+  RECEIVE_STOCK_INTRADAY } from '../actions/stock_actions';
 
 const stocksReducer = (
   state={ 
@@ -14,6 +15,12 @@ const stocksReducer = (
   //state will be stocks slice of state
   // payload is data from ajax. payload can be info, historical, etc
   switch(action.type){
+
+    case RECEIVE_STOCK_INTRADAY:
+      // modify stocks.hist slice 
+      let intra_slice = Object.assign({}, state.intraday, action.payload);
+      // now modify the stocks_slice
+      return Object.assign({}, state, { intraday: intra_slice })
     
     case RECEIVE_STOCK_PAST_DATA:
       // modify stocks.hist slice 

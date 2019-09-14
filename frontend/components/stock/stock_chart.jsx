@@ -8,12 +8,12 @@ export default class StockChart extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchStockPastData('AAPL', '1m');
+    this.props.fetchStockIntraday('AAPL');
   }
 
   render() {
     const data = [];
-    Object.values(this.props.historical).map(dayData => {
+    Object.values(this.props.intraday).map(dayData => {
       data.push({ date: new Date(dayData.date).toLocaleDateString(), Close: dayData.close })
     })
     
