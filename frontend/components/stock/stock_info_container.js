@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
-import {fetchStock} from '../../actions/stock_actions';
+import { fetchCompanyInfo } from '../../actions/stock_actions';
 
-import stock from './stock';
+import StockInfo from './stock_info';
 
 const mstp = (state) => ({
-  stock_data: state.entities.stocks
   //later on, this will send the ticker, date range information
   // to properly render the chart
+  info: state.entities.stocks.info
+
 })
 
 const dstp = (dispatch) => ({
-  fetchStock: (ticker) => dispatch(fetchStock(ticker))
+  fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker))
 })
 
 export default connect(
   mstp,
   dstp
-)(stock)
+)(StockInfo)

@@ -1,29 +1,19 @@
 import React from 'react';
-import {
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-  Scatter,
-  LineChart,
-  Line,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts'
+import { CartesianGrid, ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
 
 
-export default class stock_data_example extends React.Component {
+export default class StockChart extends React.Component {
   constructor(props){
     super(props);
   }
 
   componentDidMount(){
-    this.props.fetchStock('AAPL');
+    this.props.fetchStockPastData('AAPL', '1m');
   }
 
   render() {
     const data = [];
-    Object.values(this.props.stock_data).map(dayData => {
+    Object.values(this.props.historical).map(dayData => {
       data.push({ date: new Date(dayData.date).toLocaleDateString(), Close: dayData.close })
     })
     
@@ -43,6 +33,7 @@ export default class stock_data_example extends React.Component {
             strokeWidth={3} dot={false}/>
         </LineChart>
       </ResponsiveContainer>
+
     );
   }
 }
