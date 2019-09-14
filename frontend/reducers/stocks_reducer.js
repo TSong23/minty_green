@@ -1,6 +1,9 @@
 import { RECEIVE_STOCK_DATA } from '../actions/stock_actions';
 
 const stocksReducer = (state={},action) => {
+  
+
+
   Object.freeze(state);
   switch(action.type){
     

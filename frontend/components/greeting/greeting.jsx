@@ -19,7 +19,6 @@ const Greeting = ({ currentUser, logout }) => {
   );
   const personalGreeting = () => (
     <div className="splash_top_nav_bar">
-      <h2 className="splash_top_nav_msg">Hi, {currentUser.username}!</h2>
       <button className="splash_top_nav_logout" onClick={logout}>Log Out</button>
     </div>
   );

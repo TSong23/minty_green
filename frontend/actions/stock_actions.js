@@ -9,7 +9,7 @@ export const receiveStockData = (payload) => ({
   // historical, ticker
 }) 
 
-export const fetchStock = ticker => dispatch => (
-  StockAPIUtil.fetchStock(ticker).then(
+export const fetchStockPastData = (ticker, time) => dispatch => (
+  StockAPIUtil.fetchStockPastData(ticker, time).then(
     payload => (dispatch(receiveStockData(payload))))
 )

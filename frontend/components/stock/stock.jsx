@@ -12,8 +12,6 @@ import {
 } from 'recharts'
 
 
-
-
 export default class stock_data_example extends React.Component {
   constructor(props){
     super(props);
@@ -26,40 +24,30 @@ export default class stock_data_example extends React.Component {
   render() {
     const data = [];
     Object.values(this.props.stock_data).map(dayData => {
-      data.push({ date: new Date(dayData.date).toLocaleDateString(), close_p: dayData.close })
+      data.push({ date: new Date(dayData.date).toLocaleDateString(), Close: dayData.close })
     })
-
-    console.log(data);
+    
 
     return (
-      <LineChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
-        }}
-      >
-        <XAxis dataKey = 'date'/>
-        <YAxis />
-        <Tooltip />
-        <Line type="monotone" dataKey="close_p" stroke="#8884d8" />
-      </LineChart>
+      <ResponsiveContainer width="100%" height="90%">  
+        <LineChart
+          data={data}
+          width={500}
+          height={300}
+          margin ={{ top: 30, right: 0, bottom: 0, left: 0 }}
+        >
+          <Tooltip/>
+          <XAxis dataKey = 'date' tick={false} axisLine={false}/>
+          <YAxis domain={['auto', 'auto']} tick={false} axisLine={false}/>
+          <Line type="monotone" dataKey="Close" stroke="#21CE99" 
+            strokeWidth={3} dot={false}/>
+        </LineChart>
+      </ResponsiveContainer>
     );
-
   }
 }
 
-
-// if using react vis
-// import { curveCatmullRom } from 'd3-shape';
-
-// import {
-//   XYPlot,
-//   XAxis,
-//   YAxis,
-//   HorizontalGridLines,
-//   VerticalGridLines,
-//   LineSeries
-// } from 'index';
+//domain: allows rescaling of y axis
+//tick={false} axisLine={false}
+// stroke = "#21CE99" strokeWidth = { 3}
 
