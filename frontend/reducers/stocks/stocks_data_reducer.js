@@ -1,7 +1,7 @@
 import { 
   RECEIVE_STOCK_PAST_DATA,
   RECEIVE_COMPANY_INFO,
-  RECEIVE_STOCK_INTRADAY } from '../actions/stock_actions';
+  RECEIVE_STOCK_INTRADAY } from '../../actions/stock_actions';
 
 const stocksDataReducer = (
   state={ 

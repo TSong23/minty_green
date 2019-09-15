@@ -26,3 +26,10 @@ export const fetchStockIntraday = (ticker) => (
     //returns data according to ticker and time passed in
   })
 )
+
+export const fetchStockAllListing = () => (
+  $.ajax({
+    method: "GET",
+    url: 'api/stocks'
+  })
+)
