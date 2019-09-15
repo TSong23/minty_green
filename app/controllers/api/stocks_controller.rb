@@ -3,15 +3,6 @@ class Api::StocksController < ApplicationController
     @stocks = Stock.all
   end
 
-  def new
-    @stock = Stock.new(stock_params)
-    if @stock.save 
-      render :show
-    else
-      render json: @stock.errors.full_messages, status: 422
-    end
-  end
-
   def show
     @stock = Stock.find(params[:ticker])
   end

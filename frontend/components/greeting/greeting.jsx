@@ -17,13 +17,16 @@ const Greeting = ({ currentUser, logout }) => {
       <Link to="/signup" className="splash_top_nav__button">Sign Up</Link>
     </div>
   );
-  const personalGreeting = () => (
-    <div className="splash_top_nav_bar">
+
+  const home_page_nav = () => (
+    <div className = "home_page_nav_bar">
+      <Link to='/'>mintgreen</Link>
+      
       <button className="splash_top_nav_logout" onClick={logout}>Log Out</button>
     </div>
   );
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return currentUser ? home_page_nav() : sessionLinks();
 };
 
 
