@@ -11,7 +11,7 @@
 
 class Stock < ApplicationRecord
   validates :ticker, presence: true, uniqueness: true;
-  validates :price, presence: true 
+  validates :name, presence: true 
 
   has_many :watchlist_items,
     foreign_key: :Stock_id,

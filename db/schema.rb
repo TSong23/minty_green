@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_184454) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "ticker", null: false
-    t.float "price", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ticker"], name: "index_stocks_on_ticker", unique: true
