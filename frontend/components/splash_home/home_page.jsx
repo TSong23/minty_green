@@ -10,6 +10,11 @@ class HomeMain extends React.Component {
     super(props);
   }
 
+  componentDidMount(){
+    debugger
+    this.props.fetchStockAllListing();
+  }
+
   render() {
 
     return (

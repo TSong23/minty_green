@@ -25,7 +25,7 @@ export const receiveStockIntraday = (payload) => ({
 }) 
 
 export const receiveStockListing = (payload) => ({
-  type: RECEIVE_STOCK_LISTINGS,
+  type: RECEIVE_STOCK_LISTING,
   payload
 }) 
 
@@ -47,6 +47,6 @@ export const fetchStockIntraday = (ticker) => dispatch => (
 )
 
 export const fetchStockAllListing = () => dispatch => (
-  StockAPIUtil.fetchStockIntraday().then(
+  StockAPIUtil.fetchStockAllListing().then(
     payload => (dispatch(receiveStockListing(payload))))
 )
