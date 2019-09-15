@@ -3,10 +3,10 @@ import { fetchCompanyInfo } from '../../actions/stock_actions';
 
 import StockInfo from './stock_info';
 
-const mstp = (state) => ({
+const mstp = ({ entities: {stocks: {currentStock}}}) => ({
   //later on, this will send the ticker, date range information
   // to properly render the chart
-  info: state.entities.stocks.info
+  info: currentStock.info
 
 })
 

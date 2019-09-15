@@ -3,12 +3,12 @@ import { fetchStockPastData, fetchCompanyInfo, fetchStockIntraday} from '../../a
 
 import StockChart from './stock_chart';
 
-const mstp = (state) => ({
+const mstp = ({entities: { stocks: {currentStock} }}) => ({
   //later on, this will send the ticker, date range information
   // to properly render the chart
-  intraday: state.entities.stocks.intraday,
-  historical: state.entities.stocks.historical,
-  info: state.entities.stocks.info
+  intraday: currentStock.intraday,
+  historical: currentStock.historical,
+  info: currentStock.info
 
 })
 
