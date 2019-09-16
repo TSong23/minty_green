@@ -12,7 +12,7 @@ class HomeMain extends React.Component {
 
   
   render() {
-
+    console.log(this.props)
     return (
       <div className="home_page"> 
 
@@ -24,10 +24,10 @@ class HomeMain extends React.Component {
 
           <div className="home_page_left_main_col">
             <div className="home_page_main_chart">
-              <StockChart />
+              Portfolio
             </div>
             <div className="home_page_second_chart">
-              <StockInfo />
+              Balance
               </div>
           </div>
 

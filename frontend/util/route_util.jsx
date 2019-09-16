@@ -17,11 +17,12 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
 )
 
 // HomeMain {...props} should be the info from search bar.
-const Protected = ({ path, loggedIn, exact }) => (
+const Protected = ({ component: Component, path, loggedIn, exact }) => (
   <Route path={path} exact={exact} render={(props) => (
     loggedIn ? (
-      <HomePageContainer {...props} />
-    ) : (
+      <Component {...props} />
+  
+      ) : (
         <SplashPage/>
       )
   )} />

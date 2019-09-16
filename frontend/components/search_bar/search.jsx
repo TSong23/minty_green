@@ -51,15 +51,19 @@ class SearchBar extends React.Component{
   }
 
   render(){
-    // console.log(this.state.allStocks)
-    // console.log(this.state.allStocks[2])
+    console.log("inputVal", this.state.inputVal)
 
     const results = this.matches().map((result, i) => {
-      return (        
-        <Link 
-          to={`/stocks/${result}`} 
-          ticker={result}>{result}
-        </Link>
+      return (      
+        
+          <Link 
+            to={`/stocks/${result}`} 
+            ticker={result}
+            key={result}
+          >
+            {result}
+          </Link>
+        
       );
     });
 
@@ -69,7 +73,6 @@ class SearchBar extends React.Component{
 
           <input type="text" 
             placeholder="Search"
-            value={this.state.inputVal}
             onChange={this.update()}
             className="home_page_nav_search"/>
           <ul>
