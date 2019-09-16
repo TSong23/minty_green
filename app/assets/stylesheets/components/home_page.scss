@@ -16,9 +16,17 @@
       font-size: 14px;
 
       .home_page_nav_search{
-        background-color: $lightest-gray;
-        width: 400px;
-        height: 32px;
+        background-color: white;
+        width: 500px;
+        height: 36px;
+        border: 1px solid $light-gray;
+        border-radius: 3px;
+        
+        .search_bar_input{
+          height: 100%;
+          width: 100%;
+          padding-left: 20px;
+        }
       }
     }
   }

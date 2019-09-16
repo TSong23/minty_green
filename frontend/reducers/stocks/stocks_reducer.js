@@ -4,7 +4,7 @@ import stocksListingReducer from "./stock_listing_reducer";
 
 const stocksReducer = combineReducers({
   currentStock: stocksDataReducer,
-  allStock: stocksListingReducer
+  allStocks: stocksListingReducer
 });
 
 export default stocksReducer;

@@ -3,8 +3,8 @@ import HomeMain from './home_page';
 
 import {fetchStockAllListing} from  '../../actions/stock_actions';
 
-const mstp = ({entities: {stocks: {currentStock}}}) => ({
-  currentStock
+const mstp = ({entities: {stocks: {allStocks}}}) => ({
+  allStocks
 });
 
 
