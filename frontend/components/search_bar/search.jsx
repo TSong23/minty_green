@@ -7,10 +7,9 @@ class SearchBar extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      inputval: "",
+      inputVal: "",
       allStocks: []
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.selectName = this.selectName.bind(this);
   }
 
@@ -20,14 +19,11 @@ class SearchBar extends React.Component{
         allStocks: Object.values(res)
       })
     )
-
-
   } 
 
   update(){
     return (e) => {
-      this.setState({inputval: e.target.value})
-
+      this.setState({inputVal: e.target.value});
     };
   }
 
@@ -35,8 +31,8 @@ class SearchBar extends React.Component{
     const matches = [];
 
     this.state.allStocks.forEach(stock => {
-      let substr = stock["ticker"].slice(0, this.state.inputval.length);
-      if (substr === this.state.inputval.toUpperCase()){
+      let substr = stock["ticker"].slice(0, this.state.inputVal.length);
+      if (substr === this.state.inputVal.toUpperCase()){
         matches.push(stock["ticker"]);
       }
     });
@@ -48,17 +44,6 @@ class SearchBar extends React.Component{
     return matches;
   }
 
-  handleSubmit(e){
-    //need to convert ticker to stock.id 
-    // this might be a ajax request to rails backend
-    e.preventDefault();
-    // const stock = Object.assign({}, this.state);
-    // this.props.history.push(`/stocks/${this.state}`);
-    // console.log(this.props.history)
-
-    // this.props action should send ajax request to fetch stock
-    // send you to another page
-  }
 
   selectName(event) {
     const name = event.currentTarget.innerText;
@@ -70,8 +55,11 @@ class SearchBar extends React.Component{
     // console.log(this.state.allStocks[2])
 
     const results = this.matches().map((result, i) => {
-      return (
-        <li key={`${i}`}>{result}</li>
+      return (        
+        <Link 
+          to={`/stocks/${result}`} 
+          ticker={result}>{result}
+        </Link>
       );
     });
 
@@ -79,20 +67,15 @@ class SearchBar extends React.Component{
       <div className="home_page_nav_bar">
         <Link to='/'>mintgreen</Link>
 
-        <form className= "home_page_nav_search" onSubmit={this.handleSubmit}>
-
           <input type="text" 
             placeholder="Search"
-            value={this.state.inputval}
+            value={this.state.inputVal}
             onChange={this.update()}
-            className="search_bar_input"/>
+            className="home_page_nav_search"/>
           <ul>
             {results}
-          </ul>
-          <button type="submit"></button>
-          
+          </ul>     
 
-        </form>
       <button className="splash_top_nav_logout" onClick={this.props.logout}>Log Out</button>
 
       </div>

@@ -5,10 +5,14 @@ import { CartesianGrid, ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YA
 export default class StockChart extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      intraday: {}
+
+    }
   }
 
   componentDidMount(){
-    this.props.fetchStockIntraday('AAPL');
+    this.props.fetchStockIntraday(`${this.props.ticker}`);
   }
 
   render() {
@@ -17,6 +21,7 @@ export default class StockChart extends React.Component {
       data.push({ date: new Date(dayData.date).toLocaleDateString(), Close: dayData.close })
     })
     
+    console.log(this.props.ticker)
 
     return (
       <ResponsiveContainer width="100%" height="90%">  
