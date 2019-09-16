@@ -8,11 +8,13 @@ import StockInfo from '../stock/stock_info_container';
 class HomeMain extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   componentDidMount(){
-    debugger
+    
     this.props.fetchStockAllListing();
+    // console.log(this.props)
   }
 
   render() {
