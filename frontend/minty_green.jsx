@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.signup = SessionActions.signup;
   window.login = SessionActions.login; 
   window.logout  = SessionActions.logout;
-  window.fetchStock = StockActions.fetchStock;
   window.fetchCompanyInfo = StockActions.fetchCompanyInfo;
 
   window.getState = store.getState;

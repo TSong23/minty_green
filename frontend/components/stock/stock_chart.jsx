@@ -27,13 +27,19 @@ export default class StockChart extends React.Component {
 
   render() {
 
-    console.log(this.state)
-    console.log(this.props)
 
     const data = [];
     Object.values(this.props.intraday).map(dayData => {
-      data.push({ date: (dayData.minute), Close: dayData.close })
-    })
+      
+      if (dayData.close){
+        data.push({ time: dayData.minute, Close: dayData.close })
+      } else {
+        data.push({ time: dayData.minute, Close: prev })
+      }
+      let prev = dayData.close
+    });
+
+
     
     return (
       <ResponsiveContainer width="100%" height="90%">  
@@ -44,7 +50,7 @@ export default class StockChart extends React.Component {
           margin ={{ top: 30, right: 0, bottom: 0, left: 0 }}
         >
           <Tooltip/>
-          <XAxis dataKey = 'date' tick={false} axisLine={false}/>
+          <XAxis dataKey = 'time' tick={false} axisLine={false}/>
           <YAxis domain={['auto', 'auto']} tick={false} axisLine={false}/>
           <Line type="monotone" dataKey="Close" stroke="#21CE99" 
             strokeWidth={3} dot={false}/>
