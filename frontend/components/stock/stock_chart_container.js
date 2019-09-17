@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { fetchStockPastData, fetchCompanyInfo, fetchStockIntraday} from '../../actions/stock_actions';
 
 import StockChart from './stock_chart';
@@ -18,7 +19,7 @@ const dstp = (dispatch) => ({
   fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker))
 })
 
-export default connect(
+export default withRouter(connect(
   mstp,
   dstp
-)(StockChart)
+)(StockChart))

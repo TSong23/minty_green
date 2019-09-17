@@ -11,9 +11,13 @@ class StockShow extends React.Component {
     }
   }
 
+  componentDidUpdate(){
+    if (this.state.ticker !== this.props.match.params.ticker){
+      this.setState({ ticker: this.props.match.params.ticker})
+    }
+  }
 
   render() {
-    console.log(this.state, this.state.ticker)
     return (
       <div className="stock_show">
 
@@ -28,7 +32,7 @@ class StockShow extends React.Component {
               <StockChart ticker={this.state.ticker}/>
             </div>
             <div className="stock_show_second_chart">
-              <StockInfo />
+              <StockInfo ticker={this.state.ticker}/>
             </div>
           </div>
 

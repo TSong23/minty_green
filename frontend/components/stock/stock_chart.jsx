@@ -6,23 +6,35 @@ export default class StockChart extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      intraday: {}
+      intraday: {},
+      ticker: this.props.ticker
+    
 
     }
   }
 
   componentDidMount(){
-    this.props.fetchStockIntraday(`${this.props.ticker}`);
+    this.props.fetchStockIntraday(this.props.match.params.ticker);
   }
 
+  componentDidUpdate(prevProps){
+    if (prevProps.match.params.ticker !== this.props.match.params.ticker){
+      this.props.fetchStockIntraday(this.props.match.params.ticker)
+    }
+  }
+
+
+
   render() {
+
+    console.log(this.state)
+    console.log(this.props)
+
     const data = [];
     Object.values(this.props.intraday).map(dayData => {
-      data.push({ date: new Date(dayData.date).toLocaleDateString(), Close: dayData.close })
+      data.push({ date: (dayData.minute), Close: dayData.close })
     })
     
-    console.log(this.props.ticker)
-
     return (
       <ResponsiveContainer width="100%" height="90%">  
         <LineChart

@@ -23,7 +23,7 @@ export default class StockInfo extends React.Component{
   }
 
   componentDidMount(){
-    let update_info = this.props.fetchCompanyInfo('AAPL');
+    let update_info = this.props.fetchCompanyInfo(this.props.ticker);
     this.setState(update_info);
     
   }

@@ -30,15 +30,15 @@ class SearchBar extends React.Component{
   matches() {
     const matches = [];
 
-    this.state.allStocks.forEach(stock => {
-      let substr = stock["ticker"].slice(0, this.state.inputVal.length);
-      if (substr === this.state.inputVal.toUpperCase()){
-        matches.push(stock["ticker"]);
-      }
-    });
-
-    if (matches.length === 0) {
-      matches.push('No matches');
+    if (this.state.inputVal.length !== 0){
+      this.state.allStocks.forEach(stock => {
+        let substr = stock["ticker"].slice(0, this.state.inputVal.length);
+        if (substr === this.state.inputVal.toUpperCase()){
+          if(matches.length < 5){
+            matches.push(stock["ticker"]);
+          }
+        }
+      });
     }
 
     return matches;
@@ -51,7 +51,6 @@ class SearchBar extends React.Component{
   }
 
   render(){
-    console.log("inputVal", this.state.inputVal)
 
     const results = this.matches().map((result, i) => {
       return (      
