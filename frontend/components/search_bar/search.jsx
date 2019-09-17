@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { fetchStockAllListing } from '../../util/stock_api_util';
 
 
@@ -38,12 +38,10 @@ class SearchBar extends React.Component{
             matches.push(stock["ticker"]);
           }
         }
-      });
+      });      
     }
-
-    return matches;
+    return matches
   }
-
 
   selectName(event) {
     const name = event.currentTarget.innerText;
@@ -53,32 +51,38 @@ class SearchBar extends React.Component{
   render(){
 
     const results = this.matches().map((result, i) => {
-      return (      
-        
-          <Link 
+      return (   
+        <li key={result}>    
+          <NavLink 
             to={`/stocks/${result}`} 
             ticker={result}
             key={result}
           >
             {result}
-          </Link>
-        
+          </NavLink>
+        </li> 
       );
     });
 
     return(
       <div className="home_page_nav_bar">
+        
         <Link to='/'>mintgreen</Link>
+        <div className="home_page_nav_wrap">
+          <div className="home_page_nav_search">
+            <input type="text" 
+              placeholder="Search"
+              onChange={this.update()}
+              className="home_page_nav_search_input"/>
 
-          <input type="text" 
-            placeholder="Search"
-            onChange={this.update()}
-            className="home_page_nav_search"/>
-          <ul>
-            {results}
-          </ul>     
+            <ul className="home_page_nav_search_results">
+              <br/>
+              {results}
+            </ul> 
+          </div>           
+        </div>  
 
-      <button className="splash_top_nav_logout" onClick={this.props.logout}>Log Out</button>
+        <button className="splash_top_nav_logout" onClick={this.props.logout}>Log Out</button>
 
       </div>
     )

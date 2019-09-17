@@ -2,41 +2,62 @@ import React from 'react';
 import SearchContainer from "../search_bar/search_bar_container";
 import StockChart from '../stock/stock_chart_container';
 import StockInfo from '../stock/stock_info_container';
+import { fetchCompanyInfo } from '../../actions/stock_actions';
+
 
 class StockShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ticker: this.props.match.params.ticker
+      ticker: this.props.match.params.ticker,
+      info: this.props.info,
+      intraday: this.props.intraday,
+      historical: this.props.historical
     }
   }
 
-  componentDidUpdate(){
-    if (this.state.ticker !== this.props.match.params.ticker){
-      this.setState({ ticker: this.props.match.params.ticker})
-    }
-  }
+  // componentDidMount(){
+  //   this.setState({ 
+  //     info: this.props.fetchCompanyInfo(this.state.ticker),
+  //     intraday: this.props.fetchStockIntraday(this.state.ticker),
+  //     // historical: fetchStockPastData(ticker, time)
+  //   })
+  // }
+
+
 
   render() {
-    return (
-      <div className="stock_show">
+    console.log("this state", this.state);
+    console.log("this props", this.props);
 
-        <div className="stock_show_nav_bar_container">
+    let show_info = this.state.info;
+    let show_intraday = this.state.intraday;
+
+    console.log(show_info, show_intraday);
+
+    return (
+      <div className="home_page">
+
+        <div className="home_page_nav_bar_container">
           <SearchContainer />
         </div>
 
-        <div className="stock_show_main_container">
+        <div className="home_page_main_container">
 
-          <div className="stock_show_left_main_col">
-            <div className="stock_show_main_chart">
+          <div className="home_page_left_main_col">
+
+            <div>
+
+            </div>
+            <div className="home_page_main_chart">
               <StockChart ticker={this.state.ticker}/>
             </div>
-            <div className="stock_show_second_chart">
+            <div className="home_page_second_chart">
               <StockInfo ticker={this.state.ticker}/>
             </div>
           </div>
 
-          <div className="stock_show_right_main_col">
+          <div className="home_page_right_main_col">
             <h3>Buy/Sell/add to watchlist</h3>
 
           </div>

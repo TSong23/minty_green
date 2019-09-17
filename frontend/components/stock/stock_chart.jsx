@@ -33,11 +33,9 @@ export default class StockChart extends React.Component {
       
       if (dayData.close){
         data.push({ time: dayData.minute, Close: dayData.close })
-      } else {
-        data.push({ time: dayData.minute, Close: prev })
-      }
-      let prev = dayData.close
+      } 
     });
+    // console.log(data)
 
 
     
