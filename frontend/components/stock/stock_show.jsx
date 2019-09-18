@@ -28,26 +28,28 @@ class StockShow extends React.Component {
         <div className="home_page_main_container">
 
           <div className="home_page_left_main_col">
-            <header className="left_main_col_header" >
-              <StockHeaderContainer 
-                ticker={this.props.match.params.ticker}
-              />
-            </header>
+            <StockHeaderContainer 
+              ticker={this.props.match.params.ticker}
+            />     
+
+            <div className="stock_current_price">
+              current price holder  
+            </div>       
            
-            {/* <div className="home_page_main_chart">
+            <div className="home_page_left_chart">
               <StockChart ticker={this.props.match.params.ticker}/>
-            </div> */}
-            <div className="home_page_main_chart">
-              placeholder
             </div>
-            <div className="main_chart_time_options">
+            {/* <div className="home_page_left_chart">
+              placeholder
+            </div> */}
+            <div className="left_chart_time_options">
               <button value="5dm"onClick>1W</button>
               <button value="1m" onClick>1M</button>
               <button value="6m" onClick>6M</button>
-            </div>
-            
-
-            <div className="home_page_second_chart">
+              <button value="1y" onClick>1Y</button>              
+            </div>            
+            <br/>
+            <div className="home_page_left_col_bottom_chart">
               <StockInfo ticker={this.props.match.params.ticker}/>
             </div>
           </div>

@@ -20,14 +20,11 @@ export default class StockInfo extends React.Component{
     
     return(
       <div>
+        <br/>
         <h3>About</h3>
-        <br/>
-        <br/>
         <div className="company_description">
           {this.props.info.description}
         </div>
-        <br/>
-        <br/>
 
         <div className="company_info_grid">
           <div>

@@ -1,16 +1,68 @@
-.left_main_col_header{
-  height: 15%;
-}
-
-.home_page_main_chart{             
-  height: 42%;
-  max-width: 550px;
-  border-radius: 3px;
-}
-
-.main_chart_company_title{
-  font-size: 32px;
+.home_page_left_main_col{
+  display: flex;
+  flex-direction: column;
+  padding-top: 2vh;
   font-family: Arial, Helvetica, sans-serif;
+
+  .main_chart_company_title{
+    font-size: 26px;
+    padding: 8px;
+    margin-bottom: 3px;
+    padding-left: 50px;
+  }
+
+  .stock_current_price{
+    font-size: 24px;
+    padding-left: 50px;
+  }
+
+  .home_page_left_chart{             
+    height: 38%;
+    max-width: 550px;
+    border-radius: 3px;
+  }
+
+  .left_chart_time_options{
+    padding-left: 50px;
+    height: 6%;
+    align-items: center;
+    button{
+      height: 100%;
+      width:  40px;
+    }
+  }
+
+  .home_page_left_col_bottom_chart{
+    padding-left: 50px;
+    font-size: 26px;
+
+    .company_description{
+      max-height: 7vh;
+      max-width: 85%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      padding-top: 14px;
+      padding-bottom: 14px; 
+      margin-bottom: 30px;
+    }
+
+    .company_info_grid{
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: 50px 50px;
+      font-size: 14px;
+      margin-top: 12px;
+
+      h3{
+        font-size: 16px;
+        font-weight: bold;
+      }   
+    }
+  }
+
+
+  
 }
 
 .home_page_second_chart{    
@@ -23,26 +75,6 @@
 
   h3{
     font-size: 24px;
-  }
-
-  .company_description{
-    max-height: 7vh;
-    max-width: 85%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .company_info_grid{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: 50px 50px;
-    font-size: 14px;
-
-    h3{
-      font-size: 16px;
-      font-weight: bold;
-    }
-   
   }
   
 

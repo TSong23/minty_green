@@ -56,7 +56,7 @@
   .home_page_main_container{
     min-width: 1024px;
     max-width: 1300px;
-    height: 80vh;;
+    height: 90vh;;
     
     display: flex;
     padding-left: 8vw;
@@ -65,10 +65,10 @@
       .home_page_left_main_col{
         position: relative;
         flex: 0 0 63%;
-        margin-right: 4vw;
+        margin-right: 0vw;
         margin-left: 3vw;
         width: 55vw;
-        height:100%;
+        height:95%;
         display: flex;
         flex-direction: column;
         //rest in stock scss
@@ -76,11 +76,13 @@
 
       .home_page_right_main_col{
         position: relative;
-        max-width: 230px;
+        max-width: 270px;
         flex: 0 0 22%;
         margin-right: 3vw;
+        margin-top: 4vh;
         background-color: $light-gray;
         border-radius: 3px;
+        height: 40%;
         //the content styling is in stocks.scss
       }
   }

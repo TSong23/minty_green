@@ -21,7 +21,6 @@ export default class StockHeader extends React.Component{
 
     return(
       <div className="main_chart_company_title">
-        <br/>
         {this.props.info.companyName}
       </div>
     )
