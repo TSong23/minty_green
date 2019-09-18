@@ -39,16 +39,16 @@ class StockShow extends React.Component {
               current price holder  
             </div>       
            
-            <div className="home_page_left_chart">
+            {/* <div className="home_page_left_chart">
               <StockChart
                 ticker={this.props.match.params.ticker}
                 time={this.state.time}  
               />
-            </div>
-
-            {/* <div className="home_page_left_chart">
-              placeholder
             </div> */}
+
+            <div className="home_page_left_chart">
+              placeholder
+            </div>
 
             <div className="left_chart_time_options">
               <button onClick={() => this.setState({time: "1d"})}>1D</button>

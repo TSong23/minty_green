@@ -12,8 +12,9 @@
     session_background: "<%=image_url("green_blobs.png") %>",    
     splash_background: "<%=image_url("robin_phones.png") %>",
     logged_in_background: "<%=image_url("elon_tweet1.png") %>"    
-  
+
   }
+  window.iexApiKey = "<%= Rails.application.credentials.iex_key%>"
 </script>
 
 <main id="root"></main>

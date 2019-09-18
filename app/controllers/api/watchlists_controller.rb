@@ -18,9 +18,14 @@ class Api::WatchlistsController < ApplicationController
     end
   end
 
-  # def show
-    #show the stock items being watched
-  # end
+  def show
+    @watchlist = Watchlist.find_by(id: params[:id]);
+    if @watchlist
+      render "api/watchlists/show"
+    else
+      render json: ["Watchlist does not exist"], status: 404
+    end
+  end
 
   # def edit
 

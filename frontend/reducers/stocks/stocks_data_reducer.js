@@ -24,7 +24,7 @@ const stocksDataReducer = (
     
     case RECEIVE_STOCK_PAST_DATA:
       // modify stocks.hist slice 
-      let hist_slice = Object.assign({},state.historical,action.payload);
+      let hist_slice = Object.assign({},action.payload);
       // now modify the stocks_slice
       return Object.assign({}, state, {historical: hist_slice})
 

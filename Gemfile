@@ -35,6 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rails_12factor'
 gem 'jquery-rails'
+gem 'dotenv-rails'
 
 
 group :development, :test do

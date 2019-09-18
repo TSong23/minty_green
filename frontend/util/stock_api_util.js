@@ -1,4 +1,4 @@
-const iexApiKey = 'sk_00ebc16de99e488895986d7949d1ee8a';
+// const iexApiKey = ENV["API_KEY"];
 
 export const fetchStockPastData = (ticker, time) => (
   $.ajax({

@@ -9,13 +9,16 @@ export default class StockChart extends React.Component {
 
   componentDidMount(){
     this.props.fetchStockIntraday(this.props.match.params.ticker);
+    console.log("api call made")
   }
 
   componentDidUpdate(prevProps){
     if (prevProps.match.params.ticker !== this.props.match.params.ticker){
       this.props.fetchStockIntraday(this.props.match.params.ticker);
-    } else if(this.props.time !== "1d"){
+      console.log("api call made")
+    } else if(this.props.time !== "1d" && (this.props.time !== prevProps.time) ){
       this.props.fetchStockPastData(this.props.match.params.ticker, this.props.time);
+      console.log("api call made")
     }
   }
 
