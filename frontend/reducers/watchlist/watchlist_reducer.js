@@ -13,7 +13,7 @@ const WatchlistsReducer = (oldState = {}, action) => {
     case RECEIVE_WATCHLIST:
       return merge({}, oldState, {[action.watchlist.id]: action.watchlist});
     case REMOVE_WATCHLIST:
-      let newStart = merge({}, oldState);
+      let newState = merge({}, oldState);
       delete newState[action.watchlistId];
       return newState;
     default:

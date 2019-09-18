@@ -45,7 +45,7 @@ class StockShow extends React.Component {
                 time={this.state.time}  
               />
             </div> */}
-
+            
             <div className="home_page_left_chart">
               placeholder
             </div>

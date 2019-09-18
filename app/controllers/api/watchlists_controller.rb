@@ -27,18 +27,28 @@ class Api::WatchlistsController < ApplicationController
     end
   end
 
-  # def edit
 
-  # end
+  def update
+    @watchlist = Watchlist.find(params[:id])
 
-  # def update
-  # end
+    if @watchlist.update(watchlist_params)
+      render :show
+    else
+      render json: @watchlist.errors.full_messages, status: 422
+    end
+  end
 
 
 
-  # def destroy
+  def destroy
+    @watchlist = Watchlist.find(params[:id])
 
-  # end
+    if @watchlist.destroy
+      render :index
+    else
+      render json: @watchlist.errors.full_messages, status: 422
+    end
+  end
 
   private 
 
