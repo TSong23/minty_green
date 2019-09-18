@@ -1,8 +1,8 @@
-const iexApiKey = 'sk_a17455c2f5a146f0b9e4bcde9930fd1e';
+const iexApiKey = 'sk_00ebc16de99e488895986d7949d1ee8a';
 
 export const fetchStockPastData = (ticker, time) => (
   $.ajax({
-    url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/${time}/?token=${iexApiKey}`
+    url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/${time}?token=${iexApiKey}`
     //include API token.
     //store the API code within environment var
 

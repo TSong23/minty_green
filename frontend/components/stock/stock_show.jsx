@@ -7,17 +7,20 @@ import StockHeaderContainer from '../stock/stock_header_container';
 class StockShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   time: ""
-    // }
+    this.state = {
+      time: "1d"
+    }
   }
 
-  // changeTime(e){
-
+  // changeTime(range){
+  //   this.setState({
+  //     time: range
+  //   })
   // }
   
 
   render() {
+    console.log(this.state);
     return (
       <div className="home_page">
 
@@ -37,16 +40,22 @@ class StockShow extends React.Component {
             </div>       
            
             <div className="home_page_left_chart">
-              <StockChart ticker={this.props.match.params.ticker}/>
+              <StockChart
+                ticker={this.props.match.params.ticker}
+                time={this.state.time}  
+              />
             </div>
+
             {/* <div className="home_page_left_chart">
               placeholder
             </div> */}
+
             <div className="left_chart_time_options">
-              <button value="5dm"onClick>1W</button>
-              <button value="1m" onClick>1M</button>
-              <button value="6m" onClick>6M</button>
-              <button value="1y" onClick>1Y</button>              
+              <button onClick={() => this.setState({time: "1d"})}>1D</button>
+              <button onClick={() => this.setState({time: "5d"})}>1W</button>
+              <button onClick={() => this.setState({time: "1m"})}>1M</button>
+              <button onClick={() => this.setState({time: "6m"})}>6M</button>
+              <button onClick={() => this.setState({time: "1y"})}>1Y</button>              
             </div>            
             <br/>
             <div className="home_page_left_col_bottom_chart">
