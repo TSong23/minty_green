@@ -7,42 +7,44 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Stock.destroy_all
-User.destroy_all
+# Stock.destroy_all
 
-sp500_list_string = File.read("#{Rails.root}/db/SP500List.csv")
+# sp500_list_string = File.read("#{Rails.root}/db/SP500List.csv")
 
-def read_stocks(stock_str)
-    stock_str.split("\n")
-end  
+# def read_stocks(stock_str)
+#     stock_str.split("\n")
+# end  
 
-def make_stock_entry(stock_arr)
-  stock_entry = []
-  stock_arr.each do |stock| 
-    stock_entry.push({
-      ticker: (stock.split(",")[0]).gsub('"',''),
-      name: (stock.split(",")[1]).gsub('"','')
-      }) 
-  end
-  stock_entry
-end
+# def make_stock_entry(stock_arr)
+#   stock_entry = []
+#   stock_arr.each do |stock| 
+#     stock_entry.push({
+#       ticker: (stock.split(",")[0]).gsub('"',''),
+#       name: (stock.split(",")[1]).gsub('"','')
+#       }) 
+#   end
+#   stock_entry
+# end
 
-stock_obj = make_stock_entry(read_stocks(sp500_list_string));
+# stock_obj = make_stock_entry(read_stocks(sp500_list_string));
 
-Stock.create(stock_obj)
+# Stock.create(stock_obj)
 
 #user
-User.create(username: "demo", password:"123456")
-User.create(username: "taehoon", password:"123456")
-User.create(username: "alex", password:"123456")
+User.destroy_all
+user1 = User.create(username: "demo", password:"123456")
+user2 = User.create(username: "taehoon", password:"123456")
+user3 = User.create(username: "alex", password:"123456")
 
 
 #watchlist
-Watchlist.create(user_id: 1)
-Watchlist.create(user_id: 1)
+Watchlist.destroy_all
+wl1 = Watchlist.create(user_id: user1.id)
+wl2 = Watchlist.create(user_id: user1.id)
 
 #watchlist items
-WatchlistItem.create(watchlist_id: 1, stock_id: 1)
-WatchlistItem.create(watchlist_id: 1, stock_id: 2)
-WatchlistItem.create(watchlist_id: 1, stock_id: 3)
-WatchlistItem.create(watchlist_id: 1, stock_id: 4)
+WatchlistItem.destroy_all
+WatchlistItem.create(watchlist_id: wl1.id, stock_id: 1012)
+WatchlistItem.create(watchlist_id: wl1.id, stock_id: 1013)
+WatchlistItem.create(watchlist_id: wl2.id, stock_id: 1014)
+WatchlistItem.create(watchlist_id: wl2.id, stock_id: 1015)

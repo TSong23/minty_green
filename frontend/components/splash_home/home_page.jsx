@@ -24,7 +24,7 @@ class HomeMain extends React.Component {
 
           <div className="home_page_left_main_col">
             <div className="home_page_main_chart">
-              Portfolioddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+              Portfoliodddddddddddddddd
             </div>
             <div className="home_page_second_chart">
               Balance

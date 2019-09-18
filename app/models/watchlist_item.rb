@@ -10,7 +10,7 @@
 #
 
 class WatchlistItem < ApplicationRecord
-  validates :watchlist_id, :stock_id, null: false
+  validates :watchlist_id, :stock_id, presence: true
 
   belongs_to :watchlist, 
     foreign_key: :watchlist_id,

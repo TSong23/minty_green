@@ -8,20 +8,15 @@ class Watchlist extends React.Component {
 
   componentDidMount(){
     this.props.fetchAllWatchlist();
+    console.log("watchlist mounted")
   }
 
   render(){
-    const allWatchlists = this.props.watchlists.map(list => {
-      return(
-        <li>
-          {list}
-        </li>
-      )
-    });
+    console.log("watchlist", this.props.watchlists)
 
     return (
       <div>
-        {allWatchlists}
+        {/* {this.props.watchlists} */}
       </div>
     )
 

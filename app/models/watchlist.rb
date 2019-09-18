@@ -9,7 +9,7 @@
 #
 
 class Watchlist < ApplicationRecord
-  validates :user_id, presnece: true
+  validates :user_id, presence: true
 
   has_many :watchlist_items,
     foreign_key: :watchlist_id,
