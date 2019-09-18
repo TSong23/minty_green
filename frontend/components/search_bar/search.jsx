@@ -49,7 +49,6 @@ class SearchBar extends React.Component{
   }
 
   render(){
-
     const results = this.matches().map((result, i) => {
       return (   
         <li key={result}>    

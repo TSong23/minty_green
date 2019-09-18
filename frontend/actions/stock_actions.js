@@ -50,3 +50,10 @@ export const fetchStockAllListing = () => dispatch => (
   StockAPIUtil.fetchStockAllListing().then(
     payload => (dispatch(receiveStockListing(payload))))
 )
+
+export const fetchStockName = (ticker) => (
+  StockAPIUtil.fetchStockName(ticker).then(
+    payload => {return(payload)})
+)
+
+

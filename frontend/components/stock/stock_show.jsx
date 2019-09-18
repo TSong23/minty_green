@@ -2,58 +2,53 @@ import React from 'react';
 import SearchContainer from "../search_bar/search_bar_container";
 import StockChart from '../stock/stock_chart_container';
 import StockInfo from '../stock/stock_info_container';
-import { fetchCompanyInfo } from '../../actions/stock_actions';
-
+import StockHeaderContainer from '../stock/stock_header_container';
 
 class StockShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      ticker: this.props.match.params.ticker,
-      info: this.props.info,
-      intraday: this.props.intraday,
-      historical: this.props.historical
-    }
+    // this.state = {
+    //   time: ""
+    // }
   }
 
-  // componentDidMount(){
-  //   this.setState({ 
-  //     info: this.props.fetchCompanyInfo(this.state.ticker),
-  //     intraday: this.props.fetchStockIntraday(this.state.ticker),
-  //     // historical: fetchStockPastData(ticker, time)
-  //   })
+  // changeTime(e){
+
   // }
-
-
+  
 
   render() {
-    console.log("this state", this.state);
-    console.log("this props", this.props);
-
-    let show_info = this.state.info;
-    let show_intraday = this.state.intraday;
-
-    console.log(show_info, show_intraday);
-
     return (
       <div className="home_page">
 
         <div className="home_page_nav_bar_container">
-          <SearchContainer />
+          <SearchContainer ticker={this.props.match.params.ticker}/>
         </div>
 
         <div className="home_page_main_container">
 
           <div className="home_page_left_main_col">
-
-            <div>
-
-            </div>
+            <header className="left_main_col_header" >
+              <StockHeaderContainer 
+                ticker={this.props.match.params.ticker}
+              />
+            </header>
+           
+            {/* <div className="home_page_main_chart">
+              <StockChart ticker={this.props.match.params.ticker}/>
+            </div> */}
             <div className="home_page_main_chart">
-              <StockChart ticker={this.state.ticker}/>
+              placeholder
             </div>
+            <div className="main_chart_time_options">
+              <button value="5dm"onClick>1W</button>
+              <button value="1m" onClick>1M</button>
+              <button value="6m" onClick>6M</button>
+            </div>
+            
+
             <div className="home_page_second_chart">
-              <StockInfo ticker={this.state.ticker}/>
+              <StockInfo ticker={this.props.match.params.ticker}/>
             </div>
           </div>
 

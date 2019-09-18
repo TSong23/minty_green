@@ -16,6 +16,8 @@ class Stock < ApplicationRecord
   has_many :watchlist_items,
     foreign_key: :Stock_id,
     class_name: :WatchlistItem
+
+ 
   
   
 end

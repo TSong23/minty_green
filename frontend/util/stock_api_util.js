@@ -33,3 +33,10 @@ export const fetchStockAllListing = () => (
     url: 'api/stocks'
   })
 )
+
+export const fetchStockName = (ticker) => (
+  $.ajax({
+    method: "GET",
+    url: `api/stocks/${ticker}`
+  })
+)

@@ -3,8 +3,14 @@ class Api::StocksController < ApplicationController
     @stocks = Stock.all
   end
 
+
   def show
-    @stock = Stock.find(params[:ticker])
+    @stock = Stock.find_by(ticker: params[:id])
+
+    if @stock
+      render "api/stocks/show"
+    end
+
   end
 
   private
