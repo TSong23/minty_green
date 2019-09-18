@@ -10,14 +10,14 @@ export const deleteWatchlistItem = (watchitemId) => dispatch => (
   )
 );
 
-export const createWatchlistItem = () => dispatch => (
-  WatchItemsApiUtil.createWatchlistItem().then(
-    watchitem => dispatch(receiveWatchItem(watchitem))
+export const createWatchlistItem = (watchItem) => dispatch => (
+  WatchItemsApiUtil.createWatchlistItem(watchItem).then(
+    watchItem => dispatch(receiveWatchItem(watchItem))
   )
 );
 
-export const fetchWatchlistItems = () => dispatch => (
-  WatchItemsApiUtil.fetchWatchlistItems().then(
+export const fetchWatchlistItems = (listId) => dispatch => (
+  WatchItemsApiUtil.fetchWatchlistItems(listId).then(
     watchitems => dispatch(receiveWatchItems(watchitems))
   )
 );
