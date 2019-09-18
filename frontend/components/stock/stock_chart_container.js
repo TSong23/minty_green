@@ -13,7 +13,7 @@ const mstp = ({entities: { stocks: {currentStock} }}) => ({
 
 })
 
-const dstp = (dispatch) => ({
+const mdtp = (dispatch) => ({
   fetchStockPastData: (ticker, time) => dispatch(fetchStockPastData(ticker, time)),
   fetchStockIntraday: (ticker) => dispatch(fetchStockIntraday(ticker)),  
   fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker))
@@ -21,5 +21,5 @@ const dstp = (dispatch) => ({
 
 export default withRouter(connect(
   mstp,
-  dstp
+  mdtp
 )(StockChart))

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchContainer from "../search_bar/search_bar_container";
-import StockChart from '../stock/stock_chart_container';
-import StockInfo from '../stock/stock_info_container';
+import Watchlist from '../watchlist/watchlist_container';
+// import StockChart from '../stock/stock_chart_container';
+// import StockInfo from '../stock/stock_info_container';
 
 
 class HomeMain extends React.Component {
@@ -31,8 +32,7 @@ class HomeMain extends React.Component {
           </div>
 
           <div className="home_page_right_main_col">
-            <h3>Watchlist</h3>
-            
+            <Watchlist/>            
           </div>           
           
         </div>

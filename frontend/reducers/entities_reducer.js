@@ -10,7 +10,7 @@ const entitiesReducer = combineReducers({
   users: usersReducer,
   stocks: stocksReducer,
   watchlists: watchlistsReducer,
-  watchlist_items: Watchlist_items_Reducer
+  watchlist_items: watchlist_items_Reducer
 });
 
 export default entitiesReducer;

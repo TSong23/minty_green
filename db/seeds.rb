@@ -31,4 +31,18 @@ stock_obj = make_stock_entry(read_stocks(sp500_list_string));
 
 Stock.create(stock_obj)
 
+#user
 User.create(username: "demo", password:"123456")
+User.create(username: "taehoon", password:"123456")
+User.create(username: "alex", password:"123456")
+
+
+#watchlist
+Watchlist.create(user_id: 1)
+Watchlist.create(user_id: 1)
+
+#watchlist items
+WatchlistItem.create(watchlist_id: 1, stock_id: 1)
+WatchlistItem.create(watchlist_id: 1, stock_id: 2)
+WatchlistItem.create(watchlist_id: 1, stock_id: 3)
+WatchlistItem.create(watchlist_id: 1, stock_id: 4)
