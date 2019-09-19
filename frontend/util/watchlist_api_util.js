@@ -6,11 +6,10 @@ export const createWatchlist = (watchlist) => (
   })
 );
 
-export const fetchAllWatchlist = (userId) => (
+export const fetchAllWatchlist = () => (
   $.ajax({
     method: "GET",
-    url: 'api/watchlists',
-    data: {userId}
+    url: 'api/watchlists'
   })
 )
 

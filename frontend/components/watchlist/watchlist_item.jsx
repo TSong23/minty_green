@@ -12,11 +12,19 @@ class Watchlist extends React.Component{
   }
 
   render(){
-    
+
+    let allWatchItems = Object.values(this.props.watchlist_items);
+    let listItems = allWatchItems.map(item => {
+      return (
+        <li key={item.id}>
+          {item}
+        </li>
+      )
+    })
     console.log("render for watchlist items", this.props.watchlist_items)
     return(
       <div>
-        watchlist item
+        {listItems}
       </div>
     )
   }

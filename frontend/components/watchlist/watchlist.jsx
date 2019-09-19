@@ -7,8 +7,8 @@ class Watchlist extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchAllWatchlist(this.props.userId);
-    console.log("watchlist mounted", this.props.userId)
+    this.props.fetchAllWatchlist();
+    // console.log("watchlist mounted", this.props.userId)
   }
 
   render(){
@@ -18,7 +18,7 @@ class Watchlist extends React.Component {
         // console.log(id)
         <ul>
           <WatchlistItemContainer 
-            listId={id}
+            listId={id+1}
             key={id}/> 
         </ul>
       )     

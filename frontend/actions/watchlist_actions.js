@@ -4,8 +4,8 @@ export const RECEIVE_WATCHLISTS = "RECEIVE_WATCHLISTS";
 export const RECEIVE_WATCHLIST = "RECEIVE_WATCHLIST";
 export const REMOVE_WATCHLIST = "REMOVE_WATCHLIST";
 
-export const fetchAllWatchlist = (userId) => dispatch => (
-  WatchlistApiUtil.fetchAllWatchlist(userId).then(
+export const fetchAllWatchlist = () => dispatch => (
+  WatchlistApiUtil.fetchAllWatchlist().then(
     watchlists => dispatch(receiveAllWatchlist(watchlists))
   )
 );

@@ -10,12 +10,12 @@ const WatchlistItemsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type){
     case RECEIVE_WATCHITEMS:
-      return merge({}, action.watchlists);
+      return merge({}, action.watchItems);
     case RECEIVE_WATCHITEM:
-      return merge({}, oldState, { [action.watchlistItem.id]: action.watchlistItem })
+      return merge({}, oldState, { [action.watchItem.id]: action.watchItem })
     case REMOVE_WATCHITEM:
       let newState = merge({}, oldState);
-      delete newState[action.watchitemId];
+      delete newState[action.watchItemId];
       return newState;
     default:
       return oldState;

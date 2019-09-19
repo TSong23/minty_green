@@ -4,9 +4,9 @@ export const RECEIVE_WATCHITEMS = "RECEIVE_WATCHITEMS";
 export const RECEIVE_WATCHITEM = "RECEIVE_WATCHITEM";
 export const REMOVE_WATCHITEM = "REMOVE_WATCHITEM ";
 
-export const deleteWatchlistItem = (watchitemId) => dispatch => (
-  WatchItemsApiUtil.deleteWatchlistItem().then(
-    watchlistItem => dispatch(removeWatchItem(watchitemId))
+export const deleteWatchlistItem = (watchItemId) => dispatch => (
+  WatchItemsApiUtil.deleteWatchlistItem(watchItemId).then(
+    watchlistItem => dispatch(removeWatchItem(watchItemId))
   )
 );
 
@@ -18,18 +18,18 @@ export const createWatchlistItem = (watchItem) => dispatch => (
 
 export const fetchWatchlistItems = (listId) => dispatch => (
   WatchItemsApiUtil.fetchWatchlistItems(listId).then(
-    watchitems => dispatch(receiveWatchItems(watchitems))
+    watchItems => dispatch(receiveWatchItems(watchItems))
   )
 );
 
-const removeWatchItem = watchitemId => ({
+const removeWatchItem = watchItemId => ({
   type: REMOVE_WATCHITEM,
-  watchitemId
+  watchItemId
 });
 
-const receiveWatchItem = watchitem => ({
+const receiveWatchItem = watchItem => ({
   type: RECEIVE_WATCHLIST,
-  watchitem
+  watchItem
 });
 
 const receiveWatchItems = watchItems => ({
