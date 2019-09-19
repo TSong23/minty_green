@@ -1,3 +1,24 @@
 // Place all the styles related to the api/Watchlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.right_col_watchlist_container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 0px 0px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  .watchlist{
+    
+    h3{
+      font-size: 20px;
+    }
+
+    ul{
+      padding: 5px;
+      li{
+        font-size: 18px;
+      }
+    }
+  }
+}

@@ -6,7 +6,8 @@ import { deleteWatchlistItem,
         fetchWatchlistItems} 
 from '../../actions/watchlistitems_actions';
 
-const mstp = ({ entities: {watchlist_items}}) => ({
+const mstp = (
+  { entities: {watchlist_items} } ) => ({
   watchlist_items
 })
 

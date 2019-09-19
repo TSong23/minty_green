@@ -4,30 +4,39 @@ import WatchlistItemContainer from './watchlistitem_container';
 class Watchlist extends React.Component {
   constructor(props){
     super(props);
+    this.props.fetchAllWatchlist();
   }
 
-  componentDidMount(){
-    this.props.fetchAllWatchlist();
-    // console.log("watchlist mounted", this.props.userId)
-  }
+  // componentDidMount(){
+  //   this.props.fetchAllWatchlist();
+  // }
 
   render(){
-    let allListID = Object.keys(this.props.watchlists).map(id => parseInt(id));
-    let allLists = allListID.map(id => {
-      return (
-        // console.log(id)
-        <ul>
-          <WatchlistItemContainer 
-            listId={id+1}
-            key={id}/> 
-        </ul>
-      )     
-    })
+    // console.log("when does watchlist show?",this.props.watchlists)
+    let allListID;
+    let allLists;
+    if (this.props.watchlists){
+      allListID = Object.keys(this.props.watchlists).map(id => parseInt(id));
+      allLists = allListID.map(id => {
+        return (
+          // console.log(id)
+          <div key={id} className="watchlist">
+            <h3>Watchlist</h3>
+              <WatchlistItemContainer 
+                listId={id}
+                allStocks={this.props.allStocks}
+              /> 
+          </div>
+        )     
+      })
+    }else{
+      allLists = null;
+    }
 
-    console.log("watchlist render", Object.values(this.props.watchlists))
+    // console.log("watchlist render", Object.values(this.props.watchlists))
 
     return (
-      <div>
+      <div key="watchlists" className="right_col_watchlist_container">
         {allLists}
       </div>
     )

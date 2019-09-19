@@ -9,11 +9,26 @@ import Watchlist from '../watchlist/watchlist_container';
 class HomeMain extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      news: {}
+    }
+  }
+
+  componentDidMount(){
+    this.props.fetchStockAllListing();
+    this.setState({
+      news: this.props.fetchBusinessNews().then
+    })
   }
 
   
   render() {
     // console.log(this.props.userId) gets the current user id
+    let allStocks = Object.values(this.props.allStocks)
+    console.log("news",this.state.news)
+    
+    // let showNews = this.state.news
+    
     return (
       <div className="home_page"> 
 
@@ -25,15 +40,18 @@ class HomeMain extends React.Component {
 
           <div className="home_page_left_main_col">
             <div className="home_page_main_chart">
-              Portfoliodddddddddddddddd
-            </div>
-            <div className="home_page_second_chart">
               Balance
-              </div>
+            </div>
+            
+            news
+
           </div>
 
           <div className="home_page_right_main_col">
-            <Watchlist userId={this.props.userId}/>            
+            <Watchlist 
+              userId={this.props.userId}
+              allStocks={allStocks}
+            />            
           </div>           
           
         </div>

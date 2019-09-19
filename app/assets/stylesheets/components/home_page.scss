@@ -76,11 +76,12 @@
 
       .home_page_right_main_col{
         position: relative;
-        max-width: 270px;
+        max-width: 350px;
+        min-width: 270px;
         flex: 0 0 22%;
         margin-right: 3vw;
         margin-top: 4vh;
-        background-color: $light-gray;
+        background-color: gray;
         border-radius: 3px;
         height: 40%;
         //the content styling is in stocks.scss

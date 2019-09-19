@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
 class Watchlist extends React.Component{
   constructor(props){
@@ -8,24 +9,38 @@ class Watchlist extends React.Component{
 
   componentDidMount() {
     this.props.fetchWatchlistItems(this.props.listId);
-    console.log("watchlist items mounted")
   }
 
   render(){
-
+    
     let allWatchItems = Object.values(this.props.watchlist_items);
-    let listItems = allWatchItems.map(item => {
-      return (
-        <li key={item.id}>
-          {item}
-        </li>
-      )
+    
+    let filteredList = allWatchItems.filter(item => (item.watchlist_id === this.props.listId))
+    
+    let listItems = filteredList.map(item => {
+      let company = this.props.allStocks[item["stock_id"] - 1];
+      
+      if (company){
+        return (
+          <li>
+          <NavLink
+            to={`/stocks/${company.ticker}`}
+            ticker={company.ticker}
+            key={company.ticker}
+          >
+            {company.ticker}
+          </NavLink>
+          </li>
+        )
+      }else {
+        return null
+      }      
     })
-    console.log("render for watchlist items", this.props.watchlist_items)
+
     return(
-      <div>
+      <ul key="watchlist items">
         {listItems}
-      </div>
+      </ul>
     )
   }
 
