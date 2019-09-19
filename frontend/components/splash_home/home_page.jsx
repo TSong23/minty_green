@@ -29,16 +29,20 @@ class HomeMain extends React.Component {
     if (this.state.news.length > 0){
       showNews = this.state.news.map(article =>{
         return(
-          <div>
-            <ul>
-              {article.title}
-              {article.source.name}
-              <a href={article.url} > 
+          <a href={article.url} > 
+            <div className="news_item">
+              
+              <div className="news_item_text">
+                <h2>{article.source.name}</h2>
+                <h3>{article.title}</h3>
+              </div>  
+              <div className="news_item_img">                
                 <img src={`${article.urlToImage}`}
-                  style={{width:"250px", height:"100px"}}/>
-              </a>    
-            </ul>
-          </div>
+                  style={{width:"225px", height:"150px"}}/>                    
+              </div>
+              
+            </div>
+          </a>
         )
       })      
     }
@@ -55,12 +59,16 @@ class HomeMain extends React.Component {
         <div className="home_page_main_container">
 
           <div className="home_page_left_main_col">
-            <div className="home_page_main_chart">
+            <div className="home_page_balance_display">
               Balance
             </div>
             
-            {showNews}
-
+            <div className="home_page_news_container">
+              News
+              <br/>
+              <br/>
+              {showNews}
+            </div>
           </div>
 
           <div className="home_page_right_main_col">

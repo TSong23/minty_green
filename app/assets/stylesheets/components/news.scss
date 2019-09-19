@@ -1,0 +1,31 @@
+.home_page_news_container{
+  font-size: 26px;
+  font-weight: 500;
+  width: 100%;
+
+
+  .news_item{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 15px;
+    
+
+    .news_item_text{
+      height: 150px;
+      max-width: 60%;
+      h2{
+        font-size:14px;
+        margin-bottom: 16px;
+      }
+      h3{
+        font-size:16px;
+      }
+    }
+
+    .news_item_img{
+
+    }
+
+  }
+}
