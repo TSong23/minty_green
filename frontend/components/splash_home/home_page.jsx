@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchContainer from "../search_bar/search_bar_container";
 import Watchlist from '../watchlist/watchlist_container';
+import { fetchBusinessNews } from '../../util/news_api_util';
 // import StockChart from '../stock/stock_chart_container';
 // import StockInfo from '../stock/stock_info_container';
 
@@ -16,16 +17,31 @@ class HomeMain extends React.Component {
 
   componentDidMount(){
     this.props.fetchStockAllListing();
-    this.setState({
-      news: this.props.fetchBusinessNews().then
-    })
+    fetchBusinessNews().then(news => this.setState({news: news.articles}))
   }
 
   
   render() {
     // console.log(this.props.userId) gets the current user id
     let allStocks = Object.values(this.props.allStocks)
-    console.log("news",this.state.news)
+    console.log(this.state.news)
+    let showNews = [];
+    if (this.state.news.length > 0){
+      showNews = this.state.news.map(article =>{
+        return(
+          <div>
+            <ul>
+              {article.title}
+              {article.source.name}
+              <a href={article.url} > 
+                <img src={`${article.urlToImage}`}
+                  style={{width:"250px", height:"100px"}}/>
+              </a>    
+            </ul>
+          </div>
+        )
+      })      
+    }
     
     // let showNews = this.state.news
     
@@ -43,7 +59,7 @@ class HomeMain extends React.Component {
               Balance
             </div>
             
-            news
+            {showNews}
 
           </div>
 
