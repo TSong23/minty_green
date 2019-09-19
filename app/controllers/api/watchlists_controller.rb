@@ -1,12 +1,7 @@
 class Api::WatchlistsController < ApplicationController
   
   def index
-    @watchlists = Watchlist.all 
-    if @watchlists
-      render :index 
-    else 
-      render json: ["No watchlists"]
-    end
+    @watchlists = current_user.watchlists
   end
 
   def new

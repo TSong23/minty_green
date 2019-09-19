@@ -13,6 +13,7 @@ class HomeMain extends React.Component {
 
   
   render() {
+    // console.log(this.props.userId) gets the current user id
     return (
       <div className="home_page"> 
 
@@ -32,7 +33,7 @@ class HomeMain extends React.Component {
           </div>
 
           <div className="home_page_right_main_col">
-            <Watchlist/>            
+            <Watchlist userId={this.props.userId}/>            
           </div>           
           
         </div>

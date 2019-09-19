@@ -13,7 +13,7 @@ const mstp = ({ entities: {watchlist_items}}) => ({
 const mdtp = dispatch => ({
   deleteWatchlistItem: (watchitemId) => dispatch(deleteWatchlistItem(watchitemId)),
   createWatchlistItem: (watchItem) => dispatch(createWatchlistItem(watchItem)),
-  fetchWatchlistItems: () => dispatch(fetchWatchlistItems())
+  fetchWatchlistItems: (listId) => dispatch(fetchWatchlistItems(listId))
 })
 
 export default connect(

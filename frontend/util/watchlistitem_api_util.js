@@ -1,14 +1,15 @@
-export const fetchWatchlistItems = () => (
+export const fetchWatchlistItems = (listId) => (
   $.ajax({
     method: "GET",
-    url: 'api/watchlists_items'
+    url: 'api/watchlist_items',
+    data: {listId}
   })
 )
 
 export const createWatchlistItem = (watchlistItem) => (
   $.ajax({
     method: "POST",
-    url: 'api/watchlists_items',
+    url: 'api/watchlist_items',
     data: {watchlistItem}
   })
 )
@@ -16,7 +17,7 @@ export const createWatchlistItem = (watchlistItem) => (
 export const deleteWatchlistItem = (watchlistItemId) => (
   $.ajax({
     method: "DELETE",
-    url: `api/watchlists_items/${watchlistItemId}`
+    url: `api/watchlist_items/${watchlistItemId}`
   })
 )
 

@@ -12,6 +12,7 @@ class Watchlist extends React.Component{
   }
 
   render(){
+    
     console.log("render for watchlist items", this.props.watchlist_items)
     return(
       <div>

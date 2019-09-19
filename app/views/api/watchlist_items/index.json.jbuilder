@@ -1,5 +1,5 @@
-@watchlist_items.each do |watchlist|
-  json.set! watchlist.id do 
-    json.partial! 'watchlist', watchlist: watchlist 
+@watchlist_items.each do |watchlistitem|
+  json.set! watchlistitem.id do 
+    json.partial! 'watchlistitem', watchlistitem: watchlistitem 
   end
 end

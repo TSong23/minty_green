@@ -1,16 +1,18 @@
 class Api::WatchlistItemsController < ApplicationController
 
   def index 
-     @watchlist_items = WatchlistItem.all
+     @watchlist_items = WatchlistItem.where(watchlist_id: params[:listId] )
      if @watchlist_items
-       render "api/watchlist/index"
+       render "api/watchlist_items/index"
+     else
+       render json: ["no item found"]
      end
   end
 
   def new
     @watchlist_item = WatchlistItem.new(watchlist_item_params)    
     if @watchlist_item.save
-      render "api/watchlist/index"
+      render "api/watchlist_items/index"
     else
       render json: @watchlist_item.errors.full_messages, status: 422
     end

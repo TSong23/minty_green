@@ -30,6 +30,19 @@
 
 # Stock.create(stock_obj)
 
+#stock
+Stock.destroy_all
+stock1 = Stock.create(ticker: "MSFT", name: "Microsoft Corp")
+stock2 = Stock.create(ticker: "AMZN", name: "Amazon")
+stock3 = Stock.create(ticker: "AAPL", name: "Apple")
+stock4 = Stock.create(ticker: "GOOG", name: "Google")
+stock5 = Stock.create(ticker: "BRK.B", name: "Buffet")
+stock6 = Stock.create(ticker: "FB", name: "Facebook")
+stock7 = Stock.create(ticker: "V", name: "Visa")
+stock8 = Stock.create(ticker: "JNJ", name: "Johnson and Johnson")
+stock9 = Stock.create(ticker: "JPM", name: "JPMorgan and Chase")
+
+
 # #user
 User.destroy_all
 user1 = User.create(username: "demo", password:"123456")
@@ -48,15 +61,15 @@ wl6 = Watchlist.create(user_id: user3.id)
 
 #watchlist items
 # WatchlistItem.destroy_all
-WatchlistItem.create(watchlist_id: wl1.id, stock_id: 1012)
-WatchlistItem.create(watchlist_id: wl1.id, stock_id: 1013)
-WatchlistItem.create(watchlist_id: wl2.id, stock_id: 1012)
-WatchlistItem.create(watchlist_id: wl2.id, stock_id: 1013)
-WatchlistItem.create(watchlist_id: wl3.id, stock_id: 1014)
-WatchlistItem.create(watchlist_id: wl3.id, stock_id: 1015)
-WatchlistItem.create(watchlist_id: wl4.id, stock_id: 1016)
-WatchlistItem.create(watchlist_id: wl4.id, stock_id: 1017)
-WatchlistItem.create(watchlist_id: wl5.id, stock_id: 1018)
-WatchlistItem.create(watchlist_id: wl5.id, stock_id: 1019)
-WatchlistItem.create(watchlist_id: wl6.id, stock_id: 1018)
-WatchlistItem.create(watchlist_id: wl6.id, stock_id: 1020)
+WatchlistItem.create(watchlist_id: wl1.id, stock_id: stock1.id)
+WatchlistItem.create(watchlist_id: wl1.id, stock_id: stock2.id)
+WatchlistItem.create(watchlist_id: wl2.id, stock_id: stock1.id)
+WatchlistItem.create(watchlist_id: wl2.id, stock_id: stock2.id)
+WatchlistItem.create(watchlist_id: wl3.id, stock_id: stock3.id)
+WatchlistItem.create(watchlist_id: wl3.id, stock_id: stock4.id)
+WatchlistItem.create(watchlist_id: wl4.id, stock_id: stock5.id)
+WatchlistItem.create(watchlist_id: wl4.id, stock_id: stock6.id)
+WatchlistItem.create(watchlist_id: wl5.id, stock_id: stock7.id)
+WatchlistItem.create(watchlist_id: wl5.id, stock_id: stock8.id)
+WatchlistItem.create(watchlist_id: wl6.id, stock_id: stock7.id)
+WatchlistItem.create(watchlist_id: wl6.id, stock_id: stock9.id)

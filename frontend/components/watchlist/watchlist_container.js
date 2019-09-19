@@ -13,7 +13,7 @@ const mstp = ({ entities: { watchlists} }) => ({
 })
 
 const mdtp = dispatch => ({
-  fetchAllWatchlist: () => dispatch(fetchAllWatchlist()),
+  fetchAllWatchlist: (userId) => dispatch(fetchAllWatchlist(userId)),
   fetchWatchlist: (id) => dispatch(fetchWatchlist(id)),
   createWatchlist: (watchlist) => dispatch(createWatchlist(watchlist)),
   updateWatchlist: (watchlist) => dispatch(updateWatchlist(watchlist)),
