@@ -1,7 +1,6 @@
-# README
+# MintGreen
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MintGreen is a clone of Robinhood web app. It allows users to view intraday and historical stock prices of the S&P500 companies and create multiple watchlists consisting of those companies.
 
 Things you may want to cover:
 
