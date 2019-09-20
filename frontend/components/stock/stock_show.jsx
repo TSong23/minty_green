@@ -28,20 +28,20 @@ class StockShow extends React.Component {
               ticker={this.props.match.params.ticker}
             />     
 
-            <div className="stock_current_price">
+            {/* <div className="stock_current_price">
               current price holder  
-            </div>       
+            </div>        */}
            
-            {/* <div className="home_page_left_chart">
+            <div className="home_page_left_chart">
               <StockChart
                 ticker={this.props.match.params.ticker}
                 time={this.state.time}  
               />
-            </div> */}
-            
-            <div className="home_page_left_chart">
-              placeholder
             </div>
+            
+            {/* <div className="home_page_left_chart">
+              placeholder
+            </div> */}
 
             <div className="left_chart_time_options">
               <button onClick={() => this.setState({time: "1d"})}>1D</button>
@@ -56,7 +56,7 @@ class StockShow extends React.Component {
             </div>
           </div>
 
-          <div className="stock_show_right_main_col">
+          <div>
             <WatchItemButton ticker={this.props.match.params.ticker}/>
 
 

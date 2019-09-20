@@ -70,13 +70,14 @@ class WatchItemButton extends React.Component{
       if (arr[1] === 'false'){
         let ajaxlistid = arr[0];
         return(
-          <div className="watchlist_item_option_button">
+          
             <button onClick={() => 
-              this.props.createWatchlistItem({ stock_id: stockId, watchlist_id: ajaxlistid})
-          }>
-              {`Add to Watchlist ${arr[0]}`}
+              this.props.createWatchlistItem({ stock_id: stockId, watchlist_id: ajaxlistid})}
+              className="watchlist_item_option_button"
+            >
+              <h3>{`Add to Watchlist ${arr[0]}`}</h3>
             </button>
-          </div>
+          
         ) 
       } else{
           // has to find the primary key by finding correct watchlist_id and stock_id
@@ -92,13 +93,14 @@ class WatchItemButton extends React.Component{
       
           console.log(deleteitemId)
           return (
-            <div className="watchlist_item_option_button">
+            
               <button onClick={() =>
-                this.props.deleteWatchlistItem(deleteitemId)
-              }>
-                {`Remove from Watchlist ${arr[0]}`}
+                this.props.deleteWatchlistItem(deleteitemId)}
+                className="watchlist_item_option_button"
+              >
+                <h3>{`Remove from Watchlist ${arr[0]}`}</h3>
               </button>
-            </div>
+            
           )
         }  
     })

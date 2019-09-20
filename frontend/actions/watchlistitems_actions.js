@@ -28,7 +28,7 @@ const removeWatchItem = watchItemId => ({
 });
 
 const receiveWatchItem = watchItem => ({
-  type: RECEIVE_WATCHLIST,
+  type: RECEIVE_WATCHITEM,
   watchItem
 });
 
