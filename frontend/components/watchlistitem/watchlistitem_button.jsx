@@ -39,7 +39,7 @@ class WatchItemButton extends React.Component{
     // now loop through watchlists and find out if it has the stockId
     // if it does, edit the watchlistArr and change the value
 
-    let 
+  
     listItemsArr.forEach(item => {
       if (parseInt(item.stock_id) === stockId){
         //item.watchlist_id is the watchlistId that has the stock
@@ -62,6 +62,9 @@ class WatchItemButton extends React.Component{
     
     // <button onClick={this.addToWatchList()}>{buttonText}</button>
     console.log("arr", watchlistArr);
+    let deleteitemId;
+  
+
     //iteration through watchlistArr and add buttons accordingly
     let watchlist_options = watchlistArr.map(arr => {
       if (arr[1] === 'false'){
@@ -76,10 +79,22 @@ class WatchItemButton extends React.Component{
           </div>
         ) 
       } else{
+          // has to find the primary key by finding correct watchlist_id and stock_id
+          let item_listId = arr[0];
+          
+          listItemsArr.forEach((obj, idx) =>{
+            if (obj.watchlist_id === parseInt(item_listId) && (obj.stock_id === stockId)){
+              
+              deleteitemId = idx + 1;
+              
+            }
+          }) 
+      
+          console.log(deleteitemId)
           return (
             <div className="watchlist_item_option_button">
               <button onClick={() =>
-                this.props.deleteWatchlistItem({ })
+                this.props.deleteWatchlistItem(deleteitemId)
               }>
                 {`Remove from Watchlist ${arr[0]}`}
               </button>
@@ -88,7 +103,7 @@ class WatchItemButton extends React.Component{
         }  
     })
 
-    console.log("watchlist_options", watchlist_options)
+    console.log("watchlistitem arr", listItemsArr)
     return(
       <div className="watchlist_item_option_container">
         {watchlist_options}
