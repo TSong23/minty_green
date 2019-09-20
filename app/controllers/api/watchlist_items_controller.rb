@@ -10,7 +10,7 @@ class Api::WatchlistItemsController < ApplicationController
   end
 
   def create
-    @watchlist_items = WatchlistItem.new(watchlist_item_params)    
+    @watchlist_item = WatchlistItem.new(watchlist_item_params)    
     if @watchlist_items.save
       render "api/watchlist_items/show"
     else
@@ -22,7 +22,7 @@ class Api::WatchlistItemsController < ApplicationController
     @watchlist_item = WatchlistItem.find(params[:id])
 
     if @watchlist_item.destroy
-      render :index
+      render :show
     else
       render json: @watchlist_item.errors.full_messages, status: 422
     end

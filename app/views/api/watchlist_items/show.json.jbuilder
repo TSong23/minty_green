@@ -1,1 +1,3 @@
-json.partial!  '/api/stocks/watchlist', watchlist: @watchlist
+json.set! @watchlist_item.id do 
+    json.partial! 'watchlistitem', watchlistitem: @watchlist_item 
+  end
