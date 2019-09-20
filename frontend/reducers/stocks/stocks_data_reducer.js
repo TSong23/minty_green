@@ -38,29 +38,6 @@ const stocksDataReducer = (
 export default stocksDataReducer;
 
 
-// let state1 = {
-//   info: {},
-//   historical: {}
-// }
-
-// let payload = { 0: { price: 100 }, 1: { price: 200 } }
-
-// let obj1 = Object.assign({}, state1.historical, payload)
-// console.log(obj1)
-
-// let obj2 = Object.assign({}, state1, { historical: obj1 })
-
-// console.log(obj2)
-
-// state = {
-//   entities:{
-//     stocks:{
-//       info: {},
-//       historical:{},
-//       intraday:{}
-//     }
-//   }
-// }
 
 
 

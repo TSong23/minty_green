@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import SearchContainer from "../search_bar/search_bar_container";
 import Watchlist from '../watchlist/watchlist_container';
 import { fetchBusinessNews } from '../../util/news_api_util';
-// import StockChart from '../stock/stock_chart_container';
-// import StockInfo from '../stock/stock_info_container';
+import StockChart from '../stock/stock_chart_container';
+
 
 
 class HomeMain extends React.Component {
@@ -22,7 +22,6 @@ class HomeMain extends React.Component {
 
   
   render() {
-    // console.log(this.props.userId) gets the current user id
     let allStocks = Object.values(this.props.allStocks)
     let showNews = [];
     if (this.state.news.length > 0){
@@ -59,12 +58,19 @@ class HomeMain extends React.Component {
 
           <div className="home_page_left_main_col">
             <div className="home_page_balance_display">
-              <h3>Balance</h3>
-              <br/>
-              <h3>$0.00</h3>
-              <h3 className="home_page_deposit_money">
-                Add Funds
-              </h3>
+              <div>Balance</div>
+
+              <div className="current_portfolio_value">
+                $54,379.28
+              </div>
+
+              <div className="home_page_deposit_money">
+                <button> Add Funds</button>
+              </div>
+            </div>
+
+            <div className="home_page_portfolio_chart">
+            
             </div>
             
             <div className="home_page_news_container">

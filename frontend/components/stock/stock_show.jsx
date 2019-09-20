@@ -56,7 +56,7 @@ class StockShow extends React.Component {
             </div>
           </div>
 
-          <div>
+          <div className="stock_show_right_main_col">
             <WatchItemButton ticker={this.props.match.params.ticker}/>
 
 

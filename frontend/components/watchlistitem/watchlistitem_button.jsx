@@ -18,8 +18,7 @@ class WatchItemButton extends React.Component{
     let stocksArr = Object.values(this.props.allStocks);
     let listItemsArr = Object.values(this.props.watchlistItems);
     let watchlistArr = [];
-    console.log("this prop watchlist", this.props.watchlists)
-    console.log("this.props.listItemsArr", this.props.watchlistItems )
+
     Object.keys(this.props.watchlists).forEach(id => {
       watchlistArr.push([id, "false"])
     });
@@ -62,7 +61,6 @@ class WatchItemButton extends React.Component{
     // [ ["1", "true"]
     // ["2", "true"] ]
     
-    console.log("arr", watchlistArr);
     let deleteitemId;
   
 
@@ -74,7 +72,7 @@ class WatchItemButton extends React.Component{
           
             <button onClick={() => 
               this.props.createWatchlistItem({ stock_id: stockId, watchlist_id: ajaxlistid})}
-              className="watchlist_item_option_button"
+              className="watchlist_item_add_button"
             >
               <h3>{`Add to Watchlist ${arr[0]}`}</h3>
             </button>
@@ -92,12 +90,11 @@ class WatchItemButton extends React.Component{
             }
           }) 
       
-          console.log(deleteitemId)
           return (
             
               <button onClick={() =>
                 this.props.deleteWatchlistItem(deleteitemId)}
-                className="watchlist_item_option_button"
+                className="watchlist_item_remove_button"
               >
                 <h3>{`Remove from Watchlist ${arr[0]}`}</h3>
               </button>
@@ -106,7 +103,6 @@ class WatchItemButton extends React.Component{
         }  
     })
 
-    console.log("watchlistitem arr", listItemsArr)
     return(
       <div className="watchlist_item_option_container">
         {watchlist_options}

@@ -9,22 +9,21 @@ export default class StockChart extends React.Component {
 
   componentDidMount(){
     this.props.fetchStockIntraday(this.props.match.params.ticker);
-    console.log("api call made")
   }
 
   componentDidUpdate(prevProps){
     if (prevProps.match.params.ticker !== this.props.match.params.ticker){
       this.props.fetchStockIntraday(this.props.match.params.ticker);
-      console.log("api call made")
     } else if(this.props.time !== "1d" && (this.props.time !== prevProps.time) ){
       this.props.fetchStockPastData(this.props.match.params.ticker, this.props.time);
-      console.log("api call made")
     }
   }
 
   render() {
     
     let data = [];
+    let color = "#21CE99";
+
 
     if(this.props.time === "1d"){
       Object.values(this.props.intraday).map(dayData => {
@@ -32,12 +31,24 @@ export default class StockChart extends React.Component {
           data.push({ time: dayData.minute, Close: dayData.close })
         } 
       })
+      if( data[data.length - 1]){
+        if(data[0]["Close"] > data[data.length-1]["Close"]){
+          color = "#F45531";
+        }
+      }
+
     }else {
       Object.values(this.props.historical).map(dayData => {
         if (dayData.close) {
           data.push({ time: dayData.date, Close: dayData.close })
         }
       })
+      
+      if (data[data.length - 1]) {
+        if (data[0]["Close"] > data[data.length - 1]["Close"]) {
+          color = "#F45531";
+        }
+      }
     }
     
     return (
@@ -51,7 +62,7 @@ export default class StockChart extends React.Component {
           <Tooltip/>
           <XAxis dataKey = 'time' tick={false} axisLine={false}/>
           <YAxis domain={['auto', 'auto']} tick={false} axisLine={false}/>
-          <Line type="monotone" dataKey="Close" stroke="#21CE99" 
+          <Line type="monotone" dataKey="Close" stroke={color} 
             strokeWidth={2} dot={false}/>
           {/* <ReferenceLine y={refData} stroke="gray" strokeDasharray="3 3" /> */}
         </LineChart>
