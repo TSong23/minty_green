@@ -1,1 +1,1 @@
-json.extract! watchlistitem, :watchlist_id, :stock_id
+json.extract! watchlistitem, :id, :watchlist_id, :stock_id

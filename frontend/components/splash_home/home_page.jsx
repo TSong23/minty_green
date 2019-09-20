@@ -62,6 +62,9 @@ class HomeMain extends React.Component {
               <h3>Balance</h3>
               <br/>
               <h3>$0.00</h3>
+              <h3 className="home_page_deposit_money">
+                Add Funds
+              </h3>
             </div>
             
             <div className="home_page_news_container">
@@ -73,9 +76,7 @@ class HomeMain extends React.Component {
           </div>
 
           <div className="home_page_right_main_col">
-            <div className="home_page_deposit_money">
-              Deposit
-            </div>
+            
             <Watchlist 
               userId={this.props.userId}
               allStocks={allStocks}

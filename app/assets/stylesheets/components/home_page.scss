@@ -76,10 +76,17 @@
         flex-direction: column;
         
         .home_page_balance_display{
-          min-height: 25%;
+          min-height: 50%;
           font-size: 32px;
           font-family: Arial, Helvetica, sans-serif;
           font-weight: 500;
+          display: flex;
+          flex-direction: column;
+          align-content: space-around;
+        }
+
+        .home_page_deposit_money{
+          font-size: 18px;
         }
       }
 

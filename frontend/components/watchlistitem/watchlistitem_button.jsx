@@ -18,7 +18,9 @@ class WatchItemButton extends React.Component{
     let stocksArr = Object.values(this.props.allStocks);
     let listItemsArr = Object.values(this.props.watchlistItems);
     let watchlistArr = [];
-     Object.keys(this.props.watchlists).forEach(id => {
+    console.log("this prop watchlist", this.props.watchlists)
+    console.log("this.props.listItemsArr", this.props.watchlistItems )
+    Object.keys(this.props.watchlists).forEach(id => {
       watchlistArr.push([id, "false"])
     });
 
@@ -60,7 +62,6 @@ class WatchItemButton extends React.Component{
     // [ ["1", "true"]
     // ["2", "true"] ]
     
-    // <button onClick={this.addToWatchList()}>{buttonText}</button>
     console.log("arr", watchlistArr);
     let deleteitemId;
   
@@ -83,10 +84,10 @@ class WatchItemButton extends React.Component{
           // has to find the primary key by finding correct watchlist_id and stock_id
           let item_listId = arr[0];
           
-          listItemsArr.forEach((obj, idx) =>{
+          listItemsArr.forEach((obj) =>{
             if (obj.watchlist_id === parseInt(item_listId) && (obj.stock_id === stockId)){
               
-              deleteitemId = idx + 1;
+              deleteitemId = obj.id;
               
             }
           }) 

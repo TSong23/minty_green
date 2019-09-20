@@ -26,9 +26,7 @@ class Watchlist extends React.Component {
                 listId={id}
                 allStocks={this.props.allStocks}
               /> 
-              <div className="watchlist_add_remove">
-
-              </div>
+            
           </div>
         )     
       })
