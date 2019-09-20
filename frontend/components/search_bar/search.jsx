@@ -66,7 +66,7 @@ class SearchBar extends React.Component{
     return(
       <div className="home_page_nav_bar">
         
-        <Link to='/'>mintgreen</Link>
+        <Link to='/' className="home_nav_button">mintgreen</Link>
         <div className="home_page_nav_wrap">
           <div className="home_page_nav_search">
             <input type="text" 

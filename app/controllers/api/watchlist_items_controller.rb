@@ -9,9 +9,9 @@ class Api::WatchlistItemsController < ApplicationController
      end
   end
 
-  def new
-    @watchlist_item = WatchlistItem.new(watchlist_item_params)    
-    if @watchlist_item.save
+  def create
+    @watchlist_items = WatchlistItem.new(watchlist_item_params)    
+    if @watchlist_items.save
       render "api/watchlist_items/index"
     else
       render json: @watchlist_item.errors.full_messages, status: 422

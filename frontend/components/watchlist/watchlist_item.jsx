@@ -11,6 +11,8 @@ class Watchlist extends React.Component{
     this.props.fetchWatchlistItems(this.props.listId);
   }
 
+  
+
   render(){
     
     let allWatchItems = Object.values(this.props.watchlist_items);
@@ -22,15 +24,17 @@ class Watchlist extends React.Component{
       
       if (company){
         return (
-          <li>
+          
           <NavLink
             to={`/stocks/${company.ticker}`}
             ticker={company.ticker}
             key={company.ticker}
           >
-            {company.ticker}
+            <div className="watchlist_items">
+              <div>{company.ticker}</div>
+            </div> 
           </NavLink>
-          </li>
+         
         )
       }else {
         return null
@@ -38,9 +42,9 @@ class Watchlist extends React.Component{
     })
 
     return(
-      <ul key="watchlist items">
+      <div key="watchlist items" className="watchlist_items_container">
         {listItems}
-      </ul>
+      </div>
     )
   }
 

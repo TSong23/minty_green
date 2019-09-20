@@ -6,11 +6,11 @@ export const fetchWatchlistItems = (listId) => (
   })
 )
 
-export const createWatchlistItem = (watchlistItem) => (
+export const createWatchlistItem = (watchlist_item) => (
   $.ajax({
     method: "POST",
     url: 'api/watchlist_items',
-    data: {watchlistItem}
+    data: {watchlist_item}
   })
 )
 

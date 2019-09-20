@@ -21,11 +21,14 @@ class Watchlist extends React.Component {
         return (
           // console.log(id)
           <div key={id} className="watchlist">
-            <h3>Watchlist</h3>
+            <h3>Watchlist {id}</h3>
               <WatchlistItemContainer 
                 listId={id}
                 allStocks={this.props.allStocks}
               /> 
+              <div className="watchlist_add_remove">
+
+              </div>
           </div>
         )     
       })
@@ -38,6 +41,7 @@ class Watchlist extends React.Component {
     return (
       <div key="watchlists" className="right_col_watchlist_container">
         {allLists}
+
       </div>
     )
 

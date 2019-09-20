@@ -3,6 +3,9 @@
   .home_page_nav_bar_container{
     margin: 0vh 1vw 0vh 1vw;
 
+    .home_nav_button:hover{
+      color: #21CE99;
+    }
     .home_page_nav_bar{
       display: flex;
       flex-direction: row;
@@ -44,7 +47,7 @@
             }
             
             li:hover{
-              color: gray;
+              color: #21CE99;
             }
 
           }
@@ -84,13 +87,12 @@
         position: relative;
         max-width: 350px;
         min-width: 270px;
+        height: fit-content;
         flex: 0 0 22%;
         margin-right: 3vw;
         margin-top: 4vh;
-        background-color: gray;
-        border-radius: 3px;
-        height: 40%;
-        
+        border-radius: 3px;  
+        box-shadow: 2px 2px 9px 2px rgba(0,0,0,0.45);     
       }
   }
 }

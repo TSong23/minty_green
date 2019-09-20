@@ -3,6 +3,7 @@ import SearchContainer from "../search_bar/search_bar_container";
 import StockChart from '../stock/stock_chart_container';
 import StockInfo from '../stock/stock_info_container';
 import StockHeaderContainer from '../stock/stock_header_container';
+import WatchItemButton from '../watchlistitem/watchlistitem_button_container';
 
 class StockShow extends React.Component {
   constructor(props) {
@@ -10,14 +11,7 @@ class StockShow extends React.Component {
     this.state = {
       time: "1d"
     }
-  }
-
-  // changeTime(range){
-  //   this.setState({
-  //     time: range
-  //   })
-  // }
-  
+  }  
 
   render() {
     return (
@@ -62,8 +56,9 @@ class StockShow extends React.Component {
             </div>
           </div>
 
-          <div className="home_page_right_main_col">
-            <h3>Buy/Sell/add to watchlist</h3>
+          <div className="stock_show_right_main_col">
+            <WatchItemButton ticker={this.props.match.params.ticker}/>
+
 
           </div>
 

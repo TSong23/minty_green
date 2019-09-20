@@ -24,7 +24,6 @@ class HomeMain extends React.Component {
   render() {
     // console.log(this.props.userId) gets the current user id
     let allStocks = Object.values(this.props.allStocks)
-    console.log(this.state.news)
     let showNews = [];
     if (this.state.news.length > 0){
       showNews = this.state.news.map(article =>{
