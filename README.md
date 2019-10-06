@@ -26,7 +26,7 @@ export const fetchStockPastData = (ticker, time) => (
 * MintGreen allows users to make purchases of stocks and track their portfolio's value over time (under development)
 
 
-##Usage
+## Usage
 Users can utilize this application to simulate experience of stock investing
 
 
