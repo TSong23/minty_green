@@ -19,7 +19,7 @@ export const fetchStockPastData = (ticker, time) => (
 
 * Users can view stock data by navigating to a company page via MintGreen will parse the data and render the interactive stock chart. The chart has UI elements that allows the time range for the stock data to be changed
 
-
+![alt text](https://raw.githubusercontent.com/TSong23/minty_green/master/app/assets/images/mintgreen_chart_example.png)
 
 * MintGreen keeps track of users and their watchlists. By searching a company's symbol in the search bar, the user can navigate to the show page for that company and add or remove that company from their watchlist
 
