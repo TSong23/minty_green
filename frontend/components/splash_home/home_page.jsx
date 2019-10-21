@@ -22,7 +22,7 @@ class HomeMain extends React.Component {
 
   
   render() {
-    let allStocks = Object.values(this.props.allStocks)
+    let stocks = Object.values(this.props.stocks)
     let showNews = [];
     if (this.state.news.length > 0){
       showNews = this.state.news.map(article =>{

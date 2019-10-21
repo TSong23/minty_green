@@ -6,15 +6,7 @@ import {
 } from '../../actions/stock_actions';
 import {merge} from 'lodash';
 
-const stocksDataReducer = (
-  state = {
-    // name: {},
-    // ticker: {},
-    // info: {},
-    // historical: {},
-    // intraday: {}
-  },
-  action) => {
+const stocksReducer = ( state = {}, action) => {
 
   Object.freeze(state);
   //state will be stocks slice of state
@@ -38,15 +30,17 @@ const stocksDataReducer = (
       return Object.assign({}, state, { info: info_slice });
 
     case RECEIVE_STOCK_LISTING:
-      //this should only be called first time and never again
-      return merge({}, state, action.payload )
-
+      //this is called whenever search bar is mounted
+      let stock_list_arr = Object.values(action.payload).map(stock => {
+        return { "ticker" : stock.ticker , "name" : stock.name}
+      });
+      return merge({}, state, {list: stock_list_arr} );
 
     default:
       return state
   }
 }
-export default stocksDataReducer;
+export default stocksReducer;
 
 
 
