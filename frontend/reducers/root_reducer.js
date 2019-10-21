@@ -4,7 +4,8 @@ import { combineReducers } from "redux";
 //slices of state reducers import
 import errors from './errors_reducer';
 import session from './session_reducer';
-import entities from './entities_reducer';
+// import entities from './entities_reducer';
+import entities from './entitties_test';
 
 const rootReducer = combineReducers({
   entities,

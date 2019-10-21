@@ -83,10 +83,10 @@ class HomeMain extends React.Component {
 
           <div className="home_page_right_main_col">
             
-            <Watchlist 
+            {/* <Watchlist 
               userId={this.props.userId}
               allStocks={allStocks}
-            />            
+            />             */}
           </div>           
           
         </div>

@@ -4,14 +4,15 @@ import {
   RECEIVE_STOCK_INTRADAY,
   RECEIVE_STOCK_LISTING
 } from '../../actions/stock_actions';
+import {merge} from 'lodash';
 
 const stocksDataReducer = (
   state = {
-    name: {},
-    ticker: {},
-    info: {},
-    historical: {},
-    intraday: {}
+    // name: {},
+    // ticker: {},
+    // info: {},
+    // historical: {},
+    // intraday: {}
   },
   action) => {
 
@@ -24,20 +25,23 @@ const stocksDataReducer = (
       // modify stocks.hist slice 
       let intra_slice = Object.assign({}, state.intraday, action.payload);
       // now modify the stocks_slice
-      return Object.assign({}, state, { intraday: intra_slice });
+      return merge({}, state, { intraday: intra_slice });
 
     case RECEIVE_STOCK_PAST_DATA:
       // modify stocks.hist slice 
       let hist_slice = Object.assign({}, action.payload);
       // now modify the stocks_slice
-      return Object.assign({}, state, { historical: hist_slice });
+      return merge({}, state, { historical: hist_slice });
 
     case RECEIVE_COMPANY_INFO:
       let info_slice = Object.assign({}, state.info, action.payload);
       return Object.assign({}, state, { info: info_slice });
+
     case RECEIVE_STOCK_LISTING:
-      let name_slice = Object.assign({}, state.name, action.payload.name);
-      let name_slice = Object.assign({}, state.name, action.payload.name);
+      //this should only be called first time and never again
+      return merge({}, state, action.payload )
+
+
     default:
       return state
   }

@@ -5,7 +5,8 @@ import {fetchStockAllListing} from  '../../actions/stock_actions';
 import { fetchBusinessNews } from '../../util/news_api_util';
 
 const mstp = (state) => ({
-  allStocks: state.entities.stocks.allStocks,
+  // allStocks: state.entities.stocks.allStocks,
+  allStocks: state.entities,
   currentUser: state.entities.users[state.session.id],
   userId: state.session.id 
 });
