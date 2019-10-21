@@ -7,6 +7,7 @@ const stocksListingReducer = (state = {}, action) => {
 
   switch(action.type){
     case RECEIVE_STOCK_LISTING:
+      console.log("listing reducer", action.payload)
       return Object.assign({}, action.payload)
     default:
       return state
