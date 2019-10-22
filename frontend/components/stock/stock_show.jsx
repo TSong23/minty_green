@@ -2,7 +2,8 @@ import React from 'react';
 import SearchContainer from "../search_bar/search_bar_container";
 import StockChart from '../stock/stock_chart_container';
 import StockInfo from '../stock/stock_info_container';
-import StockHeaderContainer from '../stock/stock_header_container';
+// import StockHeaderContainer from '../stock/stock_header_container';
+import StockHeader from '../stock/stock_header';
 import WatchItemButton from '../watchlistitem/watchlistitem_button_container';
 
 
@@ -17,11 +18,11 @@ class StockShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchStockAllListing();
+
   } 
 
   render() {
     console.log("this.props", this.props);
-    console.log("this.state", this.state);
     return (
       <div className="home_page">
 
@@ -32,12 +33,11 @@ class StockShow extends React.Component {
         <div className="home_page_main_container">
 
           <div className="home_page_left_main_col">
-            {/* <StockHeaderContainer 
+            
+            <StockHeader
               ticker={this.props.match.params.ticker}
-            />      */}
-            <div className="main_chart_company_title">
-              {this.state.allStocks[this.props.match.params.ticker]}
-            </div>
+            />     
+        
 
             {/* <div className="stock_current_price">
               current price holder  

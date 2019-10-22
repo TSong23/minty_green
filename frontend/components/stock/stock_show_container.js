@@ -9,7 +9,7 @@ import { fetchStockPastData,
 
 
 const mstp = ({ entities: { stocks } }, ownProps) => ({
-  stockAllInfo : stocks[ownProps.match.params.ticker]
+  stockAllInfo : stocks
 })
 
 const mdtp = () => ({
