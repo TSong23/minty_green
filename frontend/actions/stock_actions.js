@@ -8,9 +8,10 @@ export const RECEIVE_STOCK_FOR_STORE = "RECEIVE_STOCK_FOR_STORE";
 
 
 
-export const receiveStockPastData = (payload) => ({
+export const receiveStockPastData = (payload, ticker) => ({
   type: RECEIVE_STOCK_PAST_DATA,
-  payload
+  payload,
+  ticker
   //stock maybe replaced with replaced with intraday
   // historical, ticker
 }) 
@@ -38,7 +39,7 @@ export const receiveStockForStore = (payload) => ({
 
 export const fetchStockPastData = (ticker, time) => dispatch => (
   StockAPIUtil.fetchStockPastData(ticker, time).then(
-    payload => (dispatch(receiveStockPastData(payload))))
+    payload => (dispatch(receiveStockPastData(payload, ticker))))
 )
 
 export const fetchCompanyInfo = (ticker) => dispatch => (

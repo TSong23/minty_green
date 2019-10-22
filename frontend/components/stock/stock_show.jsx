@@ -4,40 +4,58 @@ import StockChart from '../stock/stock_chart_container';
 import StockInfo from '../stock/stock_info_container';
 import StockHeaderContainer from '../stock/stock_header_container';
 import WatchItemButton from '../watchlistitem/watchlistitem_button_container';
+import { fetchStockAllListing } from '../../util/stock_api_util';
+
 
 class StockShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: "1d"
+      time: "1d",
+      allStocks : {}
     }
   }  
 
+  componentDidMount(){
+    fetchStockAllListing().then(
+      res => {
+        this.setState({
+          allStocks: Object.values(res)
+        })
+      }
+    )
+  } 
+
   render() {
+    console.log("this.props", this.props);
+    console.log("this.state", this.state);
     return (
       <div className="home_page">
 
         <div className="home_page_nav_bar_container">
-          <SearchContainer ticker={this.props.match.params.ticker}/>
+          <SearchContainer />
         </div>
 
         <div className="home_page_main_container">
 
           <div className="home_page_left_main_col">
-            <StockHeaderContainer 
+            {/* <StockHeaderContainer 
               ticker={this.props.match.params.ticker}
-            />     
+            />      */}
+            <div className="main_chart_company_title">
+              {this.state.allStocks[this.props.match.params.ticker]}
+            </div>
 
             {/* <div className="stock_current_price">
               current price holder  
             </div>        */}
            
-            <div className="home_page_left_chart">
+            {/* <div className="home_page_left_chart">
               <StockChart
                 ticker={this.props.match.params.ticker}
                 time={this.state.time}  
               />
-            </div>
+            </div> */}
             
             {/* <div className="home_page_left_chart">
               placeholder
@@ -51,16 +69,16 @@ class StockShow extends React.Component {
               <button onClick={() => this.setState({time: "1y"})}>1Y</button>              
             </div>            
             <br/>
-            <div className="home_page_left_col_bottom_chart">
+
+            {/* <div className="home_page_left_col_bottom_chart">
               <StockInfo ticker={this.props.match.params.ticker}/>
-            </div>
+            </div> */}
+            
           </div>
 
-          <div className="stock_show_right_main_col">
+          {/* <div className="stock_show_right_main_col">
             <WatchItemButton ticker={this.props.match.params.ticker}/>
-
-
-          </div>
+          </div> */}
 
         </div>
 

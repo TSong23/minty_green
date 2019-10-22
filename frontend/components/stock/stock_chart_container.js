@@ -4,13 +4,11 @@ import { fetchStockPastData, fetchCompanyInfo, fetchStockIntraday} from '../../a
 
 import StockChart from './stock_chart';
 
-const mstp = ({entities: { stocks: {currentStock} }}) => ({
-  //later on, this will send the ticker, date range information
-  // to properly render the chart
-  intraday: currentStock.intraday,
+const mstp = ({entities: { stocks }}, ownProps) => ({
+  // get ticker and send only necessary slice of state
+  intraday: stocks[`${ownProps.match.params.ticker}`].intraday,
   historical: currentStock.historical,
   info: currentStock.info
-
 })
 
 const mdtp = (dispatch) => ({

@@ -5,21 +5,20 @@ import { withRouter } from 'react-router-dom';
 import { fetchStockPastData, fetchCompanyInfo, fetchStockIntraday } from '../../actions/stock_actions';
 
 
-const mstp = ( state) => ({
-  allStocks: state.entities.stocks.allStocks,
-  currentUser: state.entities.users[state.session.id],
-  userId: state.session.id
+const mstp = ({ entities: { stocks } }, ownProps) => ({
+  stockAllInfo : stocks[ownProps.match.params.ticker]
 })
 
 const mdtp = () => ({
   logout: () => dispatch(logout()),
+  // fetchStockAllListing : () => fetchStockAllListing()
   // fetchStockPastData: (ticker, time) => dispatch(fetchStockPastData(ticker, time)),
   // fetchStockIntraday: (ticker) => dispatch(fetchStockIntraday(ticker)),
   // fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker))  
 })
 
-export default connect(
-  null,
+export default withRouter(connect(
+  mstp,
   mdtp
-)(StockShow);
+)(StockShow));
 
