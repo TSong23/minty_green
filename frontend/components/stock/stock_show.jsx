@@ -4,7 +4,6 @@ import StockChart from '../stock/stock_chart_container';
 import StockInfo from '../stock/stock_info_container';
 import StockHeaderContainer from '../stock/stock_header_container';
 import WatchItemButton from '../watchlistitem/watchlistitem_button_container';
-import { fetchStockAllListing } from '../../util/stock_api_util';
 
 
 class StockShow extends React.Component {
@@ -17,13 +16,7 @@ class StockShow extends React.Component {
   }  
 
   componentDidMount(){
-    fetchStockAllListing().then(
-      res => {
-        this.setState({
-          allStocks: Object.values(res)
-        })
-      }
-    )
+    this.props.fetchStockAllListing();
   } 
 
   render() {
