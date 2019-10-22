@@ -2,7 +2,8 @@ import {
   RECEIVE_STOCK_PAST_DATA,
   RECEIVE_COMPANY_INFO,
   RECEIVE_STOCK_INTRADAY,
-  RECEIVE_STOCK_LISTING
+  RECEIVE_STOCK_LISTING,
+  RECEIVE_STOCK_FOR_STORE
 } from '../../actions/stock_actions';
 import {merge} from 'lodash';
 
@@ -30,11 +31,8 @@ const stocksReducer = ( state = {}, action) => {
       return Object.assign({}, state, { info: info_slice });
 
     case RECEIVE_STOCK_LISTING:
-      //this is called whenever search bar is mounted
-      let stock_list_arr = Object.values(action.payload).map(stock => {
-        return { "ticker" : stock.ticker , "name" : stock.name}
-      });
-      return merge({}, state, {list: stock_list_arr} );
+      //this is called whenever home page is mounted
+      return merge({}, state, action.payload );
 
     default:
       return state

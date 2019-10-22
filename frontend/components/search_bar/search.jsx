@@ -8,18 +8,20 @@ class SearchBar extends React.Component{
     super(props);
     this.state = {
       inputVal: "",
-      // allStocks: []
+      allStocks: []
     }
     this.selectName = this.selectName.bind(this);
   }
 
-  // componentDidMount(){
-  //   fetchStockAllListing().then(
-  //     res => this.setState({
-  //       allStocks: Object.values(res)
-  //     })
-  //   )
-  // } 
+  componentDidMount(){
+    fetchStockAllListing().then(
+      res => {
+        this.setState({
+          allStocks: Object.values(res)
+        })
+      }
+    )
+  } 
 
   update(){
     return (e) => {
@@ -31,15 +33,27 @@ class SearchBar extends React.Component{
     const matches = [];
 
     if (this.state.inputVal.length !== 0){
-      this.props.allStocks.forEach(stock => {
+      this.state.allStocks.forEach(stock => {
         let substr = stock["ticker"].slice(0, this.state.inputVal.length);
         if (substr === this.state.inputVal.toUpperCase()){
-          if(matches.length < 5){
+          if(matches.length < 3){
             matches.push(stock["ticker"]);
           }
         }
       });      
     }
+
+    // if (this.state.inputVal.length !== 0) {
+    //   this.state.allStocks.forEach(stock => {
+    //     let substr = stock["name"].slice(0, this.state.inputVal.length);
+    //     if (substr === this.state.inputVal.toUpperCase()) {
+    //       if (matches.length < 6) {
+    //         matches.push(stock["name"]);
+    //       }
+    //     }
+    //   });
+    // }
+
     return matches
   }
 

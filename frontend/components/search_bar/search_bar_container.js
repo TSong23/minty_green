@@ -5,9 +5,8 @@ import stocksReducer from '../../reducers/stocks/stock_test';
 
 // the provider allows all files inside component to access the store
 
-const mstp = ({ session, entities: { users, stocks } }) => ({
-  currentUser: users[session.id],
-  allStocks : stocks
+const mstp = ({ session, entities: { users} }) => ({
+  currentUser: users[session.id]
 })
 
 const mdtp = dispatch => ({

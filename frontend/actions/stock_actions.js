@@ -4,6 +4,7 @@ export const RECEIVE_STOCK_PAST_DATA = "RECEIVE_STOCK_PAST_DATA";
 export const RECEIVE_COMPANY_INFO = "RECEIVE_COMPANY_INFO";
 export const RECEIVE_STOCK_INTRADAY = "RECEIVE_STOCK_INTRADAY";
 export const RECEIVE_STOCK_LISTING = "RECEIVE_STOCK_LISTING";
+export const RECEIVE_STOCK_FOR_STORE = "RECEIVE_STOCK_FOR_STORE";
 
 
 
@@ -29,6 +30,10 @@ export const receiveStockListing = (payload) => ({
   payload
 }) 
 
+export const receiveStockForStore = (payload) => ({
+  type: RECEIVE_STOCK_FOR_STORE,
+  payload
+}) 
 
 
 export const fetchStockPastData = (ticker, time) => dispatch => (
@@ -50,6 +55,11 @@ export const fetchStockAllListing = () => dispatch => (
   StockAPIUtil.fetchStockAllListing().then(
     payload => (dispatch(receiveStockListing(payload))))
 )
+
+// export const fetchStockForStore = () => dispatch => (
+//   StockAPIUtil.fetchStockAllListing().then(
+//     payload => (dispatch(receiveStockForStore(payload))))
+// )
 
 export const fetchStockName = (ticker) => (
   StockAPIUtil.fetchStockName(ticker).then(
