@@ -34,25 +34,20 @@ class SearchBar extends React.Component{
 
     if (this.state.inputVal.length !== 0){
       this.state.allStocks.forEach(stock => {
+
+        //search by ticker or name
         let substr = stock["ticker"].slice(0, this.state.inputVal.length);
-        if (substr === this.state.inputVal.toUpperCase()){
-          if(matches.length < 3){
-            matches.push(stock["ticker"]);
+        let nameStr = stock["name"].slice(0, this.state.inputVal.length);
+        if (substr === this.state.inputVal.toUpperCase() || 
+          nameStr.toLowerCase() === this.state.inputVal )
+        {
+          if(matches.length < 6){
+            matches.push([stock["ticker"],"   ",stock["name"]]);
           }
         }
-      });      
-    }
 
-    // if (this.state.inputVal.length !== 0) {
-    //   this.state.allStocks.forEach(stock => {
-    //     let substr = stock["name"].slice(0, this.state.inputVal.length);
-    //     if (substr === this.state.inputVal.toUpperCase()) {
-    //       if (matches.length < 6) {
-    //         matches.push(stock["name"]);
-    //       }
-    //     }
-    //   });
-    // }
+      }); //end of loop      
+    }
 
     return matches
   }
@@ -67,9 +62,9 @@ class SearchBar extends React.Component{
       return (   
         <li key={result}>    
           <NavLink 
-            to={`/stocks/${result}`} 
-            ticker={result}
-            key={result}
+            to={`/stocks/${result[0]}`} 
+            ticker={result[0]}
+            key={result[0]}
           >
             {result}
           </NavLink>
