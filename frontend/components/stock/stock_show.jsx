@@ -22,7 +22,7 @@ class StockShow extends React.Component {
   } 
 
   render() {
-    console.log("this.props", this.props);
+    console.log("stock show params ticker", this.props.match.params.ticker);
     return (
       <div className="home_page">
 
@@ -43,12 +43,12 @@ class StockShow extends React.Component {
               current price holder  
             </div>        */}
            
-            {/* <div className="home_page_left_chart">
+            <div className="home_page_left_chart">
               <StockChart
                 ticker={this.props.match.params.ticker}
                 time={this.state.time}  
               />
-            </div> */}
+            </div>
             
             {/* <div className="home_page_left_chart">
               placeholder

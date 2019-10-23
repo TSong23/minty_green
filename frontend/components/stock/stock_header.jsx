@@ -8,12 +8,10 @@ export default class StockHeader extends React.Component{
     this.state = {
       companyName : ""
     }
-    console.log("header props", this.props.ticker);
   }
 
   componentDidMount(){
     fetchStockName(this.props.ticker).then(res => {
-      console.log("header name", res.stock.name);
       this.setState({companyName : res.stock.name }) 
     });
   }

@@ -12,12 +12,12 @@ const mstp = ({entities: { stocks }}, ownProps) => ({
 })
 
 const mdtp = (dispatch) => ({
-  fetchStockPastData: (ticker, time) => dispatch(fetchStockPastData(ticker, time)),
+  // fetchStockPastData: (ticker, time) => dispatch(fetchStockPastData(ticker, time)),
   fetchStockIntraday: (ticker) => dispatch(fetchStockIntraday(ticker)),  
-  fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker))
+  // fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker))
 })
 
 export default withRouter(connect(
-  mstp,
+  null,
   mdtp
 )(StockChart))

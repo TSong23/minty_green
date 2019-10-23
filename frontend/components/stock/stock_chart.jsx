@@ -5,9 +5,11 @@ import { ReferenceLine, ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YA
 export default class StockChart extends React.Component {
   constructor(props){
     super(props);
+    console.log("stock chart const props", props)
   }
 
   componentDidMount(){
+    console.log("stock chart")
     this.props.fetchStockIntraday(this.props.match.params.ticker);
   }
 
@@ -21,6 +23,13 @@ export default class StockChart extends React.Component {
 
   render() {
     
+    return(
+      <div>
+        filler
+      </div>
+    );
+
+
     let data = [];
     let color = "#21CE99";
 

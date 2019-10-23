@@ -16,9 +16,10 @@ const stocksReducer = ( state = {}, action) => {
 
     case RECEIVE_STOCK_INTRADAY:
       // modify stocks.hist slice 
-      let intra_slice = Object.assign({}, state.intraday, action.payload);
+      let intra_slice = Object.assign({}, state[action.ticker], {intraday : action.payload} );
+      console.log("intra_slice", intra_slice )
       // now modify the stocks_slice
-      return merge({}, state, { intraday: intra_slice });
+      return merge({}, state, { [action.ticker] : intra_slice });
 
     case RECEIVE_STOCK_PAST_DATA:
       // modify stocks.hist slice 
