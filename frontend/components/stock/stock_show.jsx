@@ -26,7 +26,7 @@ class StockShow extends React.Component {
   } 
 
   componentDidUpdate(prevProps){
-    console.log("stock show update")
+    // console.log("stock show update")
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
       this.props.fetchStockIntraday(this.props.match.params.ticker);
       this.props.fetchCompanyInfo(this.props.match.params.ticker);
@@ -36,13 +36,18 @@ class StockShow extends React.Component {
   }
 
   render() {
-    console.log("stock show render; this.props", this.props);
-    console.log("stock show render; this.state", this.state);
+    // console.log("stock show render; this.props", this.props);
+    // console.log("stock show render; this.state", this.state);
 
     let companyName;
-
+    let intradayData;
     if (this.props.stockAllInfo){
       companyName = this.props.stockAllInfo.companyName;
+      if (this.props.stockAllInfo.intraday){
+        intradayData = this.props.stockAllInfo.intraday;
+      }
+    } else {
+      console.log("stock show render allinfo not defined")
     }
 
     return (
@@ -60,21 +65,16 @@ class StockShow extends React.Component {
               {companyName}
             </div>
             
-            {/* <StockHeader
-              ticker={this.props.match.params.ticker}
-            />      */}
-        
-
             {/* <div className="stock_current_price">
               current price holder  
             </div>        */}
            
             <div className="home_page_left_chart">
-              {/* <StockChart
+              <StockChart
                 ticker={this.props.match.params.ticker}
                 time={this.state.time}  
-              /> */}
-              filler
+                intradayData={intradayData}
+              />       
             </div>
             
             {/* <div className="home_page_left_chart">

@@ -18,6 +18,6 @@ const mdtp = (dispatch) => ({
 })
 
 export default withRouter(connect(
-  mstp,
+  null,
   mdtp
 )(StockChart))
