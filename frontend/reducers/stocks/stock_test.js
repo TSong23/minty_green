@@ -17,19 +17,18 @@ const stocksReducer = ( state = {}, action) => {
     case RECEIVE_STOCK_INTRADAY:
       // modify stocks.hist slice 
       let intra_slice = Object.assign({}, state[action.ticker], {intraday : action.payload} );
-      console.log("intra_slice", intra_slice )
       // now modify the stocks_slice
       return merge({}, state, { [action.ticker] : intra_slice });
 
     case RECEIVE_STOCK_PAST_DATA:
       // modify stocks.hist slice 
-      let hist_slice = Object.assign({}, action.payload);
+      let hist_slice = Object.assign({}, state[action.ticker], { year : action.payload });
       // now modify the stocks_slice
-      return merge({}, state, { historical: hist_slice });
+      return merge({}, state, { [action.ticker]: hist_slice });
 
     case RECEIVE_COMPANY_INFO:
-      let info_slice = Object.assign({}, state.info, action.payload);
-      return Object.assign({}, state, { info: info_slice });
+      let info_slice = Object.assign({}, [action.ticker], action.payload);
+      return Object.assign({}, state, { [action.ticker] : info_slice });
 
     case RECEIVE_STOCK_LISTING:
       //this is called whenever home page is mounted

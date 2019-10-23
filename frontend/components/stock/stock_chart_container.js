@@ -6,9 +6,9 @@ import StockChart from './stock_chart';
 
 const mstp = ({entities: { stocks }}, ownProps) => ({
   // get ticker and send only necessary slice of state
-  intraday: stocks[`${ownProps.match.params.ticker}`].intraday,
-  historical: currentStock.historical,
-  info: currentStock.info
+  allStockInfo: stocks[ownProps.match.params.ticker],
+  // historical: currentStock.historical,
+  // info: currentStock.info
 })
 
 const mdtp = (dispatch) => ({
@@ -18,6 +18,6 @@ const mdtp = (dispatch) => ({
 })
 
 export default withRouter(connect(
-  null,
+  mstp,
   mdtp
 )(StockChart))

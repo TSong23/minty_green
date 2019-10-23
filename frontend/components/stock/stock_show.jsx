@@ -12,17 +12,39 @@ class StockShow extends React.Component {
     super(props);
     this.state = {
       time: "1d",
-      allStocks : {}
+      allStocks : {},
+      companyName : '',
+      ticker : this.props.match.params.ticker,
+
     }
   }  
 
   componentDidMount(){
-    this.props.fetchStockAllListing();
-
+    //fetch all stock listings and stock info for the stock in question
+    this.props.fetchStockIntraday(this.props.match.params.ticker);
+    this.props.fetchCompanyInfo(this.props.match.params.ticker);
   } 
 
+  componentDidUpdate(prevProps){
+    console.log("stock show update")
+    if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
+      this.props.fetchStockIntraday(this.props.match.params.ticker);
+      this.props.fetchCompanyInfo(this.props.match.params.ticker);
+      this.setState({ ticker: this.props.match.params.ticker});
+      // this.setState({ companyName: this.props.stockAllInfo[name] });      
+    }
+  }
+
   render() {
-    console.log("stock show params ticker", this.props.match.params.ticker);
+    console.log("stock show render; this.props", this.props);
+    console.log("stock show render; this.state", this.state);
+
+    let companyName;
+
+    if (this.props.stockAllInfo){
+      companyName = this.props.stockAllInfo.companyName;
+    }
+
     return (
       <div className="home_page">
 
@@ -33,10 +55,14 @@ class StockShow extends React.Component {
         <div className="home_page_main_container">
 
           <div className="home_page_left_main_col">
+
+            <div className="main_chart_company_title">
+              {companyName}
+            </div>
             
-            <StockHeader
+            {/* <StockHeader
               ticker={this.props.match.params.ticker}
-            />     
+            />      */}
         
 
             {/* <div className="stock_current_price">
@@ -44,10 +70,11 @@ class StockShow extends React.Component {
             </div>        */}
            
             <div className="home_page_left_chart">
-              <StockChart
+              {/* <StockChart
                 ticker={this.props.match.params.ticker}
                 time={this.state.time}  
-              />
+              /> */}
+              filler
             </div>
             
             {/* <div className="home_page_left_chart">

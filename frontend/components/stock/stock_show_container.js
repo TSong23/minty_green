@@ -9,15 +9,16 @@ import { fetchStockPastData,
 
 
 const mstp = ({ entities: { stocks } }, ownProps) => ({
-  stockAllInfo : stocks
+  stockAllInfo: stocks[ownProps.match.params.ticker]
 })
 
 const mdtp = () => ({
   logout: () => dispatch(logout()),
-  fetchStockAllListing : () => dispatch(fetchStockAllListing())
+  fetchStockAllListing : () => dispatch(fetchStockAllListing()),
+  fetchStockIntraday: (ticker) => dispatch(fetchStockIntraday(ticker)),
+  fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker))  
+
   // fetchStockPastData: (ticker, time) => dispatch(fetchStockPastData(ticker, time)),
-  // fetchStockIntraday: (ticker) => dispatch(fetchStockIntraday(ticker)),
-  // fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker))  
 })
 
 export default withRouter(connect(

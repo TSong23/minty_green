@@ -10,18 +10,30 @@ export default class StockHeader extends React.Component{
     }
   }
 
-  componentDidMount(){
-    fetchStockName(this.props.ticker).then(res => {
-      this.setState({companyName : res.stock.name }) 
-    });
-  }
+  // componentDidMount(){
+  //   fetchStockName(this.props.ticker).then(res => {
+  //     this.setState({companyName : res.stock.name }) 
+  //   });
+  // }
+
+  // componentDidUpdate(prevProps){
+  //   console.log("Stock Header did update")
+  //   if (prevProps.ticker !== this.props.ticker){
+  //     fetchStockName(this.props.ticker).then(res => {
+  //       this.setState({ companyName: res.stock.name })
+  //     });
+  //   }
+  // }
 
 
   render(){
-    let name = this.state.companyName;
+    console.log("stock header render")
+    fetchStockName(this.props.ticker).then(res => {
+      this.setState({ companyName: res.stock.name })
+    });
     return(
       <div className="main_chart_company_title">
-        {name}
+        {this.state.companyName}
       </div>
     )
   }

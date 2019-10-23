@@ -27,7 +27,7 @@ export default class StockChart extends React.Component {
       <div>
         filler
       </div>
-    );
+    )
 
 
     let data = [];
