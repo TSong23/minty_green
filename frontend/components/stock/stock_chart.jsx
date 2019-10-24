@@ -22,8 +22,7 @@ export default class StockChart extends React.Component {
 
   render() {
     //once intraday becomes available, until then: show loading
-    console.log("stock chart render")
-
+    // console.log("chart props", this.props)
     let data = [];
     let color = "#21CE99";
   
@@ -38,7 +37,6 @@ export default class StockChart extends React.Component {
           color = "#F45531";
         }
       }
-      console.log("stock chart render data", data, color)
     }
 
 
@@ -54,7 +52,7 @@ export default class StockChart extends React.Component {
           <Tooltip />
           <XAxis dataKey='time' tick={false} axisLine={false} />
           <YAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
-          <Line type="monotone" dataKey="Close" stroke={color}
+          <Line type="monotone" dataKey="Price" stroke={color}
             strokeWidth={2} dot={false} />
           {/* <ReferenceLine y={refData} stroke="gray" strokeDasharray="3 3" /> */}
         </LineChart>

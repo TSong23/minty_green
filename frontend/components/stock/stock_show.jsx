@@ -12,9 +12,7 @@ class StockShow extends React.Component {
     super(props);
     this.state = {
       time: "1d",
-      allStocks : {},
-      companyName : '',
-      ticker : this.props.match.params.ticker,
+    
     }
   }  
 
@@ -29,27 +27,36 @@ class StockShow extends React.Component {
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
       this.props.fetchStockIntraday(this.props.match.params.ticker);
       this.props.fetchCompanyInfo(this.props.match.params.ticker);
-      // this.props.fetchStockPastData(this.props.match.params.ticker);  
+      this.props.fetchStockPastData(this.props.match.params.ticker);  
     }
   }
 
   render() {
-    // console.log("stock show render; this.props", this.props);
-    // console.log("stock show render; this.state", this.state);
-
+    
+    //constants
     let companyName;
     let intradayData;
+    let yearData;
     let currentPrice = 0;
+    let passData;
+
+    //check for companyName, intraday, and 1 year
     if (this.props.stockAllInfo){
       companyName = this.props.stockAllInfo.companyName;
-      if (this.props.stockAllInfo.intraday){
+      if (this.props.stockAllInfo.year && this.state.time !== '1d') {
+        passData = this.props.stockAllInfo.year;
+      } else if (this.props.stockAllInfo.intraday ){
         let length = this.props.stockAllInfo.intraday.length;
-        intradayData = this.props.stockAllInfo.intraday;
+        passData = this.props.stockAllInfo.intraday;
         currentPrice = this.props.stockAllInfo.intraday[length - 1]['close'];
       }
+
     } else {
       console.log("stock show render allinfo not defined")
     }
+
+ 
+
 
     return (
       <div className="home_page">

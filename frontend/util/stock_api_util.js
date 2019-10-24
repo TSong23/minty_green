@@ -1,7 +1,7 @@
 
 export const fetchStockPastData = (ticker, time) => (
   $.ajax({
-    url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/${time}?token=${iexApiKey}`
+    url: `https://cloud.iexapis.com/stable/stock/${ticker}/chart/1y?token=${iexApiKey}`
   })
 )
 
