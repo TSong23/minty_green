@@ -15,7 +15,6 @@ class StockShow extends React.Component {
       allStocks : {},
       companyName : '',
       ticker : this.props.match.params.ticker,
-
     }
   }  
 
@@ -30,8 +29,7 @@ class StockShow extends React.Component {
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
       this.props.fetchStockIntraday(this.props.match.params.ticker);
       this.props.fetchCompanyInfo(this.props.match.params.ticker);
-      this.setState({ ticker: this.props.match.params.ticker});
-      // this.setState({ companyName: this.props.stockAllInfo[name] });      
+      // this.props.fetchStockPastData(this.props.match.params.ticker);  
     }
   }
 
@@ -41,10 +39,13 @@ class StockShow extends React.Component {
 
     let companyName;
     let intradayData;
+    let currentPrice = 0;
     if (this.props.stockAllInfo){
       companyName = this.props.stockAllInfo.companyName;
       if (this.props.stockAllInfo.intraday){
+        let length = this.props.stockAllInfo.intraday.length;
         intradayData = this.props.stockAllInfo.intraday;
+        currentPrice = this.props.stockAllInfo.intraday[length - 1]['close'];
       }
     } else {
       console.log("stock show render allinfo not defined")
@@ -65,13 +66,12 @@ class StockShow extends React.Component {
               {companyName}
             </div>
             
-            {/* <div className="stock_current_price">
-              current price holder  
-            </div>        */}
+            <div className="stock_current_price">
+               ${currentPrice}
+            </div>       
            
             <div className="home_page_left_chart">
               <StockChart
-                ticker={this.props.match.params.ticker}
                 time={this.state.time}  
                 intradayData={intradayData}
               />       
