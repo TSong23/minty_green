@@ -27,12 +27,12 @@ export default class StockChart extends React.Component {
     });
 
     let length = reArr.length;
-    if (time === '1w'){
-      return reArr.slice(0, 7);
+    if (time === '5d'){
+      return reArr.slice(Math.round(length*34 / 35) );
     } else if (time === '6m'){
-      return reArr.slice(0, Math.round(length/2));
+      return reArr.slice(Math.round(length/2));
     } else if (time === '1m'){
-      return reArr.slice(0, Math.round(length / 10));
+      return reArr.slice(Math.round( (length * 9 / 10) ));
     } else {
       return reArr;
     }

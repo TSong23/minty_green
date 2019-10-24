@@ -6,18 +6,18 @@ export default class StockInfo extends React.Component{
     this.state = this.props.info;
   }
 
-  componentDidMount(){
-    this.props.fetchCompanyInfo(this.props.ticker);    
-  }
+  // componentDidMount(){
+  //   this.props.fetchCompanyInfo(this.props.ticker);    
+  // }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
-      this.props.fetchCompanyInfo(this.props.match.params.ticker)
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
+  //     this.props.fetchCompanyInfo(this.props.match.params.ticker)
+  //   }
+  // }
 
   render(){
-    
+    console.log("stock info render")
     return(
       <div>
         <br/>

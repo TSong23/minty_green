@@ -1,41 +1,47 @@
 import React from 'react';
 import SearchContainer from "../search_bar/search_bar_container";
 import StockChart from '../stock/stock_chart';
-import StockInfo from '../stock/stock_info_container';
-// import StockHeaderContainer from '../stock/stock_header_container';
-import StockHeader from '../stock/stock_header';
 import WatchItemButton from '../watchlistitem/watchlistitem_button_container';
+import StockInfo from './stock_info';
+// import StockInfo from '../stock/stock_info_container';
 
+
+//try importing ajax call directly to not save to state and trigger rerenders
+import {fetchCompanyInfo} from '../../util/stock_api_util';
 
 class StockShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       time: "1d",
-    
+      info: {},
+      stats: {}
     }
   }  
 
   componentDidMount(){
     //fetch all stock listings and stock info for the stock in question
     this.props.fetchStockIntraday(this.props.match.params.ticker);
-    this.props.fetchCompanyInfo(this.props.match.params.ticker);
-    this.props.fetchStockPastData(this.props.match.params.ticker);  
+    this.props.fetchStockPastData(this.props.match.params.ticker); 
+    fetchCompanyInfo(this.props.match.params.ticker).then(
+      res => this.setState({info : res})
+    )
   } 
 
   componentDidUpdate(prevProps){
     // console.log("stock show update")
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
       this.props.fetchStockIntraday(this.props.match.params.ticker);
-      this.props.fetchCompanyInfo(this.props.match.params.ticker);
       this.props.fetchStockPastData(this.props.match.params.ticker);  
+      fetchCompanyInfo(this.props.match.params.ticker);
     }
   }
 
   render() {
-    
+    console.log("stock show render")
     //constants for company info
     let companyName;
+    let companyInfo;
     let currentPrice = "0.00";
     let percChange = "0.0";
 
@@ -57,6 +63,13 @@ class StockShow extends React.Component {
         }
       } 
     } 
+
+    // pass company info straight to stock info section
+    if (this.state.info !== {}){
+      companyName = this.state.info.companyName;
+      companyInfo = this.state.info;
+      console.log("stock show info set")
+    }
 
 
     return (
@@ -98,9 +111,9 @@ class StockShow extends React.Component {
             </div>            
             <br/>
 
-            {/* <div className="home_page_left_col_bottom_chart">
-              <StockInfo ticker={this.props.match.params.ticker}/>
-            </div> */}
+            <div className="home_page_left_col_bottom_chart">
+              <StockInfo info={companyInfo}/>
+            </div>
             
           </div>
 

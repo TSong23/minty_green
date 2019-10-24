@@ -16,7 +16,7 @@ const mdtp = () => ({
   logout: () => dispatch(logout()),
   fetchStockAllListing : () => dispatch(fetchStockAllListing()),
   fetchStockIntraday: (ticker) => dispatch(fetchStockIntraday(ticker)),
-  fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker)),
+  // fetchCompanyInfo: (ticker) => dispatch(fetchCompanyInfo(ticker)),
   fetchStockPastData: (ticker, time) => dispatch(fetchStockPastData(ticker, time)),
 })
 
