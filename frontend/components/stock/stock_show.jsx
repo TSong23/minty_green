@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchContainer from "../search_bar/search_bar_container";
-import StockChart from '../stock/stock_chart_container';
+import StockChart from '../stock/stock_chart';
 import StockInfo from '../stock/stock_info_container';
 // import StockHeaderContainer from '../stock/stock_header_container';
 import StockHeader from '../stock/stock_header';
@@ -20,6 +20,7 @@ class StockShow extends React.Component {
     //fetch all stock listings and stock info for the stock in question
     this.props.fetchStockIntraday(this.props.match.params.ticker);
     this.props.fetchCompanyInfo(this.props.match.params.ticker);
+    this.props.fetchStockPastData(this.props.match.params.ticker);  
   } 
 
   componentDidUpdate(prevProps){
@@ -33,29 +34,29 @@ class StockShow extends React.Component {
 
   render() {
     
-    //constants
+    //constants for company info
     let companyName;
-    let intradayData;
-    let yearData;
-    let currentPrice = 0;
+    let currentPrice = "0.00";
+    let percChange = "0.0";
+
+    //constants for stock data
     let passData;
 
-    //check for companyName, intraday, and 1 year
+
+    //check for companyName and current price and pass data
     if (this.props.stockAllInfo){
-      companyName = this.props.stockAllInfo.companyName;
-      if (this.props.stockAllInfo.year && this.state.time !== '1d') {
-        passData = this.props.stockAllInfo.year;
-      } else if (this.props.stockAllInfo.intraday ){
+      companyName = this.props.stockAllInfo.companyName;     
+      if (this.props.stockAllInfo.intraday ){
         let length = this.props.stockAllInfo.intraday.length;
-        passData = this.props.stockAllInfo.intraday;
         currentPrice = this.props.stockAllInfo.intraday[length - 1]['close'];
-      }
-
-    } else {
-      console.log("stock show render allinfo not defined")
-    }
-
- 
+        // percChange = Math.round((currentPrice/this.props.stockAllInfo.intraday[0]['close'] - 1) * 100) / 100;        
+        if (this.props.stockAllInfo.year && this.state.time !== '1d'){
+          passData = this.props.stockAllInfo.year;
+        } else {
+          passData = this.props.stockAllInfo.intraday;
+        }
+      } 
+    } 
 
 
     return (
@@ -74,13 +75,13 @@ class StockShow extends React.Component {
             </div>
             
             <div className="stock_current_price">
-               ${currentPrice}
+               ${currentPrice}              
             </div>       
            
             <div className="home_page_left_chart">
               <StockChart
                 time={this.state.time}  
-                intradayData={intradayData}
+                stockData={passData}
               />       
             </div>
             

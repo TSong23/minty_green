@@ -7,58 +7,77 @@ export default class StockChart extends React.Component {
     super(props);
   }
 
-  // componentDidMount(){
-  //   console.log("stock chart")
-  //   this.props.fetchStockIntraday(this.props.match.params.ticker);
-  // }
+  formatData(stockData){
+    let reArr = [];
+    Object.values(stockData).map(data => {
+      if (data.close) {
+        reArr.push({ time: data.label, Price: data.close })
+      }
+    });
+    return reArr;
+  }
 
-  // componentDidUpdate(prevProps){
-  //   if (prevProps.match.params.ticker !== this.props.match.params.ticker){
-  //     this.props.fetchStockIntraday(this.props.match.params.ticker);
-  //   } else if(this.props.time !== "1d" && (this.props.time !== prevProps.time) ){
-  //     this.props.fetchStockPastData(this.props.match.params.ticker, this.props.time);
-  //   }
-  // }
+  findColor(data){
+    let color = "#21CE99";
+    if (data[0]["Price"] > data[data.length - 1]["Price"]) {
+      color = "#F45531";
+    }
+    return color;
+  }
 
   render() {
     //once intraday becomes available, until then: show loading
-    // console.log("chart props", this.props)
     let data = [];
-    let color = "#21CE99";
-  
-    if (this.props.intradayData){
-      Object.values(this.props.intradayData).map(dayData => {
-        if (dayData.close) {
-          data.push({ time: dayData.minute, Price: dayData.close })
-        }
-      })
-      if (data[data.length - 1]) {
-        if (data[0]["Price"] > data[data.length - 1]["Price"]) {
-          color = "#F45531";
-        }
-      }
-    }
+    let color;
 
+
+  
+    if (this.props.stockData && (this.props.time === '1d')){
+      data = this.formatData(this.props.stockData);
+      color = this.findColor(data);
+    } else if (this.props.stockData && (this.props.time === '1d')){
+
+    } else if (this.props.stockData && (this.props.time === '1d')){
+
+    } else if (this.props.stockData && (this.props.time === '1d')){
+
+    } else if (this.props.stockData && (this.props.time === '1y')){
+      data = this.formatData(this.props.stockData);
+      color = this.findColor(data);
+    }
+   
+
+    console.log("chart data", this.props)
 
     return(  
-            
       <ResponsiveContainer width="100%" height="90%" >
         <LineChart
           data={data}
-          // width={500}
-          // height={340}
-          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-        >
-          <Tooltip />
+          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
           <XAxis dataKey='time' tick={false} axisLine={false} />
           <YAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
+          <Tooltip />
           <Line type="monotone" dataKey="Price" stroke={color}
             strokeWidth={2} dot={false} />
-          {/* <ReferenceLine y={refData} stroke="gray" strokeDasharray="3 3" /> */}
         </LineChart>
       </ResponsiveContainer>
-    
     )
+  }
+}
+
+// <ResponsiveContainer width="100%" height="90a%" >
+        // <LineChart
+        //   data={data}
+        //   margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
+        //   <XAxis dataKey='name' tick={false} axisLine={false} />
+        //   <YAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
+        //   <Tooltip />
+        //   <Line type="monotone" dataKey="uv" stroke={color}
+        //     strokeWidth={2} dot={false} />
+        // </LineChart>
+      // </ResponsiveContainer>
+
+
 
     // if(this.props.time === "1d"){
     //   Object.values(this.props.intraday).map(dayData => {
@@ -104,11 +123,6 @@ export default class StockChart extends React.Component {
     //   </ResponsiveContainer>
 
     // );
-
-
-
-  }
-}
 
 //domain: allows rescaling of y axis
 //tick={false} axisLine={false}
