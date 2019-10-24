@@ -3,7 +3,6 @@ import SearchContainer from "../search_bar/search_bar_container";
 import StockChart from '../stock/stock_chart';
 import WatchItemButton from '../watchlistitem/watchlistitem_button_container';
 import StockInfo from './stock_info';
-// import StockInfo from '../stock/stock_info_container';
 
 
 //try importing ajax call directly to not save to state and trigger rerenders
@@ -26,6 +25,7 @@ class StockShow extends React.Component {
     fetchCompanyInfo(this.props.match.params.ticker).then(
       res => this.setState({info : res})
     )
+    
   } 
 
   componentDidUpdate(prevProps){
@@ -33,10 +33,13 @@ class StockShow extends React.Component {
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
       this.props.fetchStockIntraday(this.props.match.params.ticker);
       this.props.fetchStockPastData(this.props.match.params.ticker);  
-      fetchCompanyInfo(this.props.match.params.ticker);
+      fetchCompanyInfo(this.props.match.params.ticker).then(
+        res => this.setState({ info: res })
+      )      
     }
   }
 
+  
   render() {
     console.log("stock show render")
     //constants for company info
