@@ -17,6 +17,27 @@ export default class StockChart extends React.Component {
     return reArr;
   }
 
+  formatBetween(stockData, time){
+    let reArr  = [];
+    
+    Object.values(stockData).map(data => {
+      if (data.close) {
+        reArr.push({ time: data.label, Price: data.close })
+      }
+    });
+
+    let length = reArr.length;
+    if (time === '1w'){
+      return reArr.slice(0, 7);
+    } else if (time === '6m'){
+      return reArr.slice(0, Math.round(length/2));
+    } else if (time === '1m'){
+      return reArr.slice(0, Math.round(length / 10));
+    } else {
+      return reArr;
+    }
+  }
+
   findColor(data){
     let color = "#21CE99";
     if (data[0]["Price"] > data[data.length - 1]["Price"]) {
@@ -30,24 +51,15 @@ export default class StockChart extends React.Component {
     let data = [];
     let color;
 
-
   
     if (this.props.stockData && (this.props.time === '1d')){
       data = this.formatData(this.props.stockData);
       color = this.findColor(data);
-    } else if (this.props.stockData && (this.props.time === '1d')){
-
-    } else if (this.props.stockData && (this.props.time === '1d')){
-
-    } else if (this.props.stockData && (this.props.time === '1d')){
-
-    } else if (this.props.stockData && (this.props.time === '1y')){
-      data = this.formatData(this.props.stockData);
+    } else if (this.props.stockData && this.props.time){
+      data = this.formatBetween(this.props.stockData, this.props.time);
       color = this.findColor(data);
-    }
+    }   
    
-
-    console.log("chart data", this.props)
 
     return(  
       <ResponsiveContainer width="100%" height="90%" >
