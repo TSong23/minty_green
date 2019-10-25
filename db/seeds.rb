@@ -9,38 +9,38 @@
 
 Stock.destroy_all
 
-sp500_list_string = File.read("#{Rails.root}/db/SP500List.csv")
+# sp500_list_string = File.read("#{Rails.root}/db/SP500List.csv")
 
-def read_stocks(stock_str)
-    stock_str.split("\n")
-end  
+# def read_stocks(stock_str)
+#     stock_str.split("\n")
+# end  
 
-def make_stock_entry(stock_arr)
-  stock_entry = []
-  stock_arr.each do |stock| 
-    stock_entry.push({
-      ticker: (stock.split(",")[0]).gsub('"',''),
-      name: (stock.split(",")[1]).gsub('"','')
-      }) 
-  end
-  stock_entry
-end
+# def make_stock_entry(stock_arr)
+#   stock_entry = []
+#   stock_arr.each do |stock| 
+#     stock_entry.push({
+#       ticker: (stock.split(",")[0]).gsub('"',''),
+#       name: (stock.split(",")[1]).gsub('"','')
+#       }) 
+#   end
+#   stock_entry
+# end
 
-stock_obj = make_stock_entry(read_stocks(sp500_list_string));
+# stock_obj = make_stock_entry(read_stocks(sp500_list_string));
 
-Stock.create(stock_obj)
+# Stock.create(stock_obj)
 
 #stock
-# Stock.destroy_all
-# stock1 = Stock.create(ticker: "MSFT", name: "Microsoft Corp")
-# stock2 = Stock.create(ticker: "AMZN", name: "Amazon")
-# stock3 = Stock.create(ticker: "AAPL", name: "Apple")
-# stock4 = Stock.create(ticker: "GOOG", name: "Google")
-# stock5 = Stock.create(ticker: "BRK.B", name: "Buffet")
-# stock6 = Stock.create(ticker: "FB", name: "Facebook")
-# stock7 = Stock.create(ticker: "V", name: "Visa")
-# stock8 = Stock.create(ticker: "JNJ", name: "Johnson and Johnson")
-# stock9 = Stock.create(ticker: "JPM", name: "JPMorgan and Chase")
+Stock.destroy_all
+stock1 = Stock.create(ticker: "MSFT", name: "Microsoft Corp")
+stock2 = Stock.create(ticker: "AMZN", name: "Amazon")
+stock3 = Stock.create(ticker: "AAPL", name: "Apple")
+stock4 = Stock.create(ticker: "GOOG", name: "Google")
+stock5 = Stock.create(ticker: "BRK.B", name: "Buffet")
+stock6 = Stock.create(ticker: "FB", name: "Facebook")
+stock7 = Stock.create(ticker: "V", name: "Visa")
+stock8 = Stock.create(ticker: "JNJ", name: "Johnson and Johnson")
+stock9 = Stock.create(ticker: "JPM", name: "JPMorgan and Chase")
 
 
 # #user
@@ -52,24 +52,23 @@ user3 = User.create(username: "alex", password:"123456")
 
 #watchlist
 Watchlist.destroy_all
-wl1 = Watchlist.create(user_id: user1.id)
-wl2 = Watchlist.create(user_id: user1.id)
-wl3 = Watchlist.create(user_id: user2.id)
-wl4 = Watchlist.create(user_id: user2.id)
-wl5 = Watchlist.create(user_id: user3.id)
-wl6 = Watchlist.create(user_id: user3.id)
+Watchlist.create(user_id: user1.id, stock_id: stock1.id)
+Watchlist.create(user_id: user1.id, stock_id: stock2.id)
+Watchlist.create(user_id: user2.id, stock_id: stock3.id)
+Watchlist.create(user_id: user2.id, stock_id: stock4.id)
+Watchlist.create(user_id: user3.id, stock_id: stock5.id)
+Watchlist.create(user_id: user3.id, stock_id: stock6.id)
 
-#watchlist items
-# WatchlistItem.destroy_all
-WatchlistItem.create(watchlist_id: wl1.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl1.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl2.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl2.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl3.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl3.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl4.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl4.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl5.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl5.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl6.id, stock_id: 1)
-WatchlistItem.create(watchlist_id: wl6.id, stock_id: 1)
+# deposits
+Deposit.destroy_all
+Deposit.create([
+  {user_id: user1.id, amount: 50000},
+  {user_id: user2.id, amount: 50000},
+  {user_id: user3.id, amount: 50000}
+])
+
+# #transactions
+# Transaction.destroy_all
+# Transaction.create([
+  
+# ])

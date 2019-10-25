@@ -6,20 +6,19 @@
 #  user_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  stock_id   :integer          not null
 #
 
 class Watchlist < ApplicationRecord
   validates :user_id, presence: true
-
-  has_many :watchlist_items,
-    foreign_key: :watchlist_id,
-    class_name: :WatchlistItem
-  
-  has_many :watched_stocks,
-    through: :watchlist_items,
-    source: :stock
+  validates :stock_id, presence: true
+  validates_uniqueness_of :stock_id, scope: :user_id, :message=>"Stock is on watchlist"
 
   belongs_to :user,
     foreign_key: :user_id,
     class_name: :User
+
+  belongs_to :stock,
+    foreign_key: :stock_id,
+    class_name: :Stock
 end

@@ -46,7 +46,7 @@ export default class StockInfo extends React.Component{
             </div>
           </div>
           <div>
-            <h3>Location</h3>
+            <h3>Headquarters</h3>
             <div>
               {this.props.info.city}, {this.props.info.state}
             </div>

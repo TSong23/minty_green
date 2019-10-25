@@ -21,7 +21,19 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Watchlist
 
+  has_many :deposits,
+    foreign_key: :user_id,
+    class_name: :Deposit
 
+  has_many :transactions,
+    foreign_key: :user_id,
+    class_name: :Transaction
+
+  has_many :watching_stocks,
+    through: :watchlists,
+    source: :stock
+
+  #User Auth
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)
@@ -48,4 +60,42 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
   end
+
+  #User Account Balance
+  #every deposit adds to account balance, every transaction takes away
+
+  def account_balance
+    balance = 0
+    deposits.each {|deposit| balance += deposit.amount}
+
+    transactions.each do |transaction|
+      amount = transaction.price * transaction.num_shares
+      transaction.type == 'BUY' ? balance -= amount : balance += amount
+    end
+    return balance.round(2)
+  end
+
+
+
+
+  #User Stock
+  def all_owned_stock_hash
+    allStocks = Hash.new(0)
+
+    transactions.each do |action|
+      if action.type == "BUY"
+        allStocks[action.stock_id] += action.num_shares
+      else
+        allStocks[action.stock_id] -= action.num_shares
+      end
+    end
+    return allStocks.select {|stockID, numShares| numShares > 0}
+  end
+
+  def owned_shares_stock(stockID)
+    shares = all_owned_stock_hash[stockID] if all_owned_stock_hash[stockID]
+    return shares
+  end
+
+
 end

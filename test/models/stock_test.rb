@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  ticker     :string           not null
-#  price      :float            not null
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
