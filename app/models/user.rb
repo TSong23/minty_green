@@ -61,6 +61,7 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom.urlsafe_base64
   end
 
+  
   #User Account Balance
   #every deposit adds to account balance, every transaction takes away
 
@@ -70,7 +71,7 @@ class User < ApplicationRecord
 
     transactions.each do |transaction|
       amount = transaction.price * transaction.num_shares
-      transaction.type == 'BUY' ? balance -= amount : balance += amount
+      transaction.order_type == 'BUY' ? balance -= amount : balance += amount
     end
     return balance.round(2)
   end
@@ -83,7 +84,7 @@ class User < ApplicationRecord
     allStocks = Hash.new(0)
 
     transactions.each do |action|
-      if action.type == "BUY"
+      if action.order_type == "BUY"
         allStocks[action.stock_id] += action.num_shares
       else
         allStocks[action.stock_id] -= action.num_shares
@@ -92,10 +93,11 @@ class User < ApplicationRecord
     return allStocks.select {|stockID, numShares| numShares > 0}
   end
 
-  def owned_shares_stock(stockID)
+
+  def stock_owned_shares(stockID)
+    shares = 0
     shares = all_owned_stock_hash[stockID] if all_owned_stock_hash[stockID]
     return shares
   end
-
 
 end
