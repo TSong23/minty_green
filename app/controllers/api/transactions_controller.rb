@@ -3,7 +3,7 @@ class Api::TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     @transaction.user_id = current_user.id
     if @transaction.save
-      render json: ['Purchase Success!'], status: 200
+      render json: ['Transaction Success!'], status: 200
     else
       render json: @transaction.errors.full_messages, status: 422
     end

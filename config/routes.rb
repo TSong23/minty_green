@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :stocks, only: [:index, :show]
     resources :watchlists, only: [:index, :create, :show, :destroy]
     resources :transactions, only: [:index, :create]
+    resources :deposits, only: [:index, :create]
   end
 
 end

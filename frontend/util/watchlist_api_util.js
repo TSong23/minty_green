@@ -13,24 +13,24 @@ export const fetchAllWatchlist = () => (
   })
 )
 
-export const fetchWatchlist = (id) => (
-  $.ajax({
-    method: "GET",
-    url: `api/watchlists/${id}`
-  })
-)
+// export const fetchWatchlist = (id) => (
+//   $.ajax({
+//     method: "GET",
+//     url: `api/watchlists/${id}`
+//   })
+// )
 
-export const updateWatchlist = (watchlist) => (
-  $.ajax({
-    method: "PATCH",
-    url: `api/watchlists/${watchlist.id}`,
-    data: {watchlist}
-  })
-)
+// export const updateWatchlist = (watchlist) => (
+//   $.ajax({
+//     method: "PATCH",
+//     url: `api/watchlists/${watchlist.id}`,
+//     data: {watchlist}
+//   })
+// )
 
 export const deleteWatchlist = (id) => (
   $.ajax({
     method: "DELETE",
-    url: `api/watchlists/${watchlist.id}`,
+    url: `api/watchlists/${id}`,
   })
 )

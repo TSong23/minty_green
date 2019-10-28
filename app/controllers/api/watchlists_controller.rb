@@ -8,20 +8,20 @@ class Api::WatchlistsController < ApplicationController
     @watchlist = Watchlist.new(watchlist_params) 
     @watchlist.user_id = current_user.id   
     if @watchlist.save
-      render "api/watchlists/show"
+      render json: ["Added to your watchlist"], status: 200
     else
       render json: @watchlist.errors.full_messages, status: 422
     end
   end
 
-  def show
-    @watchlist = Watchlist.find_by(id: params[:id]);
-    if @watchlist
-      render "api/watchlists/show"
-    else
-      render json: ["Watchlist does not exist"], status: 404
-    end
-  end
+  # def show
+  #   @watchlist = Watchlist.find_by(id: params[:id]);
+  #   if @watchlist
+  #     render "api/watchlists/show"
+  #   else
+  #     render json: ["Watchlist does not exist"], status: 404
+  #   end
+  # end
 
 
   # def update
@@ -40,7 +40,7 @@ class Api::WatchlistsController < ApplicationController
     @watchlist = Watchlist.find(params[:id])
 
     if @watchlist.destroy
-      render :index
+      render json: ['Removed from your Watchlist'], status: 200
     else
       render json: @watchlist.errors.full_messages, status: 422
     end
