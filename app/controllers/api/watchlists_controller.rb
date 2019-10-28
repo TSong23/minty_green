@@ -4,10 +4,11 @@ class Api::WatchlistsController < ApplicationController
     @watchlists = current_user.watchlists
   end
 
-  def new
-    @watchlist = Watchlist.new(watchlist_params)    
+  def create
+    @watchlist = Watchlist.new(watchlist_params) 
+    @watchlist.user_id = current_user.id   
     if @watchlist.save
-      render "api/watchlist/show"
+      render "api/watchlists/show"
     else
       render json: @watchlist.errors.full_messages, status: 422
     end
@@ -23,15 +24,15 @@ class Api::WatchlistsController < ApplicationController
   end
 
 
-  def update
-    @watchlist = Watchlist.find(params[:id])
+  # def update
+  #   @watchlist = Watchlist.find(params[:id])
 
-    if @watchlist.update(watchlist_params)
-      render :show
-    else
-      render json: @watchlist.errors.full_messages, status: 422
-    end
-  end
+  #   if @watchlist.update(watchlist_params)
+  #     render :show
+  #   else
+  #     render json: @watchlist.errors.full_messages, status: 422
+  #   end
+  # end
 
 
 
@@ -48,7 +49,7 @@ class Api::WatchlistsController < ApplicationController
   private 
 
   def watchlist_params
-    params.require(:watchlist).permit(:user_id)
+    params.require(:watchlist).permit(:stock_id)
   end
 
 end

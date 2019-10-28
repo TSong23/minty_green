@@ -5,7 +5,7 @@ import configureStore from "./store/store";
 import * as SessionActions from './actions/session_actions';
 import * as StockActions from './actions/stock_actions';
 import {fetchStockName} from './util/stock_api_util';
-import {fetchWatchlistItems} from './util/watchlistitem_api_util';
+import {fetchAllWatchlist} from './util/watchlist_api_util';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.fetchStockName = fetchStockName;
-  window.fetchWatchlistItems = fetchWatchlistItems;
+  window.fetchAllWatchlist = fetchAllWatchlist;
   // test end  
 
 

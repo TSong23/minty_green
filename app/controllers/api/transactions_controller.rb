@@ -9,6 +9,10 @@ class Api::TransactionsController < ApplicationController
     end
   end
 
+  def index
+    @transactions = current_user.transactions
+  end
+
   private
 
   def transaction_params
