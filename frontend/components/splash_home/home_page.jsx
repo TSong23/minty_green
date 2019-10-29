@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchContainer from "../search_bar/search_bar_container";
-import Watchlist from '../watchlist/watchlist_container';
 import { fetchBusinessNews } from '../../util/news_api_util';
 import StockChart from '../stock/stock_chart_container';
 
+import Watchlist from '../watchlist/watchlist';
 
 
 class HomeMain extends React.Component {
@@ -22,7 +22,20 @@ class HomeMain extends React.Component {
 
   
   render() {
-    let stocks = Object.values(this.props.stocks)
+    // console.log("home page") three tines render
+    // pass the stock symbol and id to watchlist to populate watchlist
+    // Object.keys(this.props.stocks) gives back all the tickers
+    let allTickers = [];
+    let allSymbolID = {};
+    if (Object.keys(this.props.stocks).length) {
+      allTickers = Object.keys(this.props.stocks);
+      allTickers.map(sym => {
+        let stockID = this.props.stocks[sym]["id"];
+        allSymbolID[stockID] = sym;
+      })
+    } 
+
+    // news loging
     let showNews = [];
     if (this.state.news.length > 0){
       showNews = this.state.news.map(article =>{
@@ -81,12 +94,8 @@ class HomeMain extends React.Component {
             </div>
           </div>
 
-          <div className="home_page_right_main_col">
-            
-            {/* <Watchlist 
-              userId={this.props.userId}
-              allStocks={allStocks}
-            />             */}
+          <div className="home_page_right_main_col">            
+            <Watchlist allSymbolID={allSymbolID}/>            
           </div>           
           
         </div>
