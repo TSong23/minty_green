@@ -36,7 +36,7 @@ export const createWatchlist = (watchlist) => dispatch => (
 
 export const deleteWatchlist = (watchlistId) => dispatch => (
   WatchlistApiUtil.deleteWatchlist(watchlistId).then(
-    watchlist => dispatch(removeWatchlist(watchlistId))
+    watchlist => dispatch(removeWatchlist(watchlist.id))
   )
 );
 

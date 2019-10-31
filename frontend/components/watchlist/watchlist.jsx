@@ -38,11 +38,10 @@ class Watchlist extends React.Component {
     if (watchedStockIDs.length && Object.keys(this.props.allSymbolID).length){
       // take watchedStockIDs and get the stock symbols, current price
       // then create each watchlistitem and then render the list on home page
-      watchedStockSym = watchedStockIDs.map(item => {
-        let stockSym = Object.values(this.props.allSymbolID)[item.stock_id];
-        console.log("stockSym", stockSym);
+      watchedStockSym = watchedStockIDs.map(ID => {
+        let stockSym = this.props.allSymbolID[ID];
         return(
-          <div key={item.stock_id} className="watchlist_items">
+          <div key={ID} className="watchlist_items">
             <NavLink to={`/stocks/${stockSym}`} ticker={stockSym} key={stockSym}>
               {stockSym}
             </NavLink>
@@ -50,7 +49,6 @@ class Watchlist extends React.Component {
         );
       });
     }
-    console.log("watchedStockSym", watchedStockSym);
 
 
 

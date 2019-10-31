@@ -17,11 +17,13 @@ class HomeMain extends React.Component {
 
   componentDidMount(){
     this.props.fetchStockAllListing();
+    this.props.fetchAllWatchlist();
     fetchBusinessNews().then(news => this.setState({news: news.articles}))
   }
 
   
   render() {
+
     // console.log("home page") three tines render
     // pass the stock symbol and id to watchlist to populate watchlist
     // Object.keys(this.props.stocks) gives back all the tickers

@@ -40,7 +40,7 @@ class Api::WatchlistsController < ApplicationController
     @watchlist = Watchlist.find(params[:id])
 
     if @watchlist.destroy
-      render json: ['Removed from your Watchlist'], status: 200
+      render json: ["Removed from your watchlist"], status: 200
     else
       render json: @watchlist.errors.full_messages, status: 422
     end

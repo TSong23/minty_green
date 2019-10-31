@@ -21,7 +21,5 @@ class Stock < ApplicationRecord
     foreign_key: :stock_id,
     class_name: :Transaction
 
- 
-  
-  
+
 end
