@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchContainer from "../search_bar/search_bar_container";
 import StockChart from '../stock/stock_chart';
-import WatchItemButton from '../watchlistitem/watchlistitem_button_container';
+import WatchlistButton from '../watchlist/watchlist_button_container';
 import StockInfo from './stock_info';
 
 
@@ -71,7 +71,7 @@ class StockShow extends React.Component {
     if (this.state.info !== {}){
       companyName = this.state.info.companyName;
       companyInfo = this.state.info;
-      console.log("stock show info set")
+      // console.log("stock show info set")
     }
 
 
@@ -120,9 +120,9 @@ class StockShow extends React.Component {
             
           </div>
 
-          {/* <div className="stock_show_right_main_col">
-            <WatchItemButton ticker={this.props.match.params.ticker}/>
-          </div> */}
+          <div className="stock_show_right_main_col">
+            <WatchlistButton ticker={this.props.match.params.ticker}/>
+          </div>
 
         </div>
 

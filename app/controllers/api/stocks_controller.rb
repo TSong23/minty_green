@@ -5,7 +5,7 @@ class Api::StocksController < ApplicationController
 
 
   def show
-    @stock = Stock.find_by(ticker: params[:id])
+    @stock = Stock.find_by(ticker: params[:ticker])
 
     if @stock
       render "api/stocks/show"
@@ -16,6 +16,6 @@ class Api::StocksController < ApplicationController
   private
 
   def stock_params
-    params.require(:stock).permit(:ticker)
+    params.require(:stock).permit(:id, :ticker)
   end
 end

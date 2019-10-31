@@ -46,10 +46,10 @@ const receiveAllWatchlist = watchlists => ({
   watchlists
 });
 
-// const receiveWatchlist = watchlist => ({
-//   type: RECEIVE_WATCHLIST,
-//   watchlist
-// });
+const receiveWatchlist = watchlist => ({
+  type: RECEIVE_WATCHLIST,
+  watchlist
+});
 
 const removeWatchlist = watchlistId => ({
   type: REMOVE_WATCHLIST,

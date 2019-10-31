@@ -31,3 +31,10 @@ export const fetchStockName = (ticker) => (
     url: `api/stocks/${ticker}`
   })
 )
+
+export const fetchStockByID = (id) => (
+  $.ajax({
+    method: "GET",
+    url: `api/stocks/${ticker}`
+  })
+)
