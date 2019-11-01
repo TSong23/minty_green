@@ -151,8 +151,16 @@ class StockShow extends React.Component {
           </div>
 
           <div className="stock_show_right_main_col">
-            <WatchlistButton currentStockId={currentStockId}
-              stockWatched={stockWatched} watchlistID={watchlistID}/>
+
+            <div className="transaction_form">
+              Buy / Sell
+            </div>
+
+            <div>
+              <WatchlistButton currentStockId={currentStockId}
+                stockWatched={stockWatched} watchlistID={watchlistID}/>
+            </div>
+
           </div>
 
         </div>

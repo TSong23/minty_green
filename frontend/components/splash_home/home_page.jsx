@@ -40,18 +40,19 @@ class HomeMain extends React.Component {
     // news loging
     let showNews = [];
     if (this.state.news.length > 0){
-      showNews = this.state.news.map(article =>{
+      showNews = this.state.news.map((article,idx) =>{
         return(
-          <a href={article.url} > 
+          <a href={article.url} key={idx}> 
             <div className="news_item">
               
               <div className="news_item_text">
                 <h2>{article.source.name}</h2>
                 <h3>{article.title}</h3>
+                <h4>{article.description}</h4>
               </div>  
               <div className="news_item_img">                
                 <img src={`${article.urlToImage}`}
-                  style={{width:"225px", height:"150px"}}/>                    
+                  style={{width:"250px", height:"170px"}}/>                    
               </div>
               
             </div>
@@ -89,7 +90,8 @@ class HomeMain extends React.Component {
             </div>
             
             <div className="home_page_news_container">
-              News
+              <h3>News</h3>
+              
               <br/>
               <br/>
               {showNews}

@@ -6,7 +6,6 @@ import {NavLink, Link} from 'react-router-dom';
 class Watchlist extends React.Component {
   constructor(props){
     super(props);
-    // this.props.fetchAllWatchlist();
     this.state = {
       watchedStocks: {}
     };
@@ -28,7 +27,7 @@ class Watchlist extends React.Component {
         return item.stock_id;
       });
     }
-    console.log("watchedStockIDs", watchedStockIDs);
+    // console.log("watchedStockIDs", watchedStockIDs);
 
     // get the list of stock id and tickers.
     // this.props.allSymbolID = {1:"MSFT", 2:"AMZN", etc}
@@ -41,11 +40,17 @@ class Watchlist extends React.Component {
       watchedStockSym = watchedStockIDs.map(ID => {
         let stockSym = this.props.allSymbolID[ID];
         return(
-          <div key={ID} className="watchlist_items">
-            <NavLink to={`/stocks/${stockSym}`} ticker={stockSym} key={stockSym}>
-              {stockSym}
+            <NavLink to={`/stocks/${stockSym}`} 
+              ticker={stockSym} key={stockSym} className="watchlist_items">
+              {stockSym} 
+              <div>
+                Graph Filler
+              </div>
+              <div>
+                Price filler
+              </div>
+              
             </NavLink>
-          </div>          
         );
       });
     }
