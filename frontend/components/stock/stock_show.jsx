@@ -6,7 +6,7 @@ import StockInfo from './stock_info';
 
 
 //try importing ajax call directly to not save to state and trigger rerenders
-import {fetchCompanyInfo} from '../../util/stock_api_util';
+import {fetchCompanyInfo, fetchStockAllListing} from '../../util/stock_api_util';
 
 class StockShow extends React.Component {
   constructor(props) {
@@ -14,7 +14,8 @@ class StockShow extends React.Component {
     this.state = {
       time: "1d",
       info: {},
-      stats: {}
+      stats: {},
+      allStocks: {},
     }
   }  
 
@@ -24,8 +25,11 @@ class StockShow extends React.Component {
     this.props.fetchStockPastData(this.props.match.params.ticker); 
     fetchCompanyInfo(this.props.match.params.ticker).then(
       res => this.setState({info : res})
+    );
+    this.props.fetchAllWatchlist();
+    fetchStockAllListing().then(
+      res => this.setState({ allStocks: res })
     )
-    
   } 
 
   componentDidUpdate(prevProps){
@@ -35,13 +39,19 @@ class StockShow extends React.Component {
       this.props.fetchStockPastData(this.props.match.params.ticker);  
       fetchCompanyInfo(this.props.match.params.ticker).then(
         res => this.setState({ info: res })
-      )      
+      ) 
+      this.props.fetchAllWatchlist();
+      fetchStockAllListing().then(
+        res => this.setState({ allStocks: res })
+      )     
     }
   }
 
   
   render() {
-    console.log("stock show render")
+    // console.log("stock show props", this.props)
+    // console.log("stock show state", this.state)
+
     //constants for company info
     let companyName;
     let companyInfo;
@@ -73,6 +83,26 @@ class StockShow extends React.Component {
       companyInfo = this.state.info;
       // console.log("stock show info set")
     }
+
+    // pass down whether the stock in on user's watchlist
+    // let stockWatched = false;
+    // let watchlistID;
+    // let currentStockId;   
+    // debugger
+    let currentStockId;
+    let stockWatched = false;
+    let watchlistID;
+    if (Object.keys(this.props.watchlists).length &&
+        Object.keys(this.state.allStocks).length) {
+      currentStockId = this.state.allStocks[this.props.match.params.ticker]["id"];
+      Object.values(this.props.watchlists).map(listItem => {
+        if (listItem.stock_id === currentStockId) {
+          stockWatched = true;
+          watchlistID = listItem.id;
+        }
+      })
+    }
+
 
 
     return (
@@ -121,7 +151,8 @@ class StockShow extends React.Component {
           </div>
 
           <div className="stock_show_right_main_col">
-            <WatchlistButton ticker={this.props.match.params.ticker}/>
+            <WatchlistButton currentStockId={currentStockId}
+              stockWatched={stockWatched} watchlistID={watchlistID}/>
           </div>
 
         </div>

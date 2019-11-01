@@ -8,7 +8,8 @@ class Api::WatchlistsController < ApplicationController
     @watchlist = Watchlist.new(watchlist_params) 
     @watchlist.user_id = current_user.id   
     if @watchlist.save
-      render json: ["Added to your watchlist"], status: 200
+      @watchlists = current_user.watchlists
+      # render json: ["Added to your watchlist"], status: 200
     else
       render json: @watchlist.errors.full_messages, status: 422
     end

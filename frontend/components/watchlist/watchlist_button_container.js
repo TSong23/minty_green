@@ -13,6 +13,6 @@ const mdtp = (dispatch) => ({
 })
 
 export default connect(
-  mstp,
+  null,
   mdtp
 )(WatchlistButton)
