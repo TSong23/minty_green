@@ -30,6 +30,7 @@ class StockShow extends React.Component {
     fetchStockAllListing().then(
       res => this.setState({ allStocks: res })
     )
+    debugger
   } 
 
   componentDidUpdate(prevProps){

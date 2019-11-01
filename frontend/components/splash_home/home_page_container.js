@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import HomeMain from './home_page';
 
-import {fetchStockAllListing} from  '../../actions/stock_actions';
+import {fetchStockAllListing, fetchStockIntraday} from  '../../actions/stock_actions';
 import {fetchAllWatchlist} from '../../actions/watchlist_actions';
 import { fetchBusinessNews } from '../../util/news_api_util';
 
@@ -16,7 +16,8 @@ const mstp = (state) => ({
 const dstp = (dispatch)=> ({
   fetchAllWatchlist: () => dispatch(fetchAllWatchlist()),
   fetchStockAllListing: () => dispatch(fetchStockAllListing()),
-  fetchBusinessNews: () => fetchBusinessNews()
+  fetchBusinessNews: () => fetchBusinessNews(),
+  fetchStockIntraday: (ticker) => dispatch(fetchStockIntraday(ticker))
 });
 
 export default connect(
