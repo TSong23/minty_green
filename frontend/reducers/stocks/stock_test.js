@@ -7,7 +7,7 @@ import {
 } from '../../actions/stock_actions';
 import {merge} from 'lodash';
 
-const stocksReducer = ( state = {}, action) => {
+const stocksTestReducer = ( state = {}, action) => {
 
   Object.freeze(state);
   //state will be stocks slice of state
@@ -38,7 +38,7 @@ const stocksReducer = ( state = {}, action) => {
       return state
   }
 }
-export default stocksReducer;
+export default stocksTestReducer;
 
 
 

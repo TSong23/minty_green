@@ -37,8 +37,7 @@ class StockShow extends React.Component {
     // console.log("stock show update")
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
       this.props.fetchStockIntraday(this.props.match.params.ticker);
-      this.props.fetchStockPastData(this.props.match.params.ticker);  
-      fetchCompanyInfo(this.props.match.params.ticker).then(
+      this.props.fetchStockPastData(this.props.match.params.ticker);        fetchCompanyInfo(this.props.match.params.ticker).then(
         res => this.setState({ info: res })
       ) 
       this.props.fetchAllWatchlist();

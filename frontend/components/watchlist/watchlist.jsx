@@ -1,6 +1,7 @@
 import React from 'react';
 import {fetchAllWatchlist} from '../../util/watchlist_api_util';
 import {NavLink, Link} from 'react-router-dom';
+import ListItemGraph from '../watchlistitem/listitem_graph';
 
 
 class Watchlist extends React.Component {
@@ -44,7 +45,7 @@ class Watchlist extends React.Component {
               ticker={stockSym} key={stockSym} className="watchlist_items">
               {stockSym} 
               <div>
-                Graph Filler
+                <ListItemGraph ticker={stockSym}></ListItemGraph>
               </div>
               <div>
                 Price filler

@@ -6,6 +6,9 @@ import StockChart from '../stock/stock_chart_container';
 
 import Watchlist from '../watchlist/watchlist';
 
+// HomeMain
+// serves as container for search, Protfolio, watchlists, news 
+// listens to 
 
 class HomeMain extends React.Component {
   constructor(props) {
@@ -16,26 +19,31 @@ class HomeMain extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchStockAllListing();
-    this.props.fetchAllWatchlist();
+    // this.props.fetchStockAllListing();
+    // this.props.fetchAllWatchlist();
     fetchBusinessNews().then(news => this.setState({news: news.articles}))
   }
 
   
   render() {
 
+    // once watchlists and stocks of state are loaded
+    // fetchintrady for stocks on watchlist
+    
+
     // console.log("home page") three tines render
     // pass the stock symbol and id to watchlist to populate watchlist
     // Object.keys(this.props.stocks) gives back all the tickers
-    let allTickers = [];
-    let allSymbolID = {};
-    if (Object.keys(this.props.stocks).length) {
-      allTickers = Object.keys(this.props.stocks);
-      allTickers.map(sym => {
-        let stockID = this.props.stocks[sym]["id"];
-        allSymbolID[stockID] = sym;
-      })
-    } 
+
+    // let allTickers = [];
+    // let allSymbolID = {};
+    // if (Object.keys(this.props.stocks).length) {
+    //   allTickers = Object.keys(this.props.stocks);
+    //   allTickers.map(sym => {
+    //     let stockID = this.props.stocks[sym]["id"];
+    //     allSymbolID[stockID] = sym;
+    //   })
+    // } 
 
     // news loging
     let showNews = [];
@@ -98,9 +106,12 @@ class HomeMain extends React.Component {
             </div>
           </div>
 
-          <div className="home_page_right_main_col">            
+          {/* <div className="home_page_right_main_col">            
             <Watchlist allSymbolID={allSymbolID}/>            
-          </div>           
+          </div>            */}
+          <div>
+            Filler
+          </div>
           
         </div>
 
