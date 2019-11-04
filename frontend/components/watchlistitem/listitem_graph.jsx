@@ -22,6 +22,7 @@ class ListItemGraph extends React.Component{
 
     let chartData = [];
     let color = "#21CE99";
+    let open, current;
 
     if (this.props.stockInfo.intraday){
       Object.values(this.props.stockInfo.intraday).map(data => {
@@ -29,12 +30,15 @@ class ListItemGraph extends React.Component{
           chartData.push({time: data.label, Price: data.close})
         }
       });   
-      if (chartData[0]["Price"] > chartData[chartData.length -1]["Price"]){
+      open = chartData[0]["Price"];
+      current = chartData[chartData.length - 1]["Price"];
+      if (open > current){
         color = "#F45531";
       }
     } 
 
     return(
+      <div className="mini_chart">
         <LineChart width={175} height={55}
           data={chartData}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }} 
@@ -44,6 +48,10 @@ class ListItemGraph extends React.Component{
           <Line type="monotone" dataKey="Price" stroke={color}
             strokeWidth={2} dot={false} />
         </LineChart>
+        <div>
+          ${current}
+        </div>
+      </div>
     )
     
   }

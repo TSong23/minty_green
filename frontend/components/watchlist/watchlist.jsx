@@ -70,7 +70,7 @@ class Watchlist extends React.Component {
               <div>
                 {stockSym}
               </div>
-              <div className="mini_chart">
+              <div className="mini_chart_container">
                 <ListItemGraph ticker={stockSym}></ListItemGraph>
               </div>
             </NavLink>
