@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink, Link} from 'react-router-dom';
-import ListItemGraph from '../watchlistitem/listitem_graph';
+import ListItemGraph from '../watchlistitem/listitem_graph_container';
 
 
 // Serves to fetch user's watchlists and the all stock stock listings
@@ -22,7 +22,7 @@ class Watchlist extends React.Component {
   }
 
   render(){
-
+    
     // get user's watched stocks stock_id
     let watchedStockIDs = [];
     if ( Object.values(this.state.watchedStocks).length ){

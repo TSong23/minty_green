@@ -8,11 +8,14 @@ class ListItemGraph extends React.Component{
     }
   }
 
-  // componentDidMount(){
-
-  // }
+  componentDidMount(){
+    if (this.props.stockInfo){
+      this.props.fetchStockIntraday(this.props.ticker)
+    }
+  }
 
   render(){
+  
     return(
       <div>
         ListItemGraph Filler

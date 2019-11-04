@@ -1,19 +1,26 @@
 import { connect } from 'react-redux';
 import ListItemGraph from './listitem_graph';
+import {
+  fetchStockPastData,
+  fetchCompanyInfo,
+  fetchStockIntraday,
+  fetchStockAllListing
+} from '../../actions/stock_actions';
 
 const mstp = (state, ownProps) => {
-  let stock = state.entities.stocks[ownProps.stock.ticker];
-  let intraday;
-  if (stock && stock.intraday){
-    intraday = stock.intraday
-  }
+  let stockInfo = state.entities.stocks[ownProps.ticker];
+  
   return {
-    stock: state.entities.stocks
+    stockInfo
   }
 };
+
+const mdtp = dispatch => ({
+  fetchStockIntraday : (ticker) => dispatch(fetchStockIntraday(ticker)),
+})
 
 
 export default connect(
   mstp,
-  null
+  mdtp
 )(ListItemGraph);
