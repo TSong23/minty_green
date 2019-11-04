@@ -6,6 +6,7 @@ import * as SessionActions from './actions/session_actions';
 import * as StockActions from './actions/stock_actions';
 import {fetchStockName} from './util/stock_api_util';
 import {fetchAllWatchlist, deleteWatchlist, createWatchlist} from './util/watchlist_api_util';
+import {fetchTransactions} from './actions/transaction_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchAllWatchlist = fetchAllWatchlist;
   window.deleteWatchlist = deleteWatchlist;
   window.createWatchlist = createWatchlist;
+  window.fetchTransactions  = fetchTransactions;
   // test end  
 
 
