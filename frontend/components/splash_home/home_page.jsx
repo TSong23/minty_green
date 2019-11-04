@@ -4,11 +4,11 @@ import SearchContainer from "../search_bar/search_bar_container";
 import { fetchBusinessNews } from '../../util/news_api_util';
 import StockChart from '../stock/stock_chart_container';
 
-import Watchlist from '../watchlist/watchlist';
+import Watchlist from '../watchlist/watchlist_container';
 
 // HomeMain
 // serves as container for search, Protfolio, watchlists, news 
-// listens to 
+// listens to currentUser and userId slice of state
 
 class HomeMain extends React.Component {
   constructor(props) {
@@ -106,12 +106,12 @@ class HomeMain extends React.Component {
             </div>
           </div>
 
-          {/* <div className="home_page_right_main_col">            
-            <Watchlist allSymbolID={allSymbolID}/>            
-          </div>            */}
-          <div>
-            Filler
-          </div>
+          <div className="home_page_right_main_col">            
+            <Watchlist/>            
+          </div> 
+          {/* <div className="home_page_right_main_col">
+            <Watchlist allSymbolID={allSymbolID} />
+          </div>                      */}
           
         </div>
 

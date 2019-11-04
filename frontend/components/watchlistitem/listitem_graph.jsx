@@ -8,9 +8,9 @@ class ListItemGraph extends React.Component{
     }
   }
 
-  componentDidMount(){
+  // componentDidMount(){
 
-  }
+  // }
 
   render(){
     return(

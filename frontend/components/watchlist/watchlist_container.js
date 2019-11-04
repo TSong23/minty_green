@@ -7,12 +7,13 @@ import {
   // updateWatchlist,
   // deleteWatchlist
  } from '../../actions/watchlist_actions';
-import { fetchStockAllListing} from '../../actions/stock_actions';
+import { fetchStockAllListing } from '../../actions/stock_actions';
 
 
 
-const mstp = ({ entities: { watchlists} }) => ({
-  watchlists
+const mstp = ({ entities }) => ({
+  watchlists : entities.watchlists,
+  stocks : entities.stocks
 })
 
 const mdtp = dispatch => ({
