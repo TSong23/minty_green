@@ -5,12 +5,17 @@ import ListItemGraph from '../watchlistitem/listitem_graph_container';
 
 // Serves to fetch user's watchlists and the all stock stock listings
 // Then sends down info to each listitem graph
+// should not listen to any slice of state because each list itme will cause
+// entire watchlist to rerender
+// while componentDidMount will set global state, save the data to local state
+// so that it minimizes rerendering
 
 class Watchlist extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      watchedStocks: {}
+      watchedStocks: {},
+      stocks : {}
     };
   }
 
@@ -18,11 +23,14 @@ class Watchlist extends React.Component {
     this.props.fetchAllWatchlist().then(
       res => this.setState({watchedStocks : res.watchlists})
     );
-    this.props.fetchStockAllListing();
+    this.props.fetchStockAllListing().then(
+      res => this.setState({stocks: res.payload})
+    );
   }
 
   render(){
-    
+    console.log("watchlist render");
+
     // get user's watched stocks stock_id
     let watchedStockIDs = [];
     if ( Object.values(this.state.watchedStocks).length ){
@@ -30,7 +38,7 @@ class Watchlist extends React.Component {
         return item.stock_id;
       });
     }
-    console.log("watchlist container state", this.state)
+    // console.log("watchlist container state", this.state)
     
     // get the list of stock id and tickers.
     // this.props.allSymbolID = {1:"MSFT", 2:"AMZN", etc}
@@ -38,15 +46,15 @@ class Watchlist extends React.Component {
 
     let allTickers = [];
     let allSymbolID = {};
-    if (Object.keys(this.props.stocks).length) {
-      allTickers = Object.keys(this.props.stocks);
+    if (Object.keys(this.state.stocks).length) {
+      allTickers = Object.keys(this.state.stocks);
       allTickers.map(sym => {
-        let stockID = this.props.stocks[sym]["id"];
+        let stockID = this.state.stocks[sym]["id"];
         allSymbolID[stockID] = sym;
       })
     } 
 
-    console.log("allSymbolID", allSymbolID);
+    // console.log("allSymbolID", allSymbolID);
 
 
 
@@ -59,14 +67,12 @@ class Watchlist extends React.Component {
         return(
             <NavLink to={`/stocks/${stockSym}`} 
               ticker={stockSym} key={stockSym} className="watchlist_items">
-              {stockSym} 
               <div>
+                {stockSym}
+              </div>
+              <div className="mini_chart">
                 <ListItemGraph ticker={stockSym}></ListItemGraph>
               </div>
-              <div>
-                Price filler
-              </div>
-              
             </NavLink>
         );
       });

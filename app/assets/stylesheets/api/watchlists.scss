@@ -29,7 +29,12 @@
     flex-flow: row;
     align-items: center;
     justify-content: space-between; 
-    padding: 0px 12px 0px 12px;      
+    padding: 0px 12px 0px 12px;  
+    
+    .mini_chart{
+      min-width: 75%;
+      height: 90%;
+    }
   }
 
   .watchlist_items:hover{

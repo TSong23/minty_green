@@ -7,13 +7,10 @@ import {
   fetchStockAllListing
 } from '../../actions/stock_actions';
 
-const mstp = (state, ownProps) => {
-  let stockInfo = state.entities.stocks[ownProps.ticker];
-  
-  return {
-    stockInfo
-  }
-};
+const mstp = (state, ownProps) => ({
+  stockInfo : state.entities.stocks[ownProps.ticker]
+
+});
 
 const mdtp = dispatch => ({
   fetchStockIntraday : (ticker) => dispatch(fetchStockIntraday(ticker)),
