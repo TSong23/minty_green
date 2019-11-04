@@ -129,10 +129,6 @@ class StockShow extends React.Component {
                 stockData={passData}
               />       
             </div>
-            
-            {/* <div className="home_page_left_chart">
-              placeholder
-            </div> */}
 
             <div className="left_chart_time_options">
               <button onClick={() => this.setState({time: "1d"})}>1D</button>

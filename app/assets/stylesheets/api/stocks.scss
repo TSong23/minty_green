@@ -5,20 +5,21 @@
   font-family: Arial, Helvetica, sans-serif;
 
   .main_chart_company_title{
-    font-size: 32px;
+    font-size: 30px;
+    font-weight: bold;
     padding: 8px;
     margin-bottom: 3px;
-    padding: 10px 0px 0px 50px;
+    padding: 50px 0px 0px 50px;
   }
 
   .stock_current_price{
-    font-size: 28px;
-    padding: 10px 0px 0px 50px;
+    font-size: 42px;
+    padding: 0px 0px 0px 50px;
   }
 
   .home_page_left_chart{             
     height: 38%;
-    max-width: 620px;
+    max-width: 830px;
     border-radius: 3px;
     margin-top: 30px;
     margin-bottom: -50px;
@@ -37,10 +38,11 @@
   .home_page_left_col_bottom_chart{
     padding-left: 50px;
     font-size: 26px;
+    max-width: 800px;
 
     .company_description{
       max-height: 8vh;
-      max-width: 85%;
+      width: 100%;
       overflow: hidden;
       overflow-y: scroll;
       font-size: 16px;
@@ -74,7 +76,7 @@
   height: 60%;
   flex: 0 0 22%;
   margin-right: 3vw;
-  margin-top: 4vh;
+  margin-top: 60px;
   font-family: Arial, Helvetica, sans-serif;
 
   .transaction_form{
@@ -85,22 +87,23 @@
     margin-right: 3vw;
     margin-top: 4vh;
     border-radius: 3px;  
-    box-shadow: 2px 2px 9px 2px rgba(0,0,0,0.45);
+    box-shadow: 2px 2px 9px 2px rgba(124, 124, 124, 0.45);
   }
 
   
   .watchlist_item_add_button{
-    width: 90%;
-    height: 44px;
+    width: 80%;
+    height: 30px;
     border: 1px solid #21CE99;
     border-radius: 6px;
     color: #21CE99;
     text-align: center;
     margin-top: 12px;
+    padding: 15px 0px 0px 0px;
   }
 
   .watchlist_item_remove_button{
-    width: 90%;
+    width: 80%;
     height: 44px;
     color: #F45531;
     border: 1px solid #F45531;

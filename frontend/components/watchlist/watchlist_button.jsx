@@ -31,13 +31,15 @@ class WatchlistButton extends React.Component {
   
 
   render(){
-    console.log("button state", this.state);
-    console.log("button props", this.props);
+    // console.log("button state", this.state);
+    // console.log("button props", this.props);
 
     return (
       <div className="watchlist_item_add_button"
         onClick={this.handleClick}>
-        {this.state.watched ? "Remove from Watchlist" : "Add to Watchlist"}
+        
+          {this.state.watched ? "Remove from Watchlist" : "Add to Watchlist"}
+     
       </div>
     )
   }

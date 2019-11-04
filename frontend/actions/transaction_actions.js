@@ -11,7 +11,13 @@ export const fetchTransactions = () => dispatch => (
   )
 )
 
-const receiveTransactions = transactions => ({
+export const createTransactions = (transaction) => dispatch => (
+  TransactionApiUtil.createTransaction(transaction).then(
+    transactions
+  )
+)
+
+export const receiveTransactions = transactions => ({
   type: RECEIVE_TRANSACTIONS,
   transactions
 })
