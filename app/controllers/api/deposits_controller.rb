@@ -3,8 +3,7 @@ class Api::DepositsController < ApplicationController
     @deposit = Deposit.new(deposit_params)
     @deposit.user_id = current_user.id
     if @deposit.save
-      cash = current_user.account_balance
-      render json: cash
+      render 'api/users/show'
     else
       render json: @deposit.full_messages, status: 422
     end

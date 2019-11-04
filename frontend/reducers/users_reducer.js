@@ -6,10 +6,12 @@ const usersReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_CURRENT_USER: 
-      return Object.assign({},state, {[action.currentUser.id]: action.currentUser})
+      // return Object.assign({},state, {[action.currentUser.id]: action.currentUser})
+      debugger
+      return Object.assign({}, state,  action.currentUser )
     case RECEIVE_DEPOSIT: 
       // let cash_slice = Object.assign({}, state[action.currentUser.id] , {cash : payload.cash} )
-      return Object.assign({}, state, {[cash] : action.cash})
+      return Object.assign({}, state, action.user)
     default:
       return state
   }

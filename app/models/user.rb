@@ -29,6 +29,10 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Transaction
 
+  has_many :action_stocks,
+    through: :transactions,
+    source: :stock
+
   has_many :watching_stocks,
     through: :watchlists,
     source: :stock

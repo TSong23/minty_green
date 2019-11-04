@@ -7,11 +7,11 @@ export const RECEIVE_DEPOSIT= "RECEIVE_DEPOSIT";
 
 export const createDeposit = (deposit) => dispatch => (
   DepositApiUtil.createDeposit(deposit).then(
-    cash => dispatch(receiveDeposit(cash))
+    user => dispatch(receiveDeposit(user))
   )
 )
 
-export const receiveDeposit = cash => ({
+export const receiveDeposit = user => ({
   type : RECEIVE_DEPOSIT,
-  cash
+  user
 })
