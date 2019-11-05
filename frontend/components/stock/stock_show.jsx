@@ -3,6 +3,7 @@ import SearchContainer from "../search_bar/search_bar_container";
 import StockChart from '../stock/stock_chart';
 import WatchlistButton from '../watchlist/watchlist_button_container';
 import StockInfo from './stock_info';
+import OrderForm from '../order/order_form_container';
 
 
 //try importing ajax call directly to not save to state and trigger rerenders
@@ -147,9 +148,15 @@ class StockShow extends React.Component {
 
           <div className="stock_show_right_main_col">
 
-            <div className="transaction_form">
-              Buy / Sell
-            </div>
+            <OrderForm 
+              className="transaction_form"
+              ticker={this.props.match.params.ticker}
+              currentPrice={currentPrice}
+            />
+
+            {/* <div className="transaction_form">
+              
+            </div> */}
 
             <div>
               <WatchlistButton currentStockId={currentStockId}
