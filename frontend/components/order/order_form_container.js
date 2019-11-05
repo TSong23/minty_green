@@ -5,10 +5,10 @@ import {fetchTransactions , createTransactions} from '../../actions/transaction_
 
 
 const mstp = (state, ownProps) => {
-  
+
   let shares;
   if (state.entities.users.ownedStocks){
-    shares = state.entities.users.ownedStocks[ownProps.ticker]
+    shares = state.entities.users.ownedStocks[ownProps.currentStockId]
   }
   return {
     shares,

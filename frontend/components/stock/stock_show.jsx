@@ -47,6 +47,17 @@ class StockShow extends React.Component {
     }
   }
 
+  getCurrentPrice(){
+    let length = this.props.stockAllInfo.intraday.length;
+    let i;
+    for ( i = 1; i < length-3; i++){
+      if (this.props.stockAllInfo.intraday[length - i]['close']){
+        break;
+      }
+    }
+    return this.props.stockAllInfo.intraday[length - i]['close'];
+  }
+
   
   render() {
     // console.log("stock show props", this.props)
@@ -66,8 +77,7 @@ class StockShow extends React.Component {
     if (this.props.stockAllInfo){
       companyName = this.props.stockAllInfo.companyName;     
       if (this.props.stockAllInfo.intraday ){
-        let length = this.props.stockAllInfo.intraday.length;
-        currentPrice = this.props.stockAllInfo.intraday[length - 1]['close'];
+        currentPrice = this.getCurrentPrice();
         // percChange = Math.round((currentPrice/this.props.stockAllInfo.intraday[0]['close'] - 1) * 100) / 100;        
         if (this.props.stockAllInfo.year && this.state.time !== '1d'){
           passData = this.props.stockAllInfo.year;
@@ -152,16 +162,12 @@ class StockShow extends React.Component {
               className="transaction_form"
               ticker={this.props.match.params.ticker}
               currentPrice={currentPrice}
+              currentStockId={currentStockId}
             />
 
-            {/* <div className="transaction_form">
-              
-            </div> */}
-
-            <div>
-              <WatchlistButton currentStockId={currentStockId}
-                stockWatched={stockWatched} watchlistID={watchlistID}/>
-            </div>
+            <WatchlistButton currentStockId={currentStockId}
+              stockWatched={stockWatched} watchlistID={watchlistID}/>
+          
 
           </div>
 
