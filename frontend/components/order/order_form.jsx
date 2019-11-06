@@ -10,11 +10,20 @@ class OrderForm extends React.Component {
     }
 
     this.updateShares = this.updateShares.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(){
     console.log("form submit", this.state.buySell, 
-    this.state.shares, this.props.currentPrice);
+    this.state.shares, this.props.currentPrice, 
+      this.props.currentStockId);
+    
+    this.props.createTransactions({
+      stock_id: this.props.currentStockId,
+      num_shares: this.state.shares,
+      price: this.props.currentPrice,
+      order_type: this.state.buySell
+    })
   }
 
   updateShares(e){
@@ -23,9 +32,6 @@ class OrderForm extends React.Component {
 
 
   render(){
-
-    console.log("form state", this.state);
-    console.log("form props", this.props);
 
     let cashShares;
     if(this.state.buySell === "BUY"){
@@ -41,10 +47,16 @@ class OrderForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="transaction_form">
 
           <div>
-            <button onClick={() => this.setState({ buySell: "BUY" })}> 
+            <button onClick={(e) => { 
+              e.preventDefault(); 
+              this.setState({ buySell: "BUY" })
+            }}> 
               <h3>BUY {this.props.ticker}</h3>
             </button>
-            <button onClick={() => this.setState({ buySell: "SELL" })}>
+            <button onClick={(e) => {
+              e.preventDefault();
+              this.setState({ buySell: "SELL" })
+            }}>
               <h3>SELL {this.props.ticker}</h3> 
             </button>
           </div>
@@ -57,9 +69,14 @@ class OrderForm extends React.Component {
             />
           </div>
 
+
           <div className="transaction_price">
             <h4>Price</h4>  <h4>${this.props.currentPrice}</h4>
           </div>
+{/* 
+          <div className="estimated_cost">
+            <h4>Estimated Cost</h4>  <h4>{cashShares}</h4>
+          </div> */}
 
           <div className="estimated_cost">
             <h4>Available</h4>  <h4>{cashShares}</h4>
