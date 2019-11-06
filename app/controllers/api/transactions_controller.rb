@@ -4,7 +4,8 @@ class Api::TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     @transaction.user_id = current_user.id
     if @transaction.save
-      render json: current_user.stock_owned_shares(@transaction.stock_id)
+      @user = current_user
+      render 'api/users/show'
     else
       render json: @transaction.errors.full_messages, status: 422
     end
