@@ -23,6 +23,7 @@ class ListItemGraph extends React.Component{
     let chartData = [];
     let color = "#21CE99";
     let open, current;
+    let percChange;
 
     if (this.props.stockInfo.intraday){
       Object.values(this.props.stockInfo.intraday).map(data => {
@@ -34,6 +35,10 @@ class ListItemGraph extends React.Component{
       current = chartData[chartData.length - 1]["Price"];
       if (open > current){
         color = "#F45531";
+      }
+      percChange = Math.round( (open / current -1 ) * 10000 ) / 100; 
+      if (percChange === 0){
+        percChange = "0.00";
       }
     } 
 
@@ -48,8 +53,10 @@ class ListItemGraph extends React.Component{
           <Line type="monotone" dataKey="Price" stroke={color}
             strokeWidth={2} dot={false} />
         </LineChart>
-        <div>
+        <div className="perc_change_day">
           ${current}
+          <br/>
+          {percChange}%
         </div>
       </div>
     )

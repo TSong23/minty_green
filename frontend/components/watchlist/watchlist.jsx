@@ -84,7 +84,6 @@ class Watchlist extends React.Component {
     
       <div className="right_col_watchlist_container">
         <h3>Watchlist</h3>
-          {/* watchlist rendered */}
         {watchedStockSym}
       </div>
     )
