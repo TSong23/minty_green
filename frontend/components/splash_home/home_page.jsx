@@ -5,6 +5,7 @@ import { fetchBusinessNews } from '../../util/news_api_util';
 import StockChart from '../stock/stock_chart_container';
 
 import Watchlist from '../watchlist/watchlist_container';
+import MyStocks from '../portfolio/my_stocks_container';
 
 // HomeMain
 // serves as container for search, Portfolio, watchlists, news 
@@ -93,7 +94,8 @@ class HomeMain extends React.Component {
             </div>
           </div>
 
-          <div className="home_page_right_main_col">            
+          <div className="home_page_right_main_col">   
+            <MyStocks/>         
             <Watchlist/>            
           </div> 
     

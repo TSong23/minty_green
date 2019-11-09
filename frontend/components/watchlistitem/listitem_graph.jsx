@@ -36,7 +36,7 @@ class ListItemGraph extends React.Component{
       if (open > current){
         color = "#F45531";
       }
-      percChange = Math.round( (open / current -1 ) * 10000 ) / 100; 
+      percChange = Math.round( (current / open -1 ) * 10000 ) / 100; 
       if (percChange === 0){
         percChange = "0.00";
       }
