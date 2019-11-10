@@ -17,7 +17,7 @@ class Transaction < ApplicationRecord
   validates :order_type, inclusion: { in: %w(BUY SELL),
              message: "%{value} is not a valid order type" }
 
-  validate :enough_money?, :enough_shares?
+  # validate :enough_money?, :enough_shares?
 
   belongs_to :user,
     foreign_key: :user_id,
@@ -29,33 +29,33 @@ class Transaction < ApplicationRecord
 
   
   # check user account_balance and check order price
-  def enough_money?
-    order_price = price * num_shares;
-    if order_type == "BUY"
-      if user.account_balance < order_price
-        errors[:base] << "Not enough money to buy"
-      else 
-        return true
-      end
-    else 
-      return true
-    end 
-  end
+  # def enough_money?
+  #   order_price = price * num_shares;
+  #   if order_type == "BUY"
+  #     if user.account_balance < order_price
+  #       errors[:base] << "Not enough money to buy"
+  #     else 
+  #       return true
+  #     end
+  #   else 
+  #     return true
+  #   end 
+  # end
 
-  def enough_shares?
-    if order_type == "SELL"
-      if user.stock_owned_shares(stock_id) < num_shares
-        errors[:base] << "Not enough shares to sell"
-      else 
-        return true
-      end
-    else 
-      return true
-    end
-  end
+  # def enough_shares?
+  #   if order_type == "SELL"
+  #     if user.stock_owned_shares(stock_id) < num_shares
+  #       errors[:base] << "Not enough shares to sell"
+  #     else 
+  #       return true
+  #     end
+  #   else 
+  #     return true
+  #   end
+  # end
    
-  def non_zero_shares
-    return if num_shares > 0
-    errors[:base] << "Must purchase more than 0 shares"
-  end
+  # def non_zero_shares
+  #   return if num_shares > 0
+  #   errors[:base] << "Must purchase more than 0 shares"
+  # end
 end

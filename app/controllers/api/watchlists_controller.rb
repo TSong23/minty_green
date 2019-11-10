@@ -9,7 +9,7 @@ class Api::WatchlistsController < ApplicationController
     @watchlist.user_id = current_user.id   
     if @watchlist.save
       @watchlists = current_user.watchlists
-      # render json: ["Added to your watchlist"], status: 200
+      render :index
     else
       render json: @watchlist.errors.full_messages, status: 422
     end
@@ -41,7 +41,8 @@ class Api::WatchlistsController < ApplicationController
     @watchlist = Watchlist.find(params[:id])
 
     if @watchlist.destroy
-      render json: ["Removed from your watchlist"], status: 200
+      @watchlists = current_user.watchlists
+      render :index
     else
       render json: @watchlist.errors.full_messages, status: 422
     end

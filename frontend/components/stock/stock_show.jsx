@@ -102,15 +102,17 @@ class StockShow extends React.Component {
     let currentStockId;
     let stockWatched = false;
     let watchlistID;
-    if (Object.keys(this.props.watchlists).length &&
-        Object.keys(this.state.allStocks).length) {
+
+    if (Object.keys(this.state.allStocks).length) {
       currentStockId = this.state.allStocks[this.props.match.params.ticker]["id"];
-      Object.values(this.props.watchlists).map(listItem => {
-        if (listItem.stock_id === currentStockId) {
-          stockWatched = true;
-          watchlistID = listItem.id;
-        }
-      })
+      if (Object.keys(this.props.watchlists).length){
+        Object.values(this.props.watchlists).map(listItem => {
+          if (listItem.stock_id === currentStockId) {
+            stockWatched = true;
+            watchlistID = listItem.id;
+          }
+        })
+      }
     }
 
 

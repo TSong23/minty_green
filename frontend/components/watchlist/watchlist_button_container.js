@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchAllWatchlist} from '../../actions/watchlist_actions';
-import { createWatchlist, deleteWatchlist} from '../../util/watchlist_api_util';
+import { fetchAllWatchlist, createWatchlist, deleteWatchlist} from '../../actions/watchlist_actions';
 import WatchlistButton from './watchlist_button';
 
 const mstp = (state) => ({
@@ -8,12 +7,12 @@ const mstp = (state) => ({
 })
 
 const mdtp = (dispatch) => ({
-  createWatchlist: (watchlist) => (createWatchlist(watchlist)),
-  deleteWatchlist: (watchlist_id) => (deleteWatchlist(watchlist_id)),
+  createWatchlist: (watchlist) => dispatch(createWatchlist(watchlist)),
+  deleteWatchlist: (watchlist_id) => dispatch(deleteWatchlist(watchlist_id)),
   fetchAllWatchlist: () => dispatch(fetchAllWatchlist()),
 })
 
 export default connect(
-  null,
+  mstp,
   mdtp
 )(WatchlistButton)
