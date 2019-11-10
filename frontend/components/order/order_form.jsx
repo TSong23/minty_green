@@ -32,7 +32,6 @@ class OrderForm extends React.Component {
 
 
   render(){
-
     let cashShares;
     if(this.state.buySell === "BUY"){
       cashShares = `$${this.props.cash}`;

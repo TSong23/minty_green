@@ -45,6 +45,7 @@ class StockShow extends React.Component {
         res => this.setState({ allStocks: res })
       )     
     }
+
   }
 
   getCurrentPrice(){
