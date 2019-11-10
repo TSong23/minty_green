@@ -70,15 +70,19 @@ class HomeMain extends React.Component {
         <div className="home_page_main_container">
 
           <div className="home_page_left_main_col">
+
             <div className="home_page_balance_display">
 
-              <div className="current_portfolio_value">
-                
-              </div>
+              
 
-              <div className="home_page_deposit_money">
-                <button> Add Funds</button>
-              </div>
+              {/* <div className="current_portfolio_value">
+                
+              </div> */}
+
+            </div>
+
+            <div className="home_page_deposit_money">
+              <button> Add Funds</button>
             </div>
 
             <div className="home_page_portfolio_chart">
@@ -95,8 +99,8 @@ class HomeMain extends React.Component {
           </div>
 
           <div className="home_page_right_main_col">   
-            <MyStocks/>         
-            <Watchlist/>            
+            {/* <MyStocks/>          */}
+            {/* <Watchlist/>             */}
           </div> 
     
         </div>
