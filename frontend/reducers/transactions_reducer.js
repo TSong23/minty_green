@@ -8,7 +8,7 @@ const TransactionsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type){
     case RECEIVE_TRANSACTIONS:
-      return merge({}, action.transactions)
+      return Object.assign({}, oldState, action.transactions)
     default:
       return oldState;
   }

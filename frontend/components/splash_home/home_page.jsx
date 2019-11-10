@@ -4,6 +4,7 @@ import SearchContainer from "../search_bar/search_bar_container";
 import { fetchBusinessNews } from '../../util/news_api_util';
 import StockChart from '../stock/stock_chart_container';
 
+import PortfolioChart from '../portfolio/portfolio_chart_container';
 import Watchlist from '../watchlist/watchlist_container';
 import MyStocks from '../portfolio/my_stocks_container';
 
@@ -72,22 +73,16 @@ class HomeMain extends React.Component {
           <div className="home_page_left_main_col">
 
             <div className="home_page_balance_display">
-
-              
-
-              {/* <div className="current_portfolio_value">
-                
-              </div> */}
-
+              <PortfolioChart/>
             </div>
 
             <div className="home_page_deposit_money">
               <button> Add Funds</button>
             </div>
 
-            <div className="home_page_portfolio_chart">
+            {/* <div className="home_page_portfolio_chart">
             
-            </div>
+            </div> */}
             
             <div className="home_page_news_container">
               <h3>News</h3>
