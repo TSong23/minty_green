@@ -107,7 +107,6 @@ class StockShow extends React.Component {
     // let stockWatched = false;
     // let watchlistID;
     // let currentStockId;   
-    // debugger
     let currentStockId;
     let stockWatched = false;
     let watchlistID;

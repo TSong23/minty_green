@@ -6,7 +6,8 @@ import { fetchStockAllListing } from '../../actions/stock_actions';
 
 
 const mstp = ({entities}) => ({
-  ownedStocks : entities.users.ownedStocks
+  ownedStocks : entities.users.ownedStocks,
+  stocks : entities.stocks
 })
 
 const mdtp = dispatch => ({
