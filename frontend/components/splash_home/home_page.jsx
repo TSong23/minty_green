@@ -94,8 +94,8 @@ class HomeMain extends React.Component {
           </div>
 
           <div className="home_page_right_main_col">   
-            {/* <MyStocks/>          */}
-            {/* <Watchlist/>             */}
+            <MyStocks/>         
+            <Watchlist/>            
           </div> 
     
         </div>

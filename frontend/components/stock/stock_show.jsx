@@ -68,7 +68,9 @@ class StockShow extends React.Component {
     let companyName;
     let companyInfo;
     let currentPrice = "0.00";
-    let percChange = "0.0";
+    let percChange = "0.00";
+    let dayDiff = "0.00";
+    let diffSign = "+"
 
     //constants for stock data
     let passData;
@@ -79,7 +81,13 @@ class StockShow extends React.Component {
       companyName = this.props.stockAllInfo.companyName;     
       if (this.props.stockAllInfo.intraday ){
         currentPrice = this.getCurrentPrice();
-        // percChange = Math.round((currentPrice/this.props.stockAllInfo.intraday[0]['close'] - 1) * 100) / 100;        
+        let open = this.props.stockAllInfo.intraday[0]["close"];
+        dayDiff = Math.round((currentPrice - open) * 100) / 100;
+        if (dayDiff < 0){
+          diffSign = "-";
+          dayDiff = dayDiff * (-1);
+        }
+        percChange = Math.round((currentPrice / open - 1) * 10000) / 100; 
         if (this.props.stockAllInfo.year && this.state.time !== '1d'){
           passData = this.props.stockAllInfo.year;
         } else {
@@ -118,6 +126,7 @@ class StockShow extends React.Component {
 
 
 
+
     return (
       <div className="home_page">
 
@@ -134,7 +143,9 @@ class StockShow extends React.Component {
             </div>
             
             <div className="stock_current_price">
-               ${currentPrice}              
+               ${currentPrice}  
+               <br/>
+               <h3>{diffSign}${dayDiff}   {diffSign}{percChange}%</h3>
             </div>       
            
             <div className="home_page_left_chart">

@@ -15,6 +15,10 @@
   .stock_current_price{
     font-size: 42px;
     padding: 0px 0px 0px 50px;
+    
+    h3{
+      font-size: 20px;
+    }
   }
 
   .home_page_left_chart{             
@@ -97,6 +101,12 @@
       padding-top: 24px;
       padding-bottom: 24px;
     }
+    
+    .order_form_buy_sell{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
 
     .shares_input{
       height: 70px;
@@ -140,6 +150,13 @@
       width: 200px;
       align-self: center;
     }
+
+    .transaction_errors{
+      color:  rgb(233, 120, 95);
+      text-align: center;
+    }
+
+
   }
 
   

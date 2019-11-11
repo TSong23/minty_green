@@ -29,7 +29,6 @@ class Watchlist extends React.Component {
   }
 
   render(){
-    console.log("watchlist render");
 
     // get user's watched stocks stock_id
     let watchedStockIDs = [];

@@ -6,7 +6,9 @@ class OrderForm extends React.Component {
     super(props);
     this.state = {
       buySell : "BUY",
-      shares : 0
+      shares : 0,
+      formError : ""
+      
     }
 
     this.updateShares = this.updateShares.bind(this);
@@ -18,12 +20,33 @@ class OrderForm extends React.Component {
     this.state.shares, this.props.currentPrice, 
       this.props.currentStockId);
     
-    this.props.createTransactions({
-      stock_id: this.props.currentStockId,
-      num_shares: this.state.shares,
-      price: this.props.currentPrice,
-      order_type: this.state.buySell
-    })
+    if (this.state.buySell === "BUY"){
+      if (this.state.shares * this.props.currentPrice > this.props.cash){
+        this.setState({ formError: "Not enough buying power", shares: 0})
+      }else{
+        this.props.createTransactions({
+          stock_id: this.props.currentStockId,
+          num_shares: this.state.shares,
+          price: this.props.currentPrice,
+          order_type: this.state.buySell
+        })
+        this.setState({ formError: "" })
+      }
+    }else{
+      if (this.state.shares > this.props.shares) {
+        this.setState({ formError: "Not enough shares"})
+      }else{
+        this.props.createTransactions({
+          stock_id: this.props.currentStockId,
+          num_shares: this.state.shares,
+          price: this.props.currentPrice,
+          order_type: this.state.buySell
+        })
+        this.setState({ formError: "", shares : 0})
+      }
+    }
+    
+   
   }
 
   updateShares(e){
@@ -41,11 +64,13 @@ class OrderForm extends React.Component {
       }
     }
 
+    let estimatedCost = Math.round((this.state.shares * this.props.currentPrice) * 100) / 100;
+
     return(
       <div>
         <form onSubmit={this.handleSubmit} className="transaction_form">
 
-          <div>
+          <div className="order_form_buy_sell">
             <button onClick={(e) => { 
               e.preventDefault(); 
               this.setState({ buySell: "BUY" })
@@ -70,12 +95,12 @@ class OrderForm extends React.Component {
 
 
           <div className="transaction_price">
-            <h4>Price</h4>  <h4>${this.props.currentPrice}</h4>
+            <h4>Price</h4>  <h4>${Math.round((this.props.currentPrice) * 100) / 100}</h4>
           </div>
-{/* 
+
           <div className="estimated_cost">
-            <h4>Estimated Cost</h4>  <h4>{cashShares}</h4>
-          </div> */}
+            <h4>Estimated Cost</h4>  <h4>{estimatedCost}</h4>
+          </div>
 
           <div className="estimated_cost">
             <h4>Available</h4>  <h4>{cashShares}</h4>
@@ -85,6 +110,12 @@ class OrderForm extends React.Component {
           <button type="submit" className="transaction_button">
             {this.state.buySell}
           </button>
+          <br/>
+
+          <div className="transaction_errors">
+            <h4>{this.state.formError}</h4>
+          </div>
+
           <br/>
         </form>
         

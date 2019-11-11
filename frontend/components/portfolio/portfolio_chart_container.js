@@ -2,13 +2,16 @@ import { connect } from 'react-redux';
 import PortfolioChart  from './portfolio_chart';
 
 import { fetchTransactions } from '../../actions/transaction_actions';
+import { fetchStockAllListing } from '../../actions/stock_actions';
+
 
 const mstp = ({entities}) => ({
-  transactions : entities.transactions
+  ownedStocks : entities.users.ownedStocks
 })
 
 const mdtp = dispatch => ({
-  fetchTransactions : () => dispatch(fetchTransactions())
+  fetchTransactions : () => dispatch(fetchTransactions()),
+  fetchStockAllListing : () => dispatch(fetchStockAllListing())
 })
 
 export default connect(
