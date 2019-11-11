@@ -130,21 +130,26 @@ class PortfolioChart extends React.Component{
       portfolioValue = normalizedData[99]["Value"];
     }
 
-    debugger
-
+    console.log('Data', normalizedData)
     return(
-      <div>
+      <div >
         <div>
           Portfolio Value {portfolioValue}
         </div>
-        <LineChart
-          data={normalizedData}
+        <div>    
+          <ResponsiveContainer width="100%" height="90%" >  
+          <LineChart
+            data={[{ "Value": 13 }, { "Value": 14 }, { "Value": 15 }]}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
+          <XAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
           <YAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
           <Tooltip />
           <Line type="monotone" dataKey="Value" stroke={color}
             strokeWidth={2} dot={false} />
         </LineChart>
+          </ResponsiveContainer>    
+        </div>
+        
       </div>
     )
   }
