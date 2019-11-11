@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReferenceLine, ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
+import { ResponsiveContainer, LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
 
 
 export default class StockChart extends React.Component {
