@@ -49,12 +49,24 @@ class StockShow extends React.Component {
 
   componentDidUpdate(prevProps){
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
-      if (this.props.stockAllInfo.intraday.length === 0) {
+
+      if (this.props.stockAllInfo) {
+        if (this.props.stockAllInfo.intraday === undefined) {
+          this.props.fetchStockIntraday(this.props.match.params.ticker);
+        }
+      } else {
         this.props.fetchStockIntraday(this.props.match.params.ticker);
       }
-      if (this.props.stockAllInfo.intraday.year === 0) {
+
+      if (this.props.stockAllInfo) {
+        if (this.props.stockAllInfo.year === undefined) {
+          this.props.fetchStockPastData(this.props.match.params.ticker);
+        }
+      } else {
         this.props.fetchStockPastData(this.props.match.params.ticker);
-      }    
+      }
+
+
       fetchCompanyInfo(this.props.match.params.ticker).then(
         res => this.setState({ info: res })
       );
