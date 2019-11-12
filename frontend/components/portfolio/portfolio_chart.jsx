@@ -219,8 +219,13 @@ class PortfolioChart extends React.Component{
       }
 
       if (normalizedData.length){
-        if (normalizedData[0]["Value"] > normalizedData[99]["Value"]){
+        let open = normalizedData[0]["Value"];
+        let current = normalizedData[normalizedData.length - 1]["Value"];
+        dayDiff = Math.round((current - open) * 100) / 100;
+        percChange = Math.round((current / open - 1) * 10000) / 100; 
+        if (open > current){
           color = "#F45531";
+          diffSign = "";
         }
         portfolioValue = normalizedData[99]["Value"];
       }
