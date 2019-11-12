@@ -12,6 +12,7 @@ class PortfolioChart extends React.Component{
 
     this.combineStockData = this.combineStockData.bind(this);
     this.normalizeData = this.normalizeData.bind(this);
+    this.formatData = this.formatData.bind(this);
   } 
 
   componentDidMount(){
@@ -22,25 +23,30 @@ class PortfolioChart extends React.Component{
 
   combineStockData(symbols){
     let allDataArr = [];
-    symbols.forEach(sym => {
-      allDataArr.push({
-        ticker : sym,
-        Price: this.formatData(this.props.stocks[sym]["intraday"])
-      });
-    })
+    if (this.state.time === "1d"){
+      symbols.forEach(sym => {
+        allDataArr.push({
+          ticker: sym,
+          Price: this.formatData(this.props.stocks[sym]["intraday"])
+        });
+      })
+    }else{
+      symbols.forEach(sym =>{
+        let reArr = [];
+        Object.values(this.props.stocks[sym]["year"]).map(data => {
+          reArr.push({ time: data.label, Price: data.close })
+        })
+        allDataArr.push(reArr);
+      })
+    }
+    
     return allDataArr
   }
-
-  fetchYearData(time){
-    //check if 
-
-    this.setState({time : time})
-  }
-
 
   formatData(stockData){
     let reArr = [];
     let reducedArr = [];
+    
     Object.values(stockData).map(data => {
       if (data.close) {
         reArr.push(data.close)
@@ -142,23 +148,20 @@ class PortfolioChart extends React.Component{
       }
     } else{
 
-      console.log("state change", this.state);
-
       // check if yearly data is all loaded
-      // if (Object.keys(stockHash).length) {
-      //   allDataLoaded = Object.keys(stockHash).every(symbol => {
-      //     return (this.props.stocks[symbol]["year"]);
-      //   });
-      // }
+      if (Object.keys(stockHash).length) {
+        allDataLoaded = Object.keys(stockHash).every(symbol => {
+          return (this.props.stocks[symbol]["year"]);
+        });
+      }
 
-      // if (allDataLoaded){
-      //   let stockSymbols = Object.keys(stockHash);
-      //   combinedData = this.combineStockData(stockSymbols);
-      //   normalizedData = this.normalizeData(combinedData, stockHash);
-      // }
+      if (allDataLoaded){
+        let stockSymbols = Object.keys(stockHash);
+        combinedData = this.combineStockData(stockSymbols);
+        debugger
+        normalizedData = this.normalizeData(combinedData, stockHash);
+      }
     }
-
-    console.log("portfolio chart", this.state);
 
     return(
       <div className="home_page_balance_display">
@@ -179,10 +182,10 @@ class PortfolioChart extends React.Component{
 
         <div className="portfolio_chart_time_options">
           <button onClick={() => this.setState({ time: "1d" })}>1D</button>
-          <button onClick={() => this.fetchYearData("5d")}>1W</button>
-          <button onClick={() => this.fetchYearData("1m")}>1M</button>
-          <button onClick={() => this.fetchYearData("6m")}>6M</button>
-          <button onClick={() => this.fetchYearData("1y")}>1Y</button>
+          <button onClick={() => this.setState({time : "5d"})}>1W</button>
+          <button onClick={() => this.setState({time : "1m"})}>1M</button>
+          <button onClick={() => this.setState({time : "6m"})}>6M</button>
+          <button onClick={() => this.setState({time : "1y"})}>1Y</button>
         </div>   
         
         <br/>         

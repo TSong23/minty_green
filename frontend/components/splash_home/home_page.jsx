@@ -89,7 +89,7 @@ class HomeMain extends React.Component {
 
           <div className="home_page_right_main_col">   
             <MyStocks/>         
-            <Watchlist/>            
+            {/* <Watchlist/>             */}
           </div> 
     
         </div>
