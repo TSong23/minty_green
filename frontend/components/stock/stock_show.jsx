@@ -21,9 +21,23 @@ class StockShow extends React.Component {
   }  
 
   componentDidMount(){
-    //fetch all stock listings and stock info for the stock in question
-    this.props.fetchStockIntraday(this.props.match.params.ticker);
-    this.props.fetchStockPastData(this.props.match.params.ticker); 
+    // check if stock intraday or year has to be fetched
+    if (this.props.stockAllInfo){
+      if (this.props.stockAllInfo.intraday === 'undefined'){
+        this.props.fetchStockIntraday(this.props.match.params.ticker);
+      }
+    } else{
+      this.props.fetchStockIntraday(this.props.match.params.ticker); 
+    }
+
+    if (this.props.stockAllInfo) {
+      if (this.props.stockAllInfo.year === 'undefined') {
+        this.props.fetchStockPastData(this.props.match.params.ticker);
+      }
+    } else {
+      this.props.fetchStockPastData(this.props.match.params.ticker);
+    }
+
     fetchCompanyInfo(this.props.match.params.ticker).then(
       res => this.setState({info : res})
     );
@@ -36,10 +50,15 @@ class StockShow extends React.Component {
   componentDidUpdate(prevProps){
     // console.log("stock show update")
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
-      this.props.fetchStockIntraday(this.props.match.params.ticker);
-      this.props.fetchStockPastData(this.props.match.params.ticker);        fetchCompanyInfo(this.props.match.params.ticker).then(
+      if (this.props.stockAllInfo.intraday.length === 0) {
+        this.props.fetchStockIntraday(this.props.match.params.ticker);
+      }
+      if (this.props.stockAllInfo.intraday.year === 0) {
+        this.props.fetchStockPastData(this.props.match.params.ticker);
+      }    
+      fetchCompanyInfo(this.props.match.params.ticker).then(
         res => this.setState({ info: res })
-      ) 
+      );
       this.props.fetchAllWatchlist();
       fetchStockAllListing().then(
         res => this.setState({ allStocks: res })

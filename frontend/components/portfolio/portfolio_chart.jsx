@@ -6,7 +6,8 @@ class PortfolioChart extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      allStocks : {}
+      allStocks : {},
+      time : "1d"
     }
 
     this.combineStockData = this.combineStockData.bind(this);
@@ -29,6 +30,13 @@ class PortfolioChart extends React.Component{
     })
     return allDataArr
   }
+
+  fetchYearData(time){
+    //check if 
+
+    this.setState({time : time})
+  }
+
 
   formatData(stockData){
     let reArr = [];
@@ -104,62 +112,54 @@ class PortfolioChart extends React.Component{
       });
     }
 
-    // iterate through each of the stocks intraday on the list and find the info 
-    // combine the values and make new graph
+    // if loop to see if the state is currently intraday or in 1yr
+    // if 1yr, loop through stockHash keys and fetch the 1yr data
+    // then use defined functions and 1yr data to generate the graph
 
-    if (Object.keys(stockHash).length){
-      allDataLoaded = Object.keys(stockHash).every(symbol => {
-        return (this.props.stocks[symbol]["intraday"]);
-      });
-    }
-
-
-    if (allDataLoaded){
-      let stockSymbols = Object.keys(stockHash);
-      combinedData = this.combineStockData(stockSymbols);
-      // combined data is fine
-      // take the smallest data set.
-      // stockHash = {"APPL" : 50 , etc}
-      // combinedData = [{ticker: "APPL", Price: [200, 201]]
-      normalizedData = this.normalizeData(combinedData, stockHash);
-    }
-
-    // normalizedData = [
-    //   { Value: 29096.749999999996 }
-    //   ,{ Value: 29136 }
-    //   ,{ Value: 29174.25 }
-    //   ,{ Value: 29169.5 }
-    //   ,{ Value: 29180.25 }
-    //   ,{ Value: 29198.5 }
-    //   ,{ Value: 29209.25 }
-    //   ,{ Value: 29172 }
-    //   ,{ Value: 29220.25 }
-    //   ,{ Value: 29204.75 }
-    //   ,{ Value: 29203.25 }
-    //   ,{ Value: 29202.75 }
-    //   ,{ Value: 29222.5 }
-    //   ,{ Value: 29225 }
-    //   ,{ Value: 29245.25 }
-    //   ,{ Value: 29256.5 }
-    //   ,{ Value: 29260 }
-    //   ,{ Value: 29277.5 }
-    //   ,{ Value: 29276.5 }
-    //   ,{ Value: 29297.25 }
-    //   ,{ Value: 29320.25 }
-    //   ,{ Value: 29288 }
-    //   ,{ Value: 29299 }
-    //   ,{ Value: 29309.5 }
-    //   ,{ Value: 29301.25 }
-    //   ,{ Value: 29306.250000000004 }     
-    // ];
-    if (normalizedData.length){
-      if (normalizedData[0]["Value"] > normalizedData[99]["Value"]){
-        color = "#F45531";
+    if (this.state.time === "1d"){
+                                                
+      if (Object.keys(stockHash).length){
+        allDataLoaded = Object.keys(stockHash).every(symbol => {
+          return (this.props.stocks[symbol]["intraday"]);
+        });
       }
-      portfolioValue = normalizedData[99]["Value"];
+
+      if (allDataLoaded){
+        // combined data is fine
+        // take the smallest data set.
+        // stockHash = {"APPL" : 50 , etc}
+        // combinedData = [{ticker: "APPL", Price: [200, 201]]
+        let stockSymbols = Object.keys(stockHash);
+        combinedData = this.combineStockData(stockSymbols);
+        normalizedData = this.normalizeData(combinedData, stockHash);
+      }
+
+      if (normalizedData.length){
+        if (normalizedData[0]["Value"] > normalizedData[99]["Value"]){
+          color = "#F45531";
+        }
+        portfolioValue = normalizedData[99]["Value"];
+      }
+    } else{
+
+      console.log("state change", this.state);
+
+      // check if yearly data is all loaded
+      // if (Object.keys(stockHash).length) {
+      //   allDataLoaded = Object.keys(stockHash).every(symbol => {
+      //     return (this.props.stocks[symbol]["year"]);
+      //   });
+      // }
+
+      // if (allDataLoaded){
+      //   let stockSymbols = Object.keys(stockHash);
+      //   combinedData = this.combineStockData(stockSymbols);
+      //   normalizedData = this.normalizeData(combinedData, stockHash);
+      // }
     }
 
-    
+    console.log("portfolio chart", this.state);
+
     return(
       <div className="home_page_balance_display">
         <div className="current_portfolio_value">
@@ -176,6 +176,16 @@ class PortfolioChart extends React.Component{
               strokeWidth={2} dot={false} />
           </LineChart>
         </div>
+
+        <div className="portfolio_chart_time_options">
+          <button onClick={() => this.setState({ time: "1d" })}>1D</button>
+          <button onClick={() => this.fetchYearData("5d")}>1W</button>
+          <button onClick={() => this.fetchYearData("1m")}>1M</button>
+          <button onClick={() => this.fetchYearData("6m")}>6M</button>
+          <button onClick={() => this.fetchYearData("1y")}>1Y</button>
+        </div>   
+        
+        <br/>         
         
       </div>
     )

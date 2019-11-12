@@ -12,7 +12,23 @@ class ListItemGraph extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchStockIntraday(this.props.ticker)
+    if (this.props.stockInfo) {
+      if (this.props.stockInfo.intraday === 'undefined') {
+        this.props.fetchStockIntraday(this.props.ticker);
+      }
+    } else {
+      this.props.fetchStockIntraday(this.props.ticker);
+    }
+
+    if (this.props.stockInfo) {
+      if (this.props.stockInfo.year === 'undefined') {
+        this.props.fetchStockPastData(this.props.ticker);
+      }
+    } else {
+      this.props.fetchStockPastData(this.props.ticker);
+    }
+    // this.props.fetchStockIntraday(this.props.ticker);
+    // this.props.fetchStockPastData(this.props.ticker); 
   }
 
 

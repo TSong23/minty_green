@@ -14,6 +14,7 @@ const mstp = (state, ownProps) => ({
 
 const mdtp = dispatch => ({
   fetchStockIntraday : (ticker) => dispatch(fetchStockIntraday(ticker)),
+  fetchStockPastData : (ticker) => dispatch(fetchStockPastData(ticker))
 })
 
 
