@@ -17,7 +17,6 @@ export default class StockHeader extends React.Component{
   // }
 
   // componentDidUpdate(prevProps){
-  //   console.log("Stock Header did update")
   //   if (prevProps.ticker !== this.props.ticker){
   //     fetchStockName(this.props.ticker).then(res => {
   //       this.setState({ companyName: res.stock.name })
@@ -27,7 +26,6 @@ export default class StockHeader extends React.Component{
 
 
   render(){
-    console.log("stock header render")
     fetchStockName(this.props.ticker).then(res => {
       this.setState({ companyName: res.stock.name })
     });

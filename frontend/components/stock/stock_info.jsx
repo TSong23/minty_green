@@ -17,7 +17,6 @@ export default class StockInfo extends React.Component{
   // }
 
   render(){
-    // console.log("stock info render")
     return(
       <div>
         <br/>

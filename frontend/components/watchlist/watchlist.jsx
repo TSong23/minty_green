@@ -37,7 +37,6 @@ class Watchlist extends React.Component {
         return item.stock_id;
       });
     }
-    // console.log("watchlist container state", this.state)
     
     // get the list of stock id and tickers.
     // this.props.allSymbolID = {1:"MSFT", 2:"AMZN", etc}
@@ -53,7 +52,6 @@ class Watchlist extends React.Component {
       })
     } 
 
-    // console.log("allSymbolID", allSymbolID);
 
 
 

@@ -16,9 +16,6 @@ class OrderForm extends React.Component {
   }
 
   handleSubmit(){
-    console.log("form submit", this.state.buySell, 
-    this.state.shares, this.props.currentPrice, 
-      this.props.currentStockId);
     
     if (this.state.buySell === "BUY"){
       if (this.state.shares * this.props.currentPrice > this.props.cash){

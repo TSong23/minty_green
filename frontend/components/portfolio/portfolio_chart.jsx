@@ -178,6 +178,9 @@ class PortfolioChart extends React.Component{
     let normalizedData = [];
     let color = "#21CE99";
     let portfolioValue = 0;
+    let percChange = "0.00";
+    let dayDiff = "0.00";
+    let diffSign = "+"
 
     if (Object.keys(this.state.allStocks).length) {
       Object.keys(this.state.allStocks).map(sym => {
@@ -241,14 +244,22 @@ class PortfolioChart extends React.Component{
 
       }
 
+      //calculate color, perc change, gains etc.
       if (normalizedData.length) {
-        if (normalizedData[0]["Value"] > normalizedData[normalizedData.length-1]["Value"]) {
+        let open = normalizedData[0]["Value"];
+        let current = normalizedData[normalizedData.length - 1]["Value"];
+        dayDiff = Math.round((current - open) * 100) /100;
+        percChange = Math.round((current / open - 1) * 10000) / 100; 
+        if (open > current) {
           color = "#F45531";
+          diffSign = "";
         }
         portfolioValue = normalizedData[normalizedData.length - 1]["Value"];
-      }
 
+      }
     }
+
+
 
     return(
       <div className="home_page_balance_display">
@@ -256,10 +267,11 @@ class PortfolioChart extends React.Component{
           Portfolio Value 
           <br/>
           <h3>${portfolioValue}</h3>
+          <h4>{diffSign}${dayDiff}   {diffSign}{percChange}%</h4>
         </div>
         <div>    
           <LineChart data={normalizedData} width={760} height={300}
-            margin={{ top: 0, right: 0, bottom: 0, left: -50 }}>
+            margin={{ top: 0, right: 0, bottom: 0, left: -50 }} >
             <XAxis dataKey='date' tick={false} axisLine={false} />
             <YAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
             <Tooltip />

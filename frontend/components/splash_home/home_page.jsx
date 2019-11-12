@@ -33,7 +33,6 @@ class HomeMain extends React.Component {
     // fetchintrady for stocks on watchlist
     
 
-    // console.log("home page") three tines render
    
     // news loging
     let showNews = [];
@@ -74,9 +73,11 @@ class HomeMain extends React.Component {
 
             <PortfolioChart/>
 
-            <div className="home_page_deposit_money">
+            {/* <div className="home_page_deposit_money">
               <button> Add Funds</button>
-            </div>
+            </div> */}
+
+            <br/>
             
             <div className="home_page_news_container">
               <h3>News</h3>
@@ -89,7 +90,7 @@ class HomeMain extends React.Component {
 
           <div className="home_page_right_main_col">   
             <MyStocks/>         
-            {/* <Watchlist/>             */}
+            <Watchlist/>            
           </div> 
     
         </div>

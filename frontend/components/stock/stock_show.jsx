@@ -48,7 +48,6 @@ class StockShow extends React.Component {
   } 
 
   componentDidUpdate(prevProps){
-    // console.log("stock show update")
     if (prevProps.match.params.ticker !== this.props.match.params.ticker) {
       if (this.props.stockAllInfo.intraday.length === 0) {
         this.props.fetchStockIntraday(this.props.match.params.ticker);
@@ -80,9 +79,7 @@ class StockShow extends React.Component {
 
   
   render() {
-    // console.log("stock show props", this.props)
-    // console.log("stock show state", this.state)
-
+   
     //constants for company info
     let companyName;
     let companyInfo;
@@ -118,7 +115,6 @@ class StockShow extends React.Component {
     if (this.state.info !== {}){
       companyName = this.state.info.companyName;
       companyInfo = this.state.info;
-      // console.log("stock show info set")
     }
 
     // pass down whether the stock in on user's watchlist
