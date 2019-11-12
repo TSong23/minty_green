@@ -13,7 +13,7 @@ class ListItemGraph extends React.Component{
 
   componentDidMount(){
     if (this.props.stockInfo) {
-      if (this.props.stockInfo.intraday === 'undefined') {
+      if (this.props.stockInfo.intraday === undefined) {
         this.props.fetchStockIntraday(this.props.ticker);
       }
     } else {
@@ -21,14 +21,13 @@ class ListItemGraph extends React.Component{
     }
 
     if (this.props.stockInfo) {
-      if (this.props.stockInfo.year === 'undefined') {
+      if (this.props.stockInfo.year === undefined) {
         this.props.fetchStockPastData(this.props.ticker);
       }
     } else {
       this.props.fetchStockPastData(this.props.ticker);
     }
-    // this.props.fetchStockIntraday(this.props.ticker);
-    // this.props.fetchStockPastData(this.props.ticker); 
+
   }
 
 

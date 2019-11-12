@@ -84,11 +84,11 @@
           flex-direction: column;
 
           .current_portfolio_value{
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
 
             h3{
-              font-size: 40px;
+              font-size: 36px;
               font-weight: normal;
             }
           }
@@ -96,6 +96,10 @@
           .portfolio_chart_time_options{
             font-size: 20px;
             color : gray;
+            button{
+              height: 100%;
+              width:  40px;
+            }
           }
         }
 

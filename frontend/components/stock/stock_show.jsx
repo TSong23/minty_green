@@ -23,7 +23,7 @@ class StockShow extends React.Component {
   componentDidMount(){
     // check if stock intraday or year has to be fetched
     if (this.props.stockAllInfo){
-      if (this.props.stockAllInfo.intraday === 'undefined'){
+      if (this.props.stockAllInfo.intraday === undefined){
         this.props.fetchStockIntraday(this.props.match.params.ticker);
       }
     } else{
@@ -31,7 +31,7 @@ class StockShow extends React.Component {
     }
 
     if (this.props.stockAllInfo) {
-      if (this.props.stockAllInfo.year === 'undefined') {
+      if (this.props.stockAllInfo.year === undefined) {
         this.props.fetchStockPastData(this.props.match.params.ticker);
       }
     } else {
