@@ -72,17 +72,11 @@ class HomeMain extends React.Component {
 
           <div className="home_page_left_main_col">
 
-            <div className="home_page_balance_display">
-              <PortfolioChart/>
-            </div>
+            <PortfolioChart/>
 
             <div className="home_page_deposit_money">
               <button> Add Funds</button>
             </div>
-
-            {/* <div className="home_page_portfolio_chart">
-            
-            </div> */}
             
             <div className="home_page_news_container">
               <h3>News</h3>

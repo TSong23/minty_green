@@ -66,6 +66,7 @@ class PortfolioChart extends React.Component{
       multiData.forEach(dataSet => {
         sum = sum + dataSet[j];
       })
+      sum = Math.round(sum * 100) / 100;
       sumData.push({"Value" : sum})
     }
     return sumData;
@@ -123,6 +124,34 @@ class PortfolioChart extends React.Component{
       normalizedData = this.normalizeData(combinedData, stockHash);
     }
 
+    // normalizedData = [
+    //   { Value: 29096.749999999996 }
+    //   ,{ Value: 29136 }
+    //   ,{ Value: 29174.25 }
+    //   ,{ Value: 29169.5 }
+    //   ,{ Value: 29180.25 }
+    //   ,{ Value: 29198.5 }
+    //   ,{ Value: 29209.25 }
+    //   ,{ Value: 29172 }
+    //   ,{ Value: 29220.25 }
+    //   ,{ Value: 29204.75 }
+    //   ,{ Value: 29203.25 }
+    //   ,{ Value: 29202.75 }
+    //   ,{ Value: 29222.5 }
+    //   ,{ Value: 29225 }
+    //   ,{ Value: 29245.25 }
+    //   ,{ Value: 29256.5 }
+    //   ,{ Value: 29260 }
+    //   ,{ Value: 29277.5 }
+    //   ,{ Value: 29276.5 }
+    //   ,{ Value: 29297.25 }
+    //   ,{ Value: 29320.25 }
+    //   ,{ Value: 29288 }
+    //   ,{ Value: 29299 }
+    //   ,{ Value: 29309.5 }
+    //   ,{ Value: 29301.25 }
+    //   ,{ Value: 29306.250000000004 }     
+    // ];
     if (normalizedData.length){
       if (normalizedData[0]["Value"] > normalizedData[99]["Value"]){
         color = "#F45531";
@@ -130,24 +159,22 @@ class PortfolioChart extends React.Component{
       portfolioValue = normalizedData[99]["Value"];
     }
 
-    console.log('Data', normalizedData)
+    
     return(
-      <div >
-        <div>
-          Portfolio Value {portfolioValue}
+      <div className="home_page_balance_display">
+        <div className="current_portfolio_value">
+          Portfolio Value 
+          <br/>
+          <h3>${portfolioValue}</h3>
         </div>
         <div>    
-          <ResponsiveContainer width="100%" height="90%" >  
-          <LineChart
-            data={[{ "Value": 13 }, { "Value": 14 }, { "Value": 15 }]}
-          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
-          <XAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
-          <YAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
-          <Tooltip />
-          <Line type="monotone" dataKey="Value" stroke={color}
-            strokeWidth={2} dot={false} />
-        </LineChart>
-          </ResponsiveContainer>    
+          <LineChart data={normalizedData} width={760} height={300}
+            margin={{ top: 0, right: 0, bottom: 0, left: -50 }}>
+            <Tooltip />
+            <YAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
+            <Line type="monotone" dataKey="Value" stroke={color}
+              strokeWidth={2} dot={false} />
+          </LineChart>
         </div>
         
       </div>

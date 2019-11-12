@@ -9,38 +9,38 @@
 
 Stock.destroy_all
 
-# sp500_list_string = File.read("#{Rails.root}/db/SP500List.csv")
+sp500_list_string = File.read("#{Rails.root}/db/SP500List.csv")
 
-# def read_stocks(stock_str)
-#     stock_str.split("\n")
-# end  
+def read_stocks(stock_str)
+    stock_str.split("\n")
+end  
 
-# def make_stock_entry(stock_arr)
-#   stock_entry = []
-#   stock_arr.each do |stock| 
-#     stock_entry.push({
-#       ticker: (stock.split(",")[0]).gsub('"',''),
-#       name: (stock.split(",")[1]).gsub('"','')
-#       }) 
-#   end
-#   stock_entry
-# end
+def make_stock_entry(stock_arr)
+  stock_entry = []
+  stock_arr.each do |stock| 
+    stock_entry.push({
+      ticker: (stock.split(",")[0]).gsub('"',''),
+      name: (stock.split(",")[1]).gsub('"','')
+      }) 
+  end
+  stock_entry
+end
 
-# stock_obj = make_stock_entry(read_stocks(sp500_list_string));
+stock_obj = make_stock_entry(read_stocks(sp500_list_string));
 
-# Stock.create(stock_obj)
+Stock.create(stock_obj)
 
 #stock
-Stock.destroy_all
-stock1 = Stock.create(ticker: "MSFT", name: "Microsoft Corp")
-stock2 = Stock.create(ticker: "AMZN", name: "Amazon")
-stock3 = Stock.create(ticker: "AAPL", name: "Apple")
-stock4 = Stock.create(ticker: "GOOG", name: "Google")
-stock5 = Stock.create(ticker: "BRK.B", name: "Buffet")
-stock6 = Stock.create(ticker: "FB", name: "Facebook")
-stock7 = Stock.create(ticker: "V", name: "Visa")
-stock8 = Stock.create(ticker: "JNJ", name: "Johnson and Johnson")
-stock9 = Stock.create(ticker: "JPM", name: "JPMorgan and Chase")
+# Stock.destroy_all
+# stock1 = Stock.create(ticker: "MSFT", name: "Microsoft Corp")
+# stock2 = Stock.create(ticker: "AMZN", name: "Amazon")
+# stock3 = Stock.create(ticker: "AAPL", name: "Apple")
+# stock4 = Stock.create(ticker: "GOOG", name: "Google")
+# stock5 = Stock.create(ticker: "BRK.B", name: "Buffet")
+# stock6 = Stock.create(ticker: "FB", name: "Facebook")
+# stock7 = Stock.create(ticker: "V", name: "Visa")
+# stock8 = Stock.create(ticker: "JNJ", name: "Johnson and Johnson")
+# stock9 = Stock.create(ticker: "JPM", name: "JPMorgan and Chase")
 
 
 # #user

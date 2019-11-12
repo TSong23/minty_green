@@ -84,8 +84,7 @@ class StockShow extends React.Component {
         let open = this.props.stockAllInfo.intraday[0]["close"];
         dayDiff = Math.round((currentPrice - open) * 100) / 100;
         if (dayDiff < 0){
-          diffSign = "-";
-          dayDiff = dayDiff * (-1);
+          diffSign = "";
         }
         percChange = Math.round((currentPrice / open - 1) * 10000) / 100; 
         if (this.props.stockAllInfo.year && this.state.time !== '1d'){

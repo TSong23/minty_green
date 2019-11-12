@@ -66,7 +66,7 @@ class Watchlist extends React.Component {
         return(
             <NavLink to={`/stocks/${stockSym}`} 
               ticker={stockSym} key={stockSym} className="watchlist_items">
-              <div>
+              <div className="watchlist_items_stock_sym">
                 {stockSym}
               </div>
               <div className="mini_chart_container">

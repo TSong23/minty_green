@@ -84,20 +84,25 @@
           flex-direction: column;
 
           .current_portfolio_value{
-            color:  #21CE99;
-            padding: 20px 0px 10px 0px;
-          }
+            font-size: 20px;
+            font-weight: bold;
 
-          .home_page_deposit_money{
-            font-size: 14px;
-            justify-self: end;
+            h3{
+              font-size: 40px;
+              font-weight: normal;
+            }
           }
-          .home_page_deposit_money:hover{
-            color: #21CE99;
-            font-weight: bolder;
-          }
-
         }
+
+        .home_page_deposit_money{
+          font-size: 14px;
+          justify-self: end;
+        }
+        .home_page_deposit_money:hover{
+          color: #21CE99;
+          font-weight: bolder;
+        }
+
       }
 
       .home_page_right_main_col{

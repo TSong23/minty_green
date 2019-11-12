@@ -39,10 +39,11 @@ class MyStocks extends React.Component{
         return (
           <NavLink to={`/stocks/${stockSym}`}
             ticker={stockSym} key={stockSym} className="watchlist_items">
-            <div>
+            <div className="watchlist_items_stock_sym">
               {stockSym}
               <br/>
-              {numShares} Shares
+              <div className="watchlist_items_num_shares">{numShares} Shares</div>
+              
             </div>
             <div className="mini_chart_container">
               <ListItemGraph ticker={stockSym}></ListItemGraph>
