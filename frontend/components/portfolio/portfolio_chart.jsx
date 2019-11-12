@@ -82,18 +82,51 @@ class PortfolioChart extends React.Component{
       })
     }
 
-    var today = new Date();
-    var currentTime = today.getHours() + ":" + today.getMinutes(); 
+    let today = new Date();
+    let eastTimeZone = new Date(today.getTime() + 180*60*1000);
+    let currentTime = eastTimeZone.getHours() + ":" + eastTimeZone.getMinutes(); 
+
+    // change string time to number of minutes past 9:30
+
+    let numTime = currentTime.split(':').map(str => {
+      return Number(str);
+    });
     
+    let minutesPast = (numTime[0] - 9) * 60 + numTime[1] - 30;
+    let timeInterval = minutesPast/100;
     
     for (let j = 0; j < 100; j++){
       let sum = 0;
       multiData.forEach(dataSet => {
         sum = sum + dataSet[j];
       })
+
       sum = Math.round(sum * 100) / 100;
-      sumData.push({"Value" : sum})
+
+      // add the minutesPast to 9:30 
+      let addMinutes = Math.round(timeInterval * j);
+      let chartHours = Math.floor(addMinutes/60);
+      let chartMin = addMinutes - chartHours * 60;
+
+      // adjust for 9:30 start
+      let newChartHours = chartHours + 9;
+      let newChartMin = chartMin + 30;
+      let ampm = 'AM';
+      if (newChartMin > 60){
+        newChartHours += 1;
+        newChartMin -= 60;
+      }
+      if (newChartHours >= 12){
+        ampm = 'PM';
+        if (newChartHours >= 13){
+          newChartHours -= 12;
+        }
+      }
+
+      let chartDate = `${newChartHours}` + ":" + `${newChartMin}` + `${ampm}`;
+      sumData.push({date: chartDate, Value : sum})
     }
+
     return sumData;
   }
 
@@ -209,10 +242,10 @@ class PortfolioChart extends React.Component{
       }
 
       if (normalizedData.length) {
-        if (normalizedData[0]["Value"] > normalizedData[250]["Value"]) {
+        if (normalizedData[0]["Value"] > normalizedData[normalizedData.length-1]["Value"]) {
           color = "#F45531";
         }
-        portfolioValue = normalizedData[250]["Value"];
+        portfolioValue = normalizedData[normalizedData.length - 1]["Value"];
       }
 
     }
@@ -227,8 +260,9 @@ class PortfolioChart extends React.Component{
         <div>    
           <LineChart data={normalizedData} width={760} height={300}
             margin={{ top: 0, right: 0, bottom: 0, left: -50 }}>
-            <Tooltip />
+            <XAxis dataKey='date' tick={false} axisLine={false} />
             <YAxis domain={['auto', 'auto']} tick={false} axisLine={false} />
+            <Tooltip />
             <Line type="monotone" dataKey="Value" stroke={color}
               strokeWidth={2} dot={false} />
           </LineChart>
