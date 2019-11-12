@@ -13,6 +13,7 @@ class PortfolioChart extends React.Component{
     this.combineStockData = this.combineStockData.bind(this);
     this.normalizeData = this.normalizeData.bind(this);
     this.formatData = this.formatData.bind(this);
+    this.truncateYear = this.truncateYear.bind(this);
   } 
 
   componentDidMount(){
@@ -21,26 +22,32 @@ class PortfolioChart extends React.Component{
     );
   }
 
+
   combineStockData(symbols){
     let allDataArr = [];
-    if (this.state.time === "1d"){
-      symbols.forEach(sym => {
-        allDataArr.push({
-          ticker: sym,
-          Price: this.formatData(this.props.stocks[sym]["intraday"])
-        });
-      })
-    }else{
-      symbols.forEach(sym =>{
-        let reArr = [];
-        Object.values(this.props.stocks[sym]["year"]).map(data => {
-          reArr.push({ time: data.label, Price: data.close })
-        })
-        allDataArr.push(reArr);
-      })
-    }
+    symbols.forEach(sym => {
+      allDataArr.push({
+        ticker: sym,
+        Price: this.formatData(this.props.stocks[sym]["intraday"])
+      });
+    })
     
     return allDataArr
+  }
+
+  combineStockYearData(symbols, stockHash){
+    let allDataArr = [];
+
+    symbols.forEach(sym => {
+      let reArr = [];
+      Object.values(this.props.stocks[sym]["year"]).map(data => {
+        let sharesVal = data.close * stockHash[sym];
+        reArr.push({ time: data.label, Value: sharesVal})
+      })
+      allDataArr.push(reArr);
+    })
+    
+    return allDataArr;
   }
 
   formatData(stockData){
@@ -74,6 +81,10 @@ class PortfolioChart extends React.Component{
         }
       })
     }
+
+    var today = new Date();
+    var currentTime = today.getHours() + ":" + today.getMinutes(); 
+    
     
     for (let j = 0; j < 100; j++){
       let sum = 0;
@@ -86,14 +97,45 @@ class PortfolioChart extends React.Component{
     return sumData;
   }
 
+  normalizeYearData(combinedData){
+    let sumData = [];
+    let yearDataLen = combinedData[0].length;
+    for (let i = 0; i < yearDataLen; i++){
+      let sum = 0;
+      for (let j = 0; j < combinedData.length; j++) {
+        sum = sum + combinedData[j][i]["Value"];
+      }
+      sum = Math.round(sum * 100) / 100;
+      sumData.push({
+        date: combinedData[0][i]["time"],
+        Value : sum
+      })
+    }
+    return sumData;
+  }
+
+
   multiplyData(reducedData, price){
     let sharesValueArr = reducedData.map(x => x * price);
     return sharesValueArr;
   }
 
+  truncateYear(yearData){
+
+    let length = yearData.length;
+
+    if (this.state.time === '5d'){
+      return yearData.slice(Math.round(length * 34 / 35));
+    } else if (this.state.time === '6m') {
+      return yearData.slice(Math.round(length / 2));
+    } else if (this.state.time === '1m') {
+      return yearData.slice(Math.round((length * 9 / 10)));
+    } else {
+      return yearData;
+    }
+  }
 
   render(){
-
     
     let ownedStockIDs = Object.keys(this.props.ownedStocks);
     let stockHash = {};
@@ -146,6 +188,7 @@ class PortfolioChart extends React.Component{
         }
         portfolioValue = normalizedData[99]["Value"];
       }
+
     } else{
 
       // check if yearly data is all loaded
@@ -157,10 +200,21 @@ class PortfolioChart extends React.Component{
 
       if (allDataLoaded){
         let stockSymbols = Object.keys(stockHash);
-        combinedData = this.combineStockData(stockSymbols);
-        debugger
-        normalizedData = this.normalizeData(combinedData, stockHash);
+        combinedData = this.combineStockYearData(stockSymbols, stockHash);
+        let yearData = this.normalizeYearData(combinedData);
+
+        // format the year data according to state
+        normalizedData = this.truncateYear(yearData);
+
       }
+
+      if (normalizedData.length) {
+        if (normalizedData[0]["Value"] > normalizedData[250]["Value"]) {
+          color = "#F45531";
+        }
+        portfolioValue = normalizedData[250]["Value"];
+      }
+
     }
 
     return(
