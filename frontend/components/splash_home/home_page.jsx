@@ -95,7 +95,7 @@ class HomeMain extends React.Component {
     
         </div>
 
-        <footer>
+        {/* <footer>
           <h3>
             <ul>
               <li>Portfolio Site</li>
@@ -103,7 +103,7 @@ class HomeMain extends React.Component {
               <li>GitHub</li>
             </ul>
           </h3>
-        </footer>
+        </footer> */}
 
       </div>
     )
