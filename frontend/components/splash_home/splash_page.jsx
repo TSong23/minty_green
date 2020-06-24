@@ -32,13 +32,13 @@ class SplashPage extends React.Component{
            className="splash_page_image" />
         </div>
 
-        <footer className="footer">          
+        {/* <footer className="footer">          
           <h3>Portfolio Site</h3>
           <br/>
           <h3>Linked In</h3>
           <br/>
           <h3>GitHub</h3>               
-        </footer>
+        </footer> */}
 
       </div>
     )
